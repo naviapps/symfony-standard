@@ -1,0 +1,37 @@
+{% extends 'admin/base.html.twig' %}
+
+{% form_theme form 'admin/form/layout.html.twig' %}
+
+{% block body_id %}admin_user_edit{% endblock %}
+
+{% block body %}
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+      <h2>#{{ user.id }}</h2>
+      <ol class="breadcrumb">
+        <li><a href="{{ path('admin_index') }}">ホーム</a></li>
+        <li><a href="{{ path('admin_user_index') }}">ユーザー管理</a></li>
+        <li class="active"><strong>#{{ user.id }}</strong></li>
+      </ol>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        {{ form_start(form) }}
+          <div class="tabs-container">
+            <div class="tab-content">
+              <div id="tab-1" class="tab-pane active">
+                <div class="panel-body">
+                  {{ form_widget(form) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

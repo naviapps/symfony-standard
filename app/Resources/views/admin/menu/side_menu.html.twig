@@ -1,0 +1,58 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+{% set listAttributes = item.childrenAttributes %}
+{{ block('children') -}}
+{% endblock %}
+
+{% block item %}
+{% if item.displayed %}
+    {# building the class of the item #}
+    {%- set classes = item.attribute('class') is not empty ? [item.attribute('class')] : [] %}
+    {%- if matcher.isCurrent(item) or matcher.isAncestor(item, options.matchingDepth) %}
+        {%- set classes = classes|merge(['active']) %}
+    {%- endif %}
+
+    {%- set attributes = item.attributes %}
+    {%- if classes is not empty %}
+        {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
+    {%- endif %}
+    {# displaying the item #}
+    {% import 'knp_menu.html.twig' as knp_menu %}
+    <li{{ knp_menu.attributes(attributes) }}>
+        {{ block('linkElement') }}
+        {# render the list of children#}
+        {%- set childrenClasses = item.childrenAttribute('class') is not empty ? [item.childrenAttribute('class')] : [] %}
+        {%- set childrenClasses = childrenClasses|merge(['nav']) %}
+        {% if item.level == 1 %}
+            {%- set childrenClasses = childrenClasses|merge(['nav-second-level']) %}
+        {% elseif item.level == 2 %}
+            {%- set childrenClasses = childrenClasses|merge(['nav-third-level']) %}
+        {% endif %}
+        {%- if item.hasChildren %}
+            {%- set childrenClasses = childrenClasses|merge(['collapse']) %}
+        {%- endif %}
+        {%- set listAttributes = item.childrenAttributes|merge({'class': childrenClasses|join(' ') }) %}
+        {{ block('list') }}
+    </li>
+{% endif %}
+{% endblock %}
+
+{% block linkElement %}
+{% spaceless %}
+    {% import 'knp_menu.html.twig' as knp_menu %}
+    <a href="{{ item.uri|default('#') }}"{{ knp_menu.attributes(item.linkAttributes) }}>
+        {% if item.level == 1 %}
+            {% if item.getExtra('icon') %}
+                <i class="{{ item.getExtra('icon') }}"></i>
+            {% endif %}
+            <span class="nav-label">{{ block('label') }}</span>
+            {% if item.hasChildren %}
+                <span class="fa arrow"></span>
+            {% endif %}
+        {% elseif item.level == 2 %}
+            {{ block('label') }}
+        {% endif %}
+    </a>
+{% endspaceless %}
+{% endblock %}

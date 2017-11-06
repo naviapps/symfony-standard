@@ -1,0 +1,47 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body_id %}admin_user_index{% endblock %}
+
+{% block body %}
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+      <h2>ユーザー</h2>
+      <ol class="breadcrumb">
+        <li><a href="{{ path('admin_index') }}">ホーム</a></li>
+        <li class="active"><strong>ユーザー</strong></li>
+      </ol>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox">
+          <div class="ibox-content">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>ユーザー名</th>
+                <th>メールアドレス</th>
+                <th class="text-right">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for admin_user in admin_users %}
+                <tr>
+                  <td>{{ admin_user.id }}</td>
+                  <td>{{ admin_user.username }}</td>
+                  <td>{{ admin_user.email }}</td>
+                  <td class="text-right"><a href="{{ path('admin_admin_user_edit', { id: admin_user.id }) }}" class="btn-white btn btn-xs">編集</a></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

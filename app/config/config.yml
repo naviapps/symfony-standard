@@ -72,6 +72,9 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+# KnpMenu Configuration
+knp_menu:
+
 # FOSUser Configuration
 fos_user:
     db_driver: orm
