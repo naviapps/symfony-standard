@@ -22,6 +22,9 @@
       <div class="col-lg-12">
         {{ form_start(form) }}
           <div class="tabs-container">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab-1" data-toggle="tab">ユーザー情報</a></li>
+            </ul>
             <div class="tab-content">
               <div id="tab-1" class="tab-pane active">
                 <div class="panel-body">
@@ -30,6 +33,9 @@
               </div>
             </div>
           </div>
+
+          <button type="submit" class="btn btn-primary">{{ 'action.save'|trans }}</button>
+          <a href="{{ path('admin_user_index') }}" class="btn btn-link">{{ 'action.back_to_list'|trans }}</a>
         {{ form_end(form) }}
       </div>
     </div>

@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\User;
 use AppBundle\Form\Admin\UserType;
 use FOS\UserBundle\Model\UserManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -19,18 +20,24 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
     /**
+     * @param Request $request
      * @return Response
      *
      * @Route("/", name="admin_user_index")
      * @Method("GET")
      */
-    public function indexAction(): Response
+    public function indexAction(Request $request, PaginatorInterface $paginator): Response
     {
-        /** @var $userManager UserManagerInterface */
-        $userManager = $this->get('fos_user.user_manager');
-        $users = $userManager->findUsers();
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery('SELECT u FROM AppBundle:User u');
 
-        return $this->render('admin/user/index.html.twig', ['users' => $users]);
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            User::NUM_ITEMS
+        );
+
+        return $this->render('admin/user/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**

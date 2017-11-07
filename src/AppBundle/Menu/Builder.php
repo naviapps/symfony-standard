@@ -22,8 +22,7 @@ class Builder implements ContainerAwareInterface
 
         $menu->addChild('ダッシュボード', ['route' => 'admin_index'])->setExtra('icon', 'fa fa-fw fa-th-large');
 
-        $users = $menu->addChild('ユーザー')->setExtra('icon', 'fa fa-fw fa-user');
-        $users->addChild('ユーザー', ['route' => 'admin_user_index']);
+        $menu->addChild('ユーザー', ['route' => 'admin_user_index'])->setExtra('icon', 'fa fa-fw fa-user');
 
         $system = $menu->addChild('システム')->setExtra('icon', 'fa fa-fw fa-cog');
         $system->addChild('ユーザー', ['route' => 'admin_admin_user_index']);

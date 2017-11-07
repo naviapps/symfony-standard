@@ -1,7 +1,7 @@
 # Learn more about services, parameters and containers at
 # https://symfony.com/doc/current/service_container.html
 parameters:
-    #parameter_name: value
+    app.notifications.email_sender: anonymous@example.com
 
 services:
     # default configuration for services in *this* file
@@ -33,3 +33,6 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    AppBundle\Command\ListAdminUsersCommand:
+        $emailSender: '%app.notifications.email_sender%'

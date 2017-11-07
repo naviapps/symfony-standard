@@ -14,6 +14,10 @@
                 <source>user.deleted_successfully</source>
                 <target>ユーザーの削除が完了しました</target>
             </trans-unit>
+            <trans-unit id="user.no_admin_users_found">
+                <source>user.no_users_found</source>
+                <target>ユーザーが見つかりません</target>
+            </trans-unit>
 
             <trans-unit id="admin_user.created_successfully">
                 <source>admin_user.created_successfully</source>
@@ -27,6 +31,10 @@
                 <source>admin_user.deleted_successfully</source>
                 <target>ユーザーの削除が完了しました</target>
             </trans-unit>
+            <trans-unit id="admin_user.no_admin_users_found">
+                <source>admin_user.no_admin_users_found</source>
+                <target>ユーザーが見つかりません</target>
+            </trans-unit>
 
             <trans-unit id="label.username">
                 <source>label.username</source>
@@ -36,9 +44,34 @@
                 <source>label.email</source>
                 <target>メールアドレス</target>
             </trans-unit>
+            <trans-unit id="label.first_name">
+                <source>label.first_name</source>
+                <target>名</target>
+            </trans-unit>
+            <trans-unit id="label.last_name">
+                <source>label.last_name</source>
+                <target>姓</target>
+            </trans-unit>
             <trans-unit id="label.save_and_create_new">
                 <source>label.save_and_create_new</source>
                 <target>作成してもう一つ追加</target>
+            </trans-unit>
+
+            <trans-unit id="action.create_user">
+                <source>action.create_user</source>
+                <target>ユーザーを作成</target>
+            </trans-unit>
+            <trans-unit id="action.create_admin_user">
+                <source>action.create_admin_user</source>
+                <target>ユーザーを作成</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>保存</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_list">
+                <source>action.back_to_list</source>
+                <target>一覧に戻る</target>
             </trans-unit>
         </body>
     </file>

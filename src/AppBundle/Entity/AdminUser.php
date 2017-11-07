@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -10,6 +11,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class AdminUser implements UserInterface, \Serializable
 {
+    use TimestampableEntity;
+
+    const NUM_ITEMS = 10;
+
     /**
      * @var integer
      *
@@ -51,6 +56,20 @@ class AdminUser implements UserInterface, \Serializable
      * @ORM\Column(type="json_array")
      */
     private $roles = [];
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $lastName;
 
     /**
      * Get id
@@ -218,5 +237,53 @@ class AdminUser implements UserInterface, \Serializable
             $this->username,
             $this->password,
         ) = unserialize($serialized);
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return AdminUser
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return AdminUser
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
     }
 }

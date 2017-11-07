@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\AdminUser;
 use AppBundle\Form\Admin\AdminUserType;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -19,17 +20,24 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AdminUserController extends Controller
 {
     /**
+     * @param Request $request
      * @return Response
      *
      * @Route("/", name="admin_admin_user_index")
      * @Method("GET")
      */
-    public function indexAction(): Response
+    public function indexAction(Request $request, PaginatorInterface $paginator): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $adminUsers = $em->getRepository(AdminUser::class)->findAll();
+        $query = $em->createQuery('SELECT au FROM AppBundle:AdminUser au');
 
-        return $this->render('admin/admin_user/index.html.twig', ['admin_users' => $adminUsers]);
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            AdminUser::NUM_ITEMS
+        );
+
+        return $this->render('admin/admin_user/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**

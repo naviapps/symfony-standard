@@ -81,7 +81,7 @@
 
           {% for type, messages in app.session.flashbag.all() %}
             {% for message in messages %}
-              toastr.{{ type }}('{{ message }}');
+              toastr.{{ type }}('{{ message|trans }}');
             {% endfor %}
           {% endfor %}
         }, 1300);

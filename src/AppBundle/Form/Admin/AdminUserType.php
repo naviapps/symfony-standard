@@ -21,6 +21,14 @@ class AdminUserType extends AbstractType
             ->add('username', null, [
                 'label' => 'label.username',
             ])
+            ->add('firstName', null, [
+                'label'    => 'label.first_name',
+                'required' => false,
+            ])
+            ->add('lastName', null, [
+                'label'    => 'label.last_name',
+                'required' => false,
+            ])
             ->add('email', EmailType::class, [
                 'label' => 'label.email',
             ])

@@ -63,6 +63,10 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -72,9 +76,6 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-# KnpMenu Configuration
-knp_menu:
-
 # FOSUser Configuration
 fos_user:
     db_driver: orm
@@ -83,3 +84,18 @@ fos_user:
     from_email:
         address: '%mailer_user%'
         sender_name: '%mailer_user%'
+
+# KnpMenu Configuration
+knp_menu:
+
+# KnpPaginator Configuration
+knp_paginator:
+    template:
+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig'
+
+# StofDoctrineExtensions Configuration
+stof_doctrine_extensions:
+    orm:
+        default:
+            softdeleteable: true
+            timestampable: true
