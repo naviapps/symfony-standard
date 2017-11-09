@@ -20,12 +20,12 @@ class Builder implements ContainerAwareInterface
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('ダッシュボード', ['route' => 'admin_index'])->setExtra('icon', 'fa fa-fw fa-th-large');
+        $menu->addChild('title.dashboard', ['route' => 'admin_index'])->setExtra('icon', 'fa fa-fw fa-th-large');
 
-        $menu->addChild('ユーザー', ['route' => 'admin_user_index'])->setExtra('icon', 'fa fa-fw fa-user');
+        $menu->addChild('title.customers', ['route' => 'admin_customer_index'])->setExtra('icon', 'fa fa-fw fa-user');
 
-        $system = $menu->addChild('システム')->setExtra('icon', 'fa fa-fw fa-cog');
-        $system->addChild('ユーザー', ['route' => 'admin_admin_user_index']);
+        $system = $menu->addChild('title.system')->setExtra('icon', 'fa fa-fw fa-cog');
+        $system->addChild('title.users', ['route' => 'admin_user_index']);
 
         return $menu;
     }

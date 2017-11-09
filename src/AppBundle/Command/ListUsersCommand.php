@@ -2,7 +2,7 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Entity\AdminUser;
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class ListAdminUsersCommand extends Command
+class ListUsersCommand extends Command
 {
     /** @var EntityManagerInterface */
     private $entityManager;
@@ -40,26 +40,26 @@ class ListAdminUsersCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:list-admin-users')
-            ->setDescription('Lists all the existing admin users')
+            ->setName('app:list-users')
+            ->setDescription('Lists all the existing users')
             ->setHelp(<<<'HELP'
-The <info>%command.name%</info> command lists all the admin users registered in the application:
+The <info>%command.name%</info> command lists all the users registered in the application:
 
   <info>php %command.full_name%</info>
 
-By default the command only displays the 50 most recent admin users. Set the number of
+By default the command only displays the 50 most recent users. Set the number of
 results to display with the <comment>--max-results</comment> option:
 
   <info>php %command.full_name%</info> <comment>--max-results=2000</comment>
 
-In addition to displaying the admin user list, you can also send this information to
+In addition to displaying the user list, you can also send this information to
 the email address specified in the <comment>--send-to</comment> option:
 
   <info>php %command.full_name%</info> <comment>--send-to=fabien@symfony.com</comment>
 
 HELP
             )
-            ->addOption('max-results', null, InputOption::VALUE_OPTIONAL, 'Limits the number of admin users listed', 50)
+            ->addOption('max-results', null, InputOption::VALUE_OPTIONAL, 'Limits the number of users listed', 50)
             ->addOption('send-to', null, InputOption::VALUE_OPTIONAL, 'If set, the result is sent to the given email address')
         ;
     }
@@ -70,29 +70,29 @@ HELP
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $maxResults = $input->getOption('max-results');
-        $adminUsers = $this->entityManager->getRepository(AdminUser::class)->findBy([], ['id' => 'DESC'], $maxResults);
+        $users = $this->entityManager->getRepository(User::class)->findBy([], ['id' => 'DESC'], $maxResults);
 
-        $adminUsersAsPlainArrays = array_map(function (AdminUser $adminUser) {
+        $usersAsPlainArrays = array_map(function (User $user) {
             return [
-                $adminUser->getId(),
-                $adminUser->getUsername(),
-                $adminUser->getEmail(),
-                implode(', ', $adminUser->getRoles()),
+                $user->getId(),
+                $user->getUsername(),
+                $user->getEmail(),
+                implode(', ', $user->getRoles()),
             ];
-        }, $adminUsers);
+        }, $users);
 
         $bufferedOutput = new BufferedOutput();
         $io = new SymfonyStyle($input, $bufferedOutput);
         $io->table(
             ['ID', 'Username', 'Email', 'Roles'],
-            $adminUsersAsPlainArrays
+            $usersAsPlainArrays
         );
 
-        $adminUsersAsATable = $bufferedOutput->fetch();
-        $output->write($adminUsersAsATable);
+        $usersAsATable = $bufferedOutput->fetch();
+        $output->write($usersAsATable);
 
         if (null !== $email = $input->getOption('send-to')) {
-            $this->sendReport($adminUsersAsATable, $email);
+            $this->sendReport($usersAsATable, $email);
         }
     }
 
@@ -103,7 +103,7 @@ HELP
     private function sendReport($contents, $recipient)
     {
         $message = $this->mailer->createMessage()
-            ->setSubject(sprintf('app:list-admin-users report (%s)', date('Y-m-d H:i:s')))
+            ->setSubject(sprintf('app:list-users report (%s)', date('Y-m-d H:i:s')))
             ->setFrom($this->emailSender)
             ->setTo($recipient)
             ->setBody($contents, 'text/plain')

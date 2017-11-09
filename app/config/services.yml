@@ -34,5 +34,5 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
-    AppBundle\Command\ListAdminUsersCommand:
+    AppBundle\Command\ListUsersCommand:
         $emailSender: '%app.notifications.email_sender%'

@@ -2,11 +2,11 @@
 
 namespace AppBundle\Security;
 
-use AppBundle\Entity\AdminUser;
+use AppBundle\Entity\Customer;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-class AdminUserVoter extends Voter
+class CustomerVoter extends Voter
 {
     const EDIT = 'edit';
     const DELETE = 'delete';
@@ -16,7 +16,7 @@ class AdminUserVoter extends Voter
      */
     protected function supports($attribute, $subject): bool
     {
-        return $subject instanceof AdminUser && in_array($attribute, [self::EDIT, self::DELETE], true);
+        return $subject instanceof Customer && in_array($attribute, [self::EDIT, self::DELETE], true);
     }
 
     /**

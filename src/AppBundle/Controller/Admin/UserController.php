@@ -4,15 +4,14 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\User;
 use AppBundle\Form\Admin\UserType;
-use FOS\UserBundle\Model\UserManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/admin/user")
@@ -21,6 +20,7 @@ class UserController extends Controller
 {
     /**
      * @param Request $request
+     * @param PaginatorInterface $paginator
      * @return Response
      *
      * @Route("/", name="admin_user_index")
@@ -42,32 +42,28 @@ class UserController extends Controller
 
     /**
      * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      *
      * @Route("/new", name="admin_user_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request): Response
+    public function newAction(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        /** @var $userManager UserManagerInterface */
-        $userManager = $this->get('fos_user.user_manager');
+        $user = new User();
 
-        $user = $userManager->createUser();
-        $user->setEnabled(true);
-
-        $form = $this->createForm(UserType::class, $user)
-            ->add('saveAndCreateNew', SubmitType::class);
-
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $userManager->updateUser($user);
+            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             $this->addFlash('success', 'user.created_successfully');
-
-            if ($form->get('saveAndCreateNew')->isClicked()) {
-                return $this->redirectToRoute('admin_user_new');
-            }
 
             return $this->redirectToRoute('admin_user_index');
         }
@@ -81,30 +77,33 @@ class UserController extends Controller
     /**
      * @param Request $request
      * @param User $user
+     * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      *
      * @Route("/{id}/edit", requirements={"id": "\d+"}, name="admin_user_edit")
      * @Method({"GET", "POST"})
      * @Security("is_granted('edit', user)")
      */
-    public function editAction(Request $request, User $user): Response
+    public function editAction(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var $userManager UserManagerInterface */
-            $userManager = $this->get('fos_user.user_manager');
-            $userManager->updateUser($user);
+            if (0 < strlen($user->getPlainPassword())) {
+                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($password);
+            }
+            $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'user.updated_successfully');
 
-            return $this->redirectToRoute('admin_user_edit', ['id' => $user->getId()]);
+            return $this->redirectToRoute('admin_user_index');
         }
 
         return $this->render('admin/user/edit.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -123,9 +122,9 @@ class UserController extends Controller
             return $this->redirectToRoute('admin_user_index');
         }
 
-        /** @var $userManager UserManagerInterface */
-        $userManager = $this->get('fos_user.user_manager');
-        $userManager->deleteUser($user);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
 
         $this->addFlash('success', 'user.deleted_successfully');
 

@@ -2,6 +2,23 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="customer.created_successfully">
+                <source>customer.created_successfully</source>
+                <target>会員の作成が完了しました</target>
+            </trans-unit>
+            <trans-unit id="customer.updated_successfully">
+                <source>customer.updated_successfully</source>
+                <target>会員の編集が完了しました</target>
+            </trans-unit>
+            <trans-unit id="customer.deleted_successfully">
+                <source>customer.deleted_successfully</source>
+                <target>会員の削除が完了しました</target>
+            </trans-unit>
+            <trans-unit id="customer.no_customers_found">
+                <source>customer.no_customers_found</source>
+                <target>会員が見つかりません</target>
+            </trans-unit>
+
             <trans-unit id="user.created_successfully">
                 <source>user.created_successfully</source>
                 <target>ユーザーの作成が完了しました</target>
@@ -14,28 +31,91 @@
                 <source>user.deleted_successfully</source>
                 <target>ユーザーの削除が完了しました</target>
             </trans-unit>
-            <trans-unit id="user.no_admin_users_found">
+            <trans-unit id="user.no_users_found">
                 <source>user.no_users_found</source>
                 <target>ユーザーが見つかりません</target>
             </trans-unit>
 
-            <trans-unit id="admin_user.created_successfully">
-                <source>admin_user.created_successfully</source>
-                <target>ユーザーの作成が完了しました</target>
+
+
+            <trans-unit id="title.dashboard">
+                <source>title.dashboard</source>
+                <target>ダッシュボード</target>
             </trans-unit>
-            <trans-unit id="admin_user.updated_successfully">
-                <source>admin_user.updated_successfully</source>
-                <target>ユーザーの編集が完了しました</target>
+            <trans-unit id="title.home">
+                <source>title.home</source>
+                <target>ホーム</target>
             </trans-unit>
-            <trans-unit id="admin_user.deleted_successfully">
-                <source>admin_user.deleted_successfully</source>
-                <target>ユーザーの削除が完了しました</target>
+            <trans-unit id="title.system">
+                <source>title.system</source>
+                <target>システム</target>
             </trans-unit>
-            <trans-unit id="admin_user.no_admin_users_found">
-                <source>admin_user.no_admin_users_found</source>
-                <target>ユーザーが見つかりません</target>
+            <trans-unit id="title.customers">
+                <source>title.customers</source>
+                <target>会員</target>
+            </trans-unit>
+            <trans-unit id="title.new_customer">
+                <source>title.new_customer</source>
+                <target>新規会員</target>
+            </trans-unit>
+            <trans-unit id="title.users">
+                <source>title.users</source>
+                <target>ユーザー</target>
+            </trans-unit>
+            <trans-unit id="title.new_user">
+                <source>title.new_user</source>
+                <target>新規ユーザー</target>
             </trans-unit>
 
+            <trans-unit id="action.back">
+                <source>action.back</source>
+                <target>戻る</target>
+            </trans-unit>
+            <trans-unit id="action.reset">
+                <source>action.reset</source>
+                <target>リセット</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>編集</target>
+            </trans-unit>
+            <trans-unit id="action.save_and_continue_edit">
+                <source>action.save_and_continue_edit</source>
+                <target>保存して編集を続ける</target>
+            </trans-unit>
+            <trans-unit id="action.add_new_customer">
+                <source>action.add_new_customer</source>
+                <target>会員を作成</target>
+            </trans-unit>
+            <trans-unit id="action.save_customer">
+                <source>action.save_customer</source>
+                <target>会員を保存</target>
+            </trans-unit>
+            <trans-unit id="action.delete_customer">
+                <source>action.delete_customer</source>
+                <target>会員を削除</target>
+            </trans-unit>
+            <trans-unit id="action.add_new_user">
+                <source>action.add_new_user</source>
+                <target>ユーザーを作成</target>
+            </trans-unit>
+            <trans-unit id="action.save_user">
+                <source>action.save_user</source>
+                <target>ユーザーを保存</target>
+            </trans-unit>
+            <trans-unit id="action.delete_user">
+                <source>action.delete_user</source>
+                <target>ユーザーを削除</target>
+            </trans-unit>
+            <trans-unit id="action.sign_in">
+                <source>action.sign_in</source>
+                <target>ログイン</target>
+            </trans-unit>
+
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>ID</target>
+            </trans-unit>
             <trans-unit id="label.username">
                 <source>label.username</source>
                 <target>ユーザー名</target>
@@ -43,6 +123,10 @@
             <trans-unit id="label.email">
                 <source>label.email</source>
                 <target>メールアドレス</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>パスワード</target>
             </trans-unit>
             <trans-unit id="label.first_name">
                 <source>label.first_name</source>
@@ -52,26 +136,9 @@
                 <source>label.last_name</source>
                 <target>姓</target>
             </trans-unit>
-            <trans-unit id="label.save_and_create_new">
-                <source>label.save_and_create_new</source>
-                <target>作成してもう一つ追加</target>
-            </trans-unit>
-
-            <trans-unit id="action.create_user">
-                <source>action.create_user</source>
-                <target>ユーザーを作成</target>
-            </trans-unit>
-            <trans-unit id="action.create_admin_user">
-                <source>action.create_admin_user</source>
-                <target>ユーザーを作成</target>
-            </trans-unit>
-            <trans-unit id="action.save">
-                <source>action.save</source>
-                <target>保存</target>
-            </trans-unit>
-            <trans-unit id="action.back_to_list">
-                <source>action.back_to_list</source>
-                <target>一覧に戻る</target>
+            <trans-unit id="label.action">
+                <source>label.action</source>
+                <target>Action</target>
             </trans-unit>
         </body>
     </file>

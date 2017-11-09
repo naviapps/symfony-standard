@@ -2,7 +2,7 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Entity\AdminUser;
+use AppBundle\Entity\User;
 use AppBundle\Utils\Validator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -14,7 +14,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
 
-class AddAdminUserCommand extends Command
+class AddUserCommand extends Command
 {
     /** @var SymfonyStyle */
     private $io;
@@ -45,13 +45,13 @@ class AddAdminUserCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:add-admin-user')
-            ->setDescription('Creates admin users and stores them in the database')
+            ->setName('app:add-user')
+            ->setDescription('Creates users and stores them in the database')
             ->setHelp($this->getCommandHelp())
-            ->addArgument('username', InputArgument::OPTIONAL, 'The username of the new admin user')
-            ->addArgument('password', InputArgument::OPTIONAL, 'The plain password of the new admin user')
-            ->addArgument('email', InputArgument::OPTIONAL, 'The email of the new admin user')
-            ->addOption('admin', null, InputOption::VALUE_NONE, 'If set, the admin user is created as an administrator')
+            ->addArgument('username', InputArgument::OPTIONAL, 'The username of the new user')
+            ->addArgument('password', InputArgument::OPTIONAL, 'The plain password of the new user')
+            ->addArgument('email', InputArgument::OPTIONAL, 'The email of the new user')
+            ->addOption('admin', null, InputOption::VALUE_NONE, 'If set, the user is created as an administrator')
         ;
     }
 
@@ -72,12 +72,12 @@ class AddAdminUserCommand extends Command
             return;
         }
 
-        $this->io->title('Add Admin User Command Interactive Wizard');
+        $this->io->title('Add User Command Interactive Wizard');
         $this->io->text([
             'If you prefer to not use this interactive wizard, provide the',
             'arguments required by this command as follows:',
             '',
-            ' $ php bin/console app:add-admin-user username password email@example.com',
+            ' $ php bin/console app:add-user username password email@example.com',
             '',
             'Now we\'ll ask you for the value of all the missing command arguments.',
         ]);
@@ -116,7 +116,7 @@ class AddAdminUserCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $stopwatch = new Stopwatch();
-        $stopwatch->start('add-admin-user-command');
+        $stopwatch->start('add-user-command');
 
         $username = $input->getArgument('username');
         $plainPassword = $input->getArgument('password');
@@ -125,22 +125,22 @@ class AddAdminUserCommand extends Command
 
         $this->validateUserData($username, $plainPassword, $email);
 
-        $adminUser = new AdminUser();
-        $adminUser->setUsername($username);
-        $adminUser->setEmail($email);
-        $adminUser->setRoles([$isAdmin ? 'ROLE_ADMIN' : 'ROLE_USER']);
+        $user = new User();
+        $user->setUsername($username);
+        $user->setEmail($email);
+        $user->setRoles([$isAdmin ? 'ROLE_ADMIN' : 'ROLE_USER']);
 
-        $encodedPassword = $this->passwordEncoder->encodePassword($adminUser, $plainPassword);
-        $adminUser->setPassword($encodedPassword);
+        $encodedPassword = $this->passwordEncoder->encodePassword($user, $plainPassword);
+        $user->setPassword($encodedPassword);
 
-        $this->entityManager->persist($adminUser);
+        $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        $this->io->success(sprintf('%s was successfully created: %s (%s)', $isAdmin ? 'Administrator user' : 'User', $adminUser->getUsername(), $adminUser->getEmail()));
+        $this->io->success(sprintf('%s was successfully created: %s (%s)', $isAdmin ? 'Administrator user' : 'User', $user->getUsername(), $user->getEmail()));
 
-        $event = $stopwatch->stop('add-admin-user-command');
+        $event = $stopwatch->stop('add-user-command');
         if ($output->isVerbose()) {
-            $this->io->comment(sprintf('New user database id: %d / Elapsed time: %.2f ms / Consumed memory: %.2f MB', $adminUser->getId(), $event->getDuration(), $event->getMemory() / pow(1024, 2)));
+            $this->io->comment(sprintf('New user database id: %d / Elapsed time: %.2f ms / Consumed memory: %.2f MB', $user->getId(), $event->getDuration(), $event->getMemory() / pow(1024, 2)));
         }
     }
 
@@ -151,21 +151,21 @@ class AddAdminUserCommand extends Command
      */
     private function validateUserData($username, $plainPassword, $email)
     {
-        $adminUserRepository = $this->entityManager->getRepository(AdminUser::class);
+        $userRepository = $this->entityManager->getRepository(User::class);
 
-        $existingAdminUser = $adminUserRepository->findOneBy(['username' => $username]);
+        $existingUser = $userRepository->findOneBy(['username' => $username]);
 
-        if (null !== $existingAdminUser) {
-            throw new \RuntimeException(sprintf('There is already a admin user registered with the "%s" username.', $username));
+        if (null !== $existingUser) {
+            throw new \RuntimeException(sprintf('There is already a user registered with the "%s" username.', $username));
         }
 
         $this->validator->validatePassword($plainPassword);
         $this->validator->validateEmail($email);
 
-        $existingEmail = $adminUserRepository->findOneBy(['email' => $email]);
+        $existingEmail = $userRepository->findOneBy(['email' => $email]);
 
         if (null !== $existingEmail) {
-            throw new \RuntimeException(sprintf('There is already a admin user registered with the "%s" email.', $email));
+            throw new \RuntimeException(sprintf('There is already a user registered with the "%s" email.', $email));
         }
     }
 
@@ -175,7 +175,7 @@ class AddAdminUserCommand extends Command
     private function getCommandHelp()
     {
         return <<<'HELP'
-The <info>%command.name%</info> command creates new admin users and saves them in the database:
+The <info>%command.name%</info> command creates new users and saves them in the database:
 
   <info>php %command.full_name%</info> <comment>username password email</comment>
 

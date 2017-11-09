@@ -2,7 +2,7 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Entity\AdminUser;
+use AppBundle\Entity\User;
 use AppBundle\Utils\Validator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class DeleteAdminUserCommand extends Command
+class DeleteUserCommand extends Command
 {
     /** @var SymfonyStyle */
     private $io;
@@ -38,11 +38,11 @@ class DeleteAdminUserCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:delete-admin-user')
-            ->setDescription('Deletes admin users from the database')
-            ->addArgument('username', InputArgument::REQUIRED, 'The username of an existing admin user')
+            ->setName('app:delete-user')
+            ->setDescription('Deletes users from the database')
+            ->addArgument('username', InputArgument::REQUIRED, 'The username of an existing user')
             ->setHelp(<<<'HELP'
-The <info>%command.name%</info> command deletes admin users from the database:
+The <info>%command.name%</info> command deletes users from the database:
 
   <info>php %command.full_name%</info> <comment>username</comment>
 
@@ -71,12 +71,12 @@ HELP
             return;
         }
 
-        $this->io->title('Delete Admin User Command Interactive Wizard');
+        $this->io->title('Delete User Command Interactive Wizard');
         $this->io->text([
             'If you prefer to not use this interactive wizard, provide the',
             'arguments required by this command as follows:',
             '',
-            ' $ php bin/console app:delete-admin-user username',
+            ' $ php bin/console app:delete-user username',
             '',
             'Now we\'ll ask you for the value of all the missing command arguments.',
             '',
@@ -93,18 +93,18 @@ HELP
     {
         $username = $this->validator->validateUsername($input->getArgument('username'));
 
-        $repository = $this->entityManager->getRepository(AdminUser::class);
-        $adminUser = $repository->findOneBy(['username' => $username]);
+        $repository = $this->entityManager->getRepository(User::class);
+        $user = $repository->findOneBy(['username' => $username]);
 
-        if (null === $adminUser) {
-            throw new \RuntimeException(sprintf('AdminUser with username "%s" not found.', $username));
+        if (null === $user) {
+            throw new \RuntimeException(sprintf('User with username "%s" not found.', $username));
         }
 
-        $adminUserId = $adminUser->getId();
+        $userId = $user->getId();
 
-        $this->entityManager->remove($adminUser);
+        $this->entityManager->remove($user);
         $this->entityManager->flush();
 
-        $this->io->success(sprintf('User "%s" (ID: %d, email: %s) was successfully deleted.', $adminUser->getUsername(), $adminUserId, $adminUser->getEmail()));
+        $this->io->success(sprintf('User "%s" (ID: %d, email: %s) was successfully deleted.', $user->getUsername(), $userId, $user->getEmail()));
     }
 }
