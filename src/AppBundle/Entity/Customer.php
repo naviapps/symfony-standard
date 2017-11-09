@@ -31,4 +31,15 @@ class Customer extends BaseUser
     {
         parent::__construct();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setEmail($email)
+    {
+        parent::setEmail($email);
+        $this->setUsername($email);
+
+        return $this;
+    }
 }

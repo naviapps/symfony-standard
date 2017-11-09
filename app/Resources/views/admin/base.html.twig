@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% block title %}管理画面{% endblock %}</title>
-  {% block stylesheets %}
-    <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/admin/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/admin/css/animate.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet" />
-  {% endblock %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}管理画面{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/admin/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/admin/css/animate.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('build/css/admin.css') }}" rel="stylesheet" />
+    {% endblock %}
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
 <div id="wrapper">
-  <nav class="navbar-default navbar-static-side" role="navigation">
-    <div class="sidebar-collapse">
-      <ul class="nav metismenu" id="side-menu">
-        <li class="nav-header">
-          <div class="dropdown profile-element">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="clear"><span class="block m-t-xs"><strong class="font-bold">{{ app.user.username }}</strong></span><span class="text-muted text-xs block">{{ app.user.username }} <b class="caret"></b></span></span></a>
-            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-              <li><a href="{{ path('admin_security_logout') }}">ログアウト</a></li>
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="clear"><span class="block m-t-xs"><strong class="font-bold">{{ app.user.username }}</strong></span><span class="text-muted text-xs block">{{ app.user.username }} <b class="caret"></b></span></span></a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="{{ path('admin_security_logout') }}">ログアウト</a></li>
+                        </ul>
+                    </div>
+                </li>
+                {{ knp_menu_render('AppBundle:Builder:sideMenu', {'template': 'admin/menu/side_menu.html.twig'}) }}
             </ul>
-          </div>
-        </li>
-        {{ knp_menu_render('AppBundle:Builder:sideMenu', {'template': 'admin/menu/side_menu.html.twig'}) }}
-      </ul>
-    </div>
-  </nav>
+        </div>
+    </nav>
 
-  <div id="page-wrapper" class="gray-bg">
-    <div class="row border-bottom">
-      <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-          <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="#"><i class="fa fa-bars"></i></a>
-          <form action="#" role="form" class="navbar-form-custom">
-            <div class="form-group">
-              <input type="text" name="top-search" placeholder="Search for something..." id="top-search" class="form-control" />
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="#"><i class="fa fa-bars"></i></a>
+                    <form action="#" role="form" class="navbar-form-custom">
+                        <div class="form-group">
+                            <input type="text" name="top-search" placeholder="Search for something..." id="top-search" class="form-control" />
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li><a href="{{ path('admin_security_logout') }}"><i class="fa fa-sign-out"></i> ログアウト</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        {% block body %}{% endblock %}
+
+        {% block footer %}
+            <div class="footer">
+                <div>
+                    <strong>Copyright</strong> Navi Apps, Inc. &copy; {{ 'now'|date('Y') }}
+                </div>
             </div>
-          </form>
-        </div>
-        <ul class="nav navbar-top-links navbar-right">
-          <li><a href="{{ path('admin_security_logout') }}"><i class="fa fa-sign-out"></i> ログアウト</a></li>
-        </ul>
-      </nav>
+        {% endblock %}
     </div>
-
-    {% block body %}{% endblock %}
-
-    {% block footer %}
-      <div class="footer">
-        <div>
-          <strong>Copyright</strong> Navi Apps, Inc. &copy; {{ 'now'|date('Y') }}
-        </div>
-      </div>
-    {% endblock %}
-  </div>
 </div>
 
 {% block javascripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="{{ asset('assets/admin/js/jquery-3.1.1.min.js') }}"><\/script>')</script>
-  <script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/admin/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
-  <script src="{{ asset('assets/admin/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
-  <script src="{{ asset('assets/admin/js/inspinia.js') }}"></script>
-  <script src="{{ asset('assets/admin/js/plugins/toastr/toastr.min.js') }}"></script>
-  <script>
-    $(function () {
-      {% if app.request.hasPreviousSession %}
-        setTimeout(function () {
-          toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            showMethod: 'slideDown',
-            timeOut: 4000
-          };
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset('assets/admin/js/jquery-3.1.1.min.js') }}"><\/script>')</script>
+    <script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/inspinia.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('build/js/admin.js') }}"></script>
+    <script>
+        $(function () {
+            {% if app.request.hasPreviousSession %}
+                setTimeout(function () {
+                    toastr.options = {
+                        closeButton: true,
+                        progressBar: true,
+                        showMethod: 'slideDown',
+                        timeOut: 4000
+                    };
 
-          {% for type, messages in app.session.flashbag.all() %}
-            {% for message in messages %}
-              toastr.{{ type }}('{{ message|trans }}');
-            {% endfor %}
-          {% endfor %}
-        }, 1300);
-      {% endif %}
-    });
-  </script>
+                    {% for type, messages in app.session.flashbag.all() %}
+                        {% for message in messages %}
+                            toastr.{{ type }}('{{ message|trans }}');
+                        {% endfor %}
+                    {% endfor %}
+                }, 1300);
+            {% endif %}
+        });
+    </script>
 {% endblock %}
 </body>
 </html>

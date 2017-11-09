@@ -36,6 +36,11 @@
                 <target>ユーザーが見つかりません</target>
             </trans-unit>
 
+            <trans-unit id="label.password_confirmation">
+                <source>label.password_confirmation</source>
+                <target>パスワードを再入力</target>
+            </trans-unit>
+
 
 
             <trans-unit id="title.dashboard">
@@ -65,6 +70,10 @@
             <trans-unit id="title.new_user">
                 <source>title.new_user</source>
                 <target>新規ユーザー</target>
+            </trans-unit>
+            <trans-unit id="title.contact">
+                <source>title.contact</source>
+                <target>お問い合わせ</target>
             </trans-unit>
 
             <trans-unit id="action.back">
