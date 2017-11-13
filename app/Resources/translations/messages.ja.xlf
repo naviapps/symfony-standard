@@ -40,6 +40,15 @@
                 <source>label.password_confirmation</source>
                 <target>パスワードを再入力</target>
             </trans-unit>
+            <trans-unit id="order.no_orders_found">
+                <source>order.no_orders_found</source>
+                <target>注文が見つかりません</target>
+            </trans-unit>
+            <trans-unit id="page.no_pages_found">
+                <source>page.no_pages_found</source>
+                <target>ページが見つかりません</target>
+            </trans-unit>
+
 
 
 
@@ -74,6 +83,26 @@
             <trans-unit id="title.contact">
                 <source>title.contact</source>
                 <target>お問い合わせ</target>
+            </trans-unit>
+            <trans-unit id="title.orders">
+                <source>title.orders</source>
+                <target>注文</target>
+            </trans-unit>
+            <trans-unit id="title.new_order">
+                <source>title.new_order</source>
+                <target>新規注文</target>
+            </trans-unit>
+            <trans-unit id="title.pages">
+                <source>title.pages</source>
+                <target>ページ</target>
+            </trans-unit>
+            <trans-unit id="title.content">
+                <source>title.content</source>
+                <target>コンテンツ</target>
+            </trans-unit>
+            <trans-unit id="title.new_page">
+                <source>title.new_page</source>
+                <target>新規ページ</target>
             </trans-unit>
 
             <trans-unit id="action.back">
@@ -120,6 +149,26 @@
                 <source>action.sign_in</source>
                 <target>ログイン</target>
             </trans-unit>
+            <trans-unit id="action.create_new_order">
+                <source>action.create_new_order</source>
+                <target>注文を作成</target>
+            </trans-unit>
+            <trans-unit id="action.submit_order">
+                <source>action.submit_order</source>
+                <target>注文を送信</target>
+            </trans-unit>
+            <trans-unit id="action.add_new_page">
+                <source>action.add_new_page</source>
+                <target>新規ページを追加</target>
+            </trans-unit>
+            <trans-unit id="action.delete_page">
+                <source>action.delete_page</source>
+                <target>ページを削除</target>
+            </trans-unit>
+            <trans-unit id="action.save_page">
+                <source>action.save_page</source>
+                <target>ページを保存</target>
+            </trans-unit>
 
             <trans-unit id="label.id">
                 <source>label.id</source>
@@ -148,6 +197,26 @@
             <trans-unit id="label.action">
                 <source>label.action</source>
                 <target>Action</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>タイトル</target>
+            </trans-unit>
+            <trans-unit id="label.page_title">
+                <source>label.page_title</source>
+                <target>ページタイトル</target>
+            </trans-unit>
+            <trans-unit id="label.url_key">
+                <source>label.url_key</source>
+                <target>URLキー</target>
+            </trans-unit>
+            <trans-unit id="label.meta_keywords">
+                <source>label.meta_keywords</source>
+                <target>Meta キーワード</target>
+            </trans-unit>
+            <trans-unit id="label.meta_description">
+                <source>label.meta_description</source>
+                <target>Meta 説明</target>
             </trans-unit>
         </body>
     </file>
