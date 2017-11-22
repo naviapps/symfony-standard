@@ -1,5 +1,7 @@
 {% extends 'admin/base.html.twig' %}
 
+{% form_theme form 'admin/form/layout.html.twig' %}
+
 {% block title %}{{ page.title }} / {{ 'title.pages'|trans }} / {{ parent() }}{% endblock %}
 {% block body_id %}admin_page_edit{% endblock %}
 

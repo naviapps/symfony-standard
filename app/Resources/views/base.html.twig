@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
 <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% if block('keywords') %}
         <meta name="keywords" content="{% block keywords %}{% endblock %}" />
     {% endif %}
@@ -14,7 +16,7 @@
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body id="{% block body_id %}{% endblock %}">
+<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
 {% block body %}{% endblock %}
 {% block javascripts %}
     <script src="{{ asset('build/manifest.js') }}"></script>

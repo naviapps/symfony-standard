@@ -85,6 +85,15 @@ fos_user:
     from_email:
         address: '%mailer_user%'
         sender_name: '%mailer_user%'
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType
+
+# NaviappsUser Configuration
+naviapps_user:
+    registration:
+        form:
+            flow: AppBundle\Form\RegistrationFlow
 
 # IvoryCKEditor Configuration
 ivory_ck_editor:

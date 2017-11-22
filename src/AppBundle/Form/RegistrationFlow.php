@@ -2,23 +2,19 @@
 
 namespace AppBundle\Form;
 
-use Craue\FormFlowBundle\Form\FormFlow;
+use Naviapps\Bundle\UserBundle\Form\Flow\RegistrationFormFlow as BaseFlow;
 
-class RegistrationFlow extends FormFlow
+class RegistrationFlow extends BaseFlow
 {
     /**
      * {@inheritdoc}
      */
     protected function loadStepsConfig()
     {
-        return [
-            [
-                'label'     => '',
-                'form_type' => RegistrationType::class,
-            ],
+        return array_merge(parent::loadStepsConfig(), [
             [
                 'label' => '',
             ],
-        ];
+        ]);
     }
 }
