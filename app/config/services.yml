@@ -33,10 +33,3 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
-
-    AppBundle\Command\ListUsersCommand:
-        $emailSender: '%app.notifications.email_sender%'
-
-    AppBundle\EventListener\ExceptionListener:
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception }

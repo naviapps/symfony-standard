@@ -48,6 +48,10 @@
                 <source>page.no_pages_found</source>
                 <target>ページが見つかりません</target>
             </trans-unit>
+            <trans-unit id="block.no_blocks_found">
+                <source>block.no_blocks_found</source>
+                <target>ブロックが見つかりません</target>
+            </trans-unit>
 
 
 
@@ -96,6 +100,10 @@
                 <source>title.pages</source>
                 <target>ページ</target>
             </trans-unit>
+            <trans-unit id="title.blocks">
+                <source>title.blocks</source>
+                <target>ブロック</target>
+            </trans-unit>
             <trans-unit id="title.content">
                 <source>title.content</source>
                 <target>コンテンツ</target>
@@ -103,6 +111,10 @@
             <trans-unit id="title.new_page">
                 <source>title.new_page</source>
                 <target>新規ページ</target>
+            </trans-unit>
+            <trans-unit id="title.new_block">
+                <source>title.new_block</source>
+                <target>新規ブロック</target>
             </trans-unit>
 
             <trans-unit id="action.back">
@@ -161,6 +173,10 @@
                 <source>action.add_new_page</source>
                 <target>新規ページを追加</target>
             </trans-unit>
+            <trans-unit id="action.add_new_block">
+                <source>action.add_new_block</source>
+                <target>新規ブロックを追加</target>
+            </trans-unit>
             <trans-unit id="action.delete_page">
                 <source>action.delete_page</source>
                 <target>ページを削除</target>
@@ -168,6 +184,14 @@
             <trans-unit id="action.save_page">
                 <source>action.save_page</source>
                 <target>ページを保存</target>
+            </trans-unit>
+            <trans-unit id="action.delete_block">
+                <source>action.delete_block</source>
+                <target>ブロックを削除</target>
+            </trans-unit>
+            <trans-unit id="action.save_block">
+                <source>action.save_block</source>
+                <target>ブロックを保存</target>
             </trans-unit>
 
             <trans-unit id="label.id">
@@ -205,6 +229,10 @@
             <trans-unit id="label.page_title">
                 <source>label.page_title</source>
                 <target>ページタイトル</target>
+            </trans-unit>
+            <trans-unit id="label.block_title">
+                <source>label.block_title</source>
+                <target>ブロックタイトル</target>
             </trans-unit>
             <trans-unit id="label.url_key">
                 <source>label.url_key</source>

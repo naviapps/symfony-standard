@@ -1,3 +1,8 @@
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 fos_user_security:
     resource: '@FOSUserBundle/Resources/config/routing/security.xml'
 
@@ -24,3 +29,15 @@ naviapps_user_deactivation:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+cms:
+    resource: "@CmsBundle/Controller/"
+    type:     annotation
+
+customer:
+    resource: "@CustomerBundle/Controller/"
+    type:     annotation
+
+sales:
+    resource: "@SalesBundle/Controller/"
+    type:     annotation
