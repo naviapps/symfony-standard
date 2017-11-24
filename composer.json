@@ -5,10 +5,7 @@
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle",
-            "CmsBundle\\": "src/CmsBundle",
-            "CustomerBundle\\": "src/CustomerBundle",
-            "SalesBundle\\": "src/SalesBundle",
-            "UserBundle\\": "src/UserBundle"
+            "Naviapps\\": "src/Naviapps"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -23,12 +20,6 @@
             "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
         ]
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../user-bundle"
-        }
-    ],
     "require": {
         "php": ">=5.5.9",
         "craue/formflow-bundle": "^3.0",
@@ -39,7 +30,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-menu-bundle": "^2.1",
         "knplabs/knp-paginator-bundle": "^2.6",
-        "naviapps/user-bundle": "*@dev",
+        "naviapps/fos-user-bundle": "*@dev",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "stof/doctrine-extensions-bundle": "^1.2",

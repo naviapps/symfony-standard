@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfe3ce3e5ff510ac42e1bd5e2fbc12d7",
+    "content-hash": "4428312a6a38fd65b3f54ea684c0138d",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1716,15 +1716,22 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
-            "name": "naviapps/user-bundle",
+            "name": "naviapps/fos-user-bundle",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/naviapis/fos-user-bundle.git",
+                "reference": "361c9198477bbb4458581396b442ab55f05b315f"
+            },
             "dist": {
-                "type": "path",
-                "url": "../user-bundle",
-                "reference": "ecfb8723ac0630f217bf6c306d9a628fdf56761c",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/naviapis/fos-user-bundle/zipball/361c9198477bbb4458581396b442ab55f05b315f",
+                "reference": "361c9198477bbb4458581396b442ab55f05b315f",
+                "shasum": ""
             },
             "require": {
+                "craue/formflow-bundle": "^3.0",
+                "friendsofsymfony/user-bundle": "~2.0",
                 "php": "^5.5.9|>=7.0.8"
             },
             "type": "symfony-bundle",
@@ -1735,12 +1742,13 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Naviapps\\Bundle\\UserBundle\\": ""
+                    "Naviapps\\Bundle\\FOSUserBundle\\": ""
                 },
                 "exclude-from-classmap": [
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1750,11 +1758,12 @@
                     "email": "haruki.fukui@naviapps.com"
                 }
             ],
-            "description": "Symfony NaviappsUserBundle",
-            "homepage": "https://github.com/naviapps/user-bundle",
+            "description": "Symfony NaviappsFOSUserBundle",
+            "homepage": "https://github.com/naviapps/fos-user-bundle",
             "keywords": [
                 "user"
-            ]
+            ],
+            "time": "2017-11-24T18:37:22+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3129,7 +3138,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "naviapps/user-bundle": 20
+        "naviapps/fos-user-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

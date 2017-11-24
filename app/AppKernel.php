@@ -17,16 +17,18 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Naviapps\Bundle\UserBundle\NaviappsUserBundle(),
+            new Naviapps\Bundle\FOSUserBundle\NaviappsFOSUserBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Naviapps\Bundle\CheckoutBundle\NaviappsCheckoutBundle(),
+            new Naviapps\Bundle\CmsBundle\NaviappsCmsBundle(),
+            new Naviapps\Bundle\ContactBundle\NaviappsContactBundle(),
+            new Naviapps\Bundle\CustomerBundle\NaviappsCustomerBundle(),
+            new Naviapps\Bundle\SalesBundle\NaviappsSalesBundle(),
+            new Naviapps\Bundle\UserBundle\NaviappsUserBundle(),
             new AppBundle\AppBundle(),
-            new CmsBundle\CmsBundle(),
-            new CustomerBundle\CustomerBundle(),
-            new SalesBundle\SalesBundle(),
-            new UserBundle\UserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

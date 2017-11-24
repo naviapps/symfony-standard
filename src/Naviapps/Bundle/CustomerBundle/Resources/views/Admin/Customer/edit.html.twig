@@ -1,0 +1,48 @@
+{% extends 'admin/base.html.twig' %}
+
+{% form_theme form 'admin/form/layout.html.twig' %}
+
+{% block title %}#{{ customer.id }} / {{ 'title.customers'|trans }} / {{ parent() }}{% endblock %}
+{% block body_id %}naviapps_customer_admin_customer_edit{% endblock %}
+
+{% block body %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>#{{ customer.id }}</h2>
+            <ol class="breadcrumb">
+                <li><a href="{{ path('admin_index') }}">{{ 'title.home'|trans }}</a></li>
+                <li><a href="{{ path('naviapps_customer_admin_customer_index') }}">{{ 'title.customers'|trans }}</a></li>
+                <li class="active"><strong>#{{ customer.id }}</strong></li>
+            </ol>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <a href="{{ path('naviapps_customer_admin_customer_index') }}" class="btn btn-link"><i class="fa fa-arrow-left"></i> {{ 'action.back'|trans }}</a>
+                    {{ include('@NaviappsCustomer/Admin/Customer/_delete_form.html.twig', { customer: customer }, with_context = false) }}
+                    <a href="{{ path('naviapps_customer_admin_customer_edit', { id: customer.id }) }}" class="btn btn-link">{{ 'action.reset'|trans }}</a>
+                    <button type="submit" form="{{ form.vars.id }}" class="btn btn-primary">{{ 'action.save_customer'|trans }}</button>
+                </div>
+
+                {{ form_start(form, { attr: { id: form.vars.id } }) }}
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab-1" data-toggle="tab">アカウント情報</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="panel-body">
+                                    {{ form_widget(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

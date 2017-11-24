@@ -1,0 +1,3 @@
+services:
+    Naviapps\Bundle\CustomerBundle\Form\RegistrationFlow:
+        parent: craue.form.flow
