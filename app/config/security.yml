@@ -3,7 +3,7 @@
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
-        Naviapps\Bundle\UserBundle\Entity\User: bcrypt
+        AppBundle\Entity\AdminUser: bcrypt
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
@@ -15,8 +15,8 @@ security:
             memory: ~
         fos_userbundle:
             id: fos_user.user_provider.username
-        database_users:
-            entity: { class: NaviappsUserBundle:User, property: username }
+        database_admin_users:
+            entity: { class: AppBundle:AdminUser, property: username }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -26,7 +26,7 @@ security:
 
         admin:
             pattern: ^/admin/
-            provider: database_users
+            provider: database_admin_users
             form_login:
                 check_path: admin_security_login
                 login_path: admin_security_login

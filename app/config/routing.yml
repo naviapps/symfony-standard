@@ -1,29 +1,21 @@
-naviapps_fos_user:
-    resource: '@NaviappsFOSUserBundle/Resources/config/routing/all.yml'
+fos_user_security:
+    resource: '@FOSUserBundle/Resources/config/routing/security.xml'
 
-naviapps_checkout:
-    resource: "@NaviappsCheckoutBundle/Controller/"
-    type: annotation
+fos_user_profile:
+    resource: '@NaviappsFOSUserBundle/Resources/config/routing/profile.yml'
+    prefix: /profile
 
-naviapps_cms:
-    resource: "@NaviappsCmsBundle/Controller/"
-    type: annotation
+fos_user_register:
+    resource: '@NaviappsFOSUserBundle/Resources/config/routing/registration.yml'
+    prefix: /register
 
-naviapps_contact:
-    resource: "@NaviappsContactBundle/Controller/"
-    type: annotation
+fos_user_resetting:
+    resource: '@NaviappsFOSUserBundle/Resources/config/routing/resetting.yml'
+    prefix: /resetting
 
-naviapps_customer:
-    resource: "@NaviappsCustomerBundle/Controller/"
-    type: annotation
-
-naviapps_sales:
-    resource: "@NaviappsSalesBundle/Controller/"
-    type: annotation
-
-naviapps_user:
-    resource: "@NaviappsUserBundle/Controller/"
-    type: annotation
+fos_user_change_password:
+    resource: '@NaviappsFOSUserBundle/Resources/config/routing/change_password.yml'
+    prefix: /settings
 
 app:
     resource: '@AppBundle/Controller/'

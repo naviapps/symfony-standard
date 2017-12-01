@@ -22,12 +22,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Naviapps\Bundle\CheckoutBundle\NaviappsCheckoutBundle(),
-            new Naviapps\Bundle\CmsBundle\NaviappsCmsBundle(),
-            new Naviapps\Bundle\ContactBundle\NaviappsContactBundle(),
-            new Naviapps\Bundle\CustomerBundle\NaviappsCustomerBundle(),
-            new Naviapps\Bundle\SalesBundle\NaviappsSalesBundle(),
-            new Naviapps\Bundle\UserBundle\NaviappsUserBundle(),
             new AppBundle\AppBundle(),
         ];
 

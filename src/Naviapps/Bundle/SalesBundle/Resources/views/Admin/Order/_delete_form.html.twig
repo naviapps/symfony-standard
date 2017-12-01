@@ -1,4 +1,0 @@
-<form action="{{ url('naviapps_sales_admin_order_delete', { id: user.id }) }}" method="post" data-confirmation="true" id="delete-form" style="display: inline-block;">
-    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-    <button type="submit" class="btn btn-link">{{ 'action.delete_user'|trans }}</button>
-</form>

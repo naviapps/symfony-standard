@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: services_legacy.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -80,19 +81,19 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: Naviapps\Bundle\CustomerBundle\Entity\Customer
+    user_class: AppBundle\Entity\Customer
     from_email:
         address: '%mailer_user%'
         sender_name: '%mailer_user%'
     registration:
         form:
-            type: Naviapps\Bundle\CustomerBundle\Form\RegistrationType
+            type: AppBundle\Form\RegistrationType
 
 # NaviappsFOSUser Configuration
 naviapps_fos_user:
     registration:
         form:
-            flow: Naviapps\Bundle\CustomerBundle\Form\RegistrationFlow
+            flow: AppBundle\Form\RegistrationFlow
 
 # IvoryCKEditor Configuration
 ivory_ck_editor:
