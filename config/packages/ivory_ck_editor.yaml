@@ -1,0 +1,12 @@
+ivory_ck_editor:
+    default_config: simple_toolbar
+    configs:
+        my_config:
+            language: '%locale%'
+            jquery: true
+        simple_toolbar:
+            toolbar:
+                - ['Bold', 'Italic', 'Strike', 'Link']
+                - ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent']
+                - ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo']
+                - ['Source']

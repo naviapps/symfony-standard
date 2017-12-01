@@ -1,6 +1,0 @@
-services:
-    AppBundle\Form\RegistrationFlow:
-        parent: craue.form.flow
-
-    AppBundle\Form\ContactFlow:
-        parent: craue.form.flow
