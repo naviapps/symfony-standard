@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Entity\AdminUser;
+use App\Repository\AdminUserRepository;
 use App\Utils\Validator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -13,23 +14,30 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class DeleteAdminUserCommand extends Command
 {
+    /** {@inheritdoc} */
+    protected static $defaultName = 'app:delete-admin-user';
+
     /** @var SymfonyStyle */
     private $io;
     /** @var EntityManagerInterface */
     private $entityManager;
     /** @var Validator */
     private $validator;
+    /** @var AdminUserRepository */
+    private $users;
 
     /**
      * @param EntityManagerInterface $em
      * @param Validator $validator
+     * @param AdminUserRepository $users
      */
-    public function __construct(EntityManagerInterface $em, Validator $validator)
+    public function __construct(EntityManagerInterface $em, Validator $validator, AdminUserRepository $users)
     {
         parent::__construct();
 
         $this->entityManager = $em;
         $this->validator = $validator;
+        $this->users = $users;
     }
 
     /**
@@ -38,7 +46,6 @@ class DeleteAdminUserCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:delete-admin-user')
             ->setDescription('Deletes admin users from the database')
             ->addArgument('username', InputArgument::REQUIRED, 'The username of an existing admin user')
             ->setHelp(<<<'HELP'
@@ -93,8 +100,8 @@ HELP
     {
         $username = $this->validator->validateUsername($input->getArgument('username'));
 
-        $repository = $this->entityManager->getRepository(AdminUser::class);
-        $user = $repository->findOneBy(['username' => $username]);
+        /** @var AdminUser $user */
+        $user = $this->users->findOneByUsername($username);
 
         if (null === $user) {
             throw new \RuntimeException(sprintf('AdminUser with username "%s" not found.', $username));

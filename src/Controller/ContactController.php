@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/contact")
+ * @Route("/contact", name="contact_")
  */
 class ContactController extends Controller
 {
@@ -17,9 +17,9 @@ class ContactController extends Controller
      * @param ContactFlow $flow
      * @return Response
      *
-     * @Route("/", name="contact_index")
+     * @Route("/", name="index")
      */
-    public function indexAction(ContactFlow $flow): Response
+    public function index(ContactFlow $flow): Response
     {
         $data = [];
         $flow->bind($data);

@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Entity\AdminUser;
+use App\Repository\AdminUserRepository;
 use App\Utils\Validator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -15,6 +16,9 @@ use Symfony\Component\Stopwatch\Stopwatch;
 
 class AddAdminUserCommand extends Command
 {
+    /** {@inheritdoc} */
+    protected static $defaultName = 'app:add-admin-user';
+
     /** @var SymfonyStyle */
     private $io;
     /** @var EntityManagerInterface */
@@ -23,19 +27,23 @@ class AddAdminUserCommand extends Command
     private $passwordEncoder;
     /** @var Validator */
     private $validator;
+    /** @var AdminUserRepository */
+    private $users;
 
     /**
      * @param EntityManagerInterface $em
      * @param UserPasswordEncoderInterface $encoder
      * @param Validator $validator
+     * @param AdminUserRepository $users
      */
-    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $encoder, Validator $validator)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $encoder, Validator $validator, AdminUserRepository $users)
     {
         parent::__construct();
 
         $this->entityManager = $em;
         $this->passwordEncoder = $encoder;
         $this->validator = $validator;
+        $this->users = $users;
     }
 
     /**
@@ -44,7 +52,6 @@ class AddAdminUserCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:add-admin-user')
             ->setDescription('Creates admin users and stores them in the database')
             ->setHelp($this->getCommandHelp())
             ->addArgument('username', InputArgument::OPTIONAL, 'The username of the new admin user')
@@ -80,7 +87,6 @@ class AddAdminUserCommand extends Command
             'Now we\'ll ask you for the value of all the missing command arguments.',
         ]);
 
-        // Ask for the username if it's not defined
         $username = $input->getArgument('username');
         if (null !== $username) {
             $this->io->text(' > <info>Username</info>: '.$username);
@@ -89,7 +95,6 @@ class AddAdminUserCommand extends Command
             $input->setArgument('username', $username);
         }
 
-        // Ask for the password if it's not defined
         $password = $input->getArgument('password');
         if (null !== $password) {
             $this->io->text(' > <info>Password</info>: '.str_repeat('*', mb_strlen($password)));
@@ -98,7 +103,6 @@ class AddAdminUserCommand extends Command
             $input->setArgument('password', $password);
         }
 
-        // Ask for the email if it's not defined
         $email = $input->getArgument('email');
         if (null !== $email) {
             $this->io->text(' > <info>Email</info>: '.$email);
@@ -148,9 +152,7 @@ class AddAdminUserCommand extends Command
      */
     private function validateUserData($username, $plainPassword, $email)
     {
-        $userRepository = $this->entityManager->getRepository(AdminUser::class);
-
-        $existingUser = $userRepository->findOneBy(['username' => $username]);
+        $existingUser = $this->users->findOneBy(['username' => $username]);
 
         if (null !== $existingUser) {
             throw new \RuntimeException(sprintf('There is already a admin user registered with the "%s" username.', $username));
@@ -159,7 +161,7 @@ class AddAdminUserCommand extends Command
         $this->validator->validatePassword($plainPassword);
         $this->validator->validateEmail($email);
 
-        $existingEmail = $userRepository->findOneBy(['email' => $email]);
+        $existingEmail = $this->users->findOneBy(['email' => $email]);
 
         if (null !== $existingEmail) {
             throw new \RuntimeException(sprintf('There is already a admin user registered with the "%s" email.', $email));

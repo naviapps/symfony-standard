@@ -47,7 +47,7 @@ class ExceptionListener
                 $path = [
                     'page'        => $page,
                     '_forwarded'  => $request->attributes,
-                    '_controller' => 'App:CmsPage:show',
+                    '_controller' => 'App\Controller\CmsPageController:show',
                 ];
                 $subRequest = $request->duplicate(null, null, $path);
                 $response = $this->kernel->handle($subRequest, HttpKernelInterface::SUB_REQUEST);

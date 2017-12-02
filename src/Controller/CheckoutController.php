@@ -7,16 +7,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/checkout")
+ * @Route("/checkout", name="checkout_")
  */
 class CheckoutController extends Controller
 {
     /**
      * @return Response
      *
-     * @Route("/", name="checkout_index")
+     * @Route("/", name="index")
      */
-    public function indexAction(): Response
+    public function index(): Response
     {
         return $this->render('checkout/index.html.twig');
     }

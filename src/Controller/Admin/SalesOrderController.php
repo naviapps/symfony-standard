@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/admin/sales_order")
+ * @Route("/admin/sales_order", name="admin_sales_order_")
  */
 class SalesOrderController extends Controller
 {
@@ -20,10 +20,10 @@ class SalesOrderController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/", name="admin_sales_order_index")
+     * @Route("/", name="index")
      * @Method("GET")
      */
-    public function indexAction(Request $request): Response
+    public function index(Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('SELECT o FROM App:SalesOrder o');
@@ -42,10 +42,10 @@ class SalesOrderController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/new", name="admin_sales_order_new")
+     * @Route("/new", name="new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request): Response
+    public function new(Request $request): Response
     {
         $order = new SalesOrder();
 
@@ -73,11 +73,11 @@ class SalesOrderController extends Controller
      * @param SalesOrder $order
      * @return Response
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="admin_sales_order_edit")
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
      * @Method({"GET", "POST"})
      * @Security("is_granted('edit', order)")
      */
-    public function editAction(Request $request, SalesOrder $order): Response
+    public function edit(Request $request, SalesOrder $order): Response
     {
         $form = $this->createForm(SalesOrderType::class, $order);
         $form->handleRequest($request);
@@ -101,11 +101,11 @@ class SalesOrderController extends Controller
      * @param SalesOrder $order
      * @return Response
      *
-     * @Route("/{id}/delete", name="admin_sales_order_delete")
+     * @Route("/{id}/delete", name="delete")
      * @Method("POST")
      * @Security("is_granted('delete', order)")
      */
-    public function deleteAction(Request $request, SalesOrder $order): Response
+    public function delete(Request $request, SalesOrder $order): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_sales_order_index');

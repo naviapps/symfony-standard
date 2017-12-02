@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/admin/customer")
+ * @Route("/admin/customer", name="admin_customer_")
  */
 class CustomerController extends Controller
 {
@@ -22,10 +22,10 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/", name="admin_customer_index")
+     * @Route("/", name="index")
      * @Method("GET")
      */
-    public function indexAction(Request $request): Response
+    public function index(Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('SELECT c FROM App:Customer c');
@@ -44,10 +44,10 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/new", name="admin_customer_new")
+     * @Route("/new", name="new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request): Response
+    public function new(Request $request): Response
     {
         /** @var $userManager UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
@@ -83,11 +83,11 @@ class CustomerController extends Controller
      * @param Customer $customer
      * @return Response
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="admin_customer_edit")
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
      * @Method({"GET", "POST"})
      * @Security("is_granted('edit', customer)")
      */
-    public function editAction(Request $request, Customer $customer): Response
+    public function edit(Request $request, Customer $customer): Response
     {
         $form = $this->createForm(CustomerType::class, $customer);
         $form->handleRequest($request);
@@ -113,11 +113,11 @@ class CustomerController extends Controller
      * @param Customer $customer
      * @return Response
      *
-     * @Route("/{id}/delete", name="admin_customer_delete")
+     * @Route("/{id}/delete", name="delete")
      * @Method("POST")
      * @Security("is_granted('delete', customer)")
      */
-    public function deleteAction(Request $request, Customer $customer): Response
+    public function delete(Request $request, Customer $customer): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_customer_index');

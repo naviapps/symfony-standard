@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/admin/admin_user")
+ * @Route("/admin/admin_user", name="admin_admin_user_")
  */
 class AdminUserController extends Controller
 {
@@ -21,10 +21,10 @@ class AdminUserController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/", name="admin_admin_user_index")
+     * @Route("/", name="index")
      * @Method("GET")
      */
-    public function indexAction(Request $request): Response
+    public function index(Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('SELECT u FROM App:AdminUser u');
@@ -44,10 +44,10 @@ class AdminUserController extends Controller
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      *
-     * @Route("/new", name="admin_admin_user_new")
+     * @Route("/new", name="new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new AdminUser();
 
@@ -79,11 +79,11 @@ class AdminUserController extends Controller
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="admin_admin_user_edit")
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
      * @Method({"GET", "POST"})
      * @Security("is_granted('edit', user)")
      */
-    public function editAction(Request $request, AdminUser $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, AdminUser $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $form = $this->createForm(AdminUserType::class, $user);
         $form->handleRequest($request);
@@ -111,11 +111,11 @@ class AdminUserController extends Controller
      * @param AdminUser $user
      * @return Response
      *
-     * @Route("/{id}/delete", name="admin_admin_user_delete")
+     * @Route("/{id}/delete", name="delete")
      * @Method("POST")
      * @Security("is_granted('delete', user)")
      */
-    public function deleteAction(Request $request, AdminUser $user): Response
+    public function delete(Request $request, AdminUser $user): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_admin_user_index');

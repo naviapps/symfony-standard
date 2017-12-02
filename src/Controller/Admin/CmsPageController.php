@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/admin/cms_page")
+ * @Route("/admin/cms_page", name="admin_cms_page_")
  */
 class CmsPageController extends Controller
 {
@@ -21,10 +21,10 @@ class CmsPageController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/", name="admin_cms_page_index")
+     * @Route("/", name="index")
      * @Method("GET")
      */
-    public function indexAction(Request $request): Response
+    public function index(Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('SELECT p FROM App:CmsPage p');
@@ -43,10 +43,10 @@ class CmsPageController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/new", name="admin_cms_page_new")
+     * @Route("/new", name="new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request): Response
+    public function new(Request $request): Response
     {
         $page = new CmsPage();
 
@@ -80,11 +80,11 @@ class CmsPageController extends Controller
      * @param CmsPage $page
      * @return Response
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="admin_cms_page_edit")
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
      * @Method({"GET", "POST"})
      * @Security("is_granted('edit', page)")
      */
-    public function editAction(Request $request, CmsPage $page): Response
+    public function edit(Request $request, CmsPage $page): Response
     {
         $form = $this->createForm(CmsPageType::class, $page)
             ->add('saveAndContinueEdit', SubmitType::class);
@@ -114,11 +114,11 @@ class CmsPageController extends Controller
      * @param CmsPage $page
      * @return Response
      *
-     * @Route("/{id}/delete", name="admin_cms_page_delete")
+     * @Route("/{id}/delete", name="delete")
      * @Method("POST")
      * @Security("is_granted('delete', page)")
      */
-    public function deleteAction(Request $request, CmsPage $page): Response
+    public function delete(Request $request, CmsPage $page): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_cms_page_index');

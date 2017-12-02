@@ -1,0 +1,6 @@
+services:
+    App\Form\RegistrationFlow:
+        parent: craue.form.flow
+
+    App\Form\ContactFlow:
+        parent: craue.form.flow

@@ -3,7 +3,7 @@
 namespace App\Command;
 
 use App\Entity\AdminUser;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\AdminUserRepository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -13,25 +13,28 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class ListAdminUsersCommand extends Command
 {
-    /** @var EntityManagerInterface */
-    private $entityManager;
+    /** {@inheritdoc} */
+    protected static $defaultName = 'app:list-admin--users';
+
     /** @var \Swift_Mailer */
     private $mailer;
     /** @var string */
     private $emailSender;
+    /** @var AdminUserRepository */
+    private $users;
 
     /**
-     * @param EntityManagerInterface $em
      * @param \Swift_Mailer $mailer
      * @param string $emailSender
+     * @param AdminUserRepository $users
      */
-    public function __construct(EntityManagerInterface $em, \Swift_Mailer $mailer, $emailSender)
+    public function __construct(\Swift_Mailer $mailer, $emailSender, AdminUserRepository $users)
     {
         parent::__construct();
 
-        $this->entityManager = $em;
         $this->mailer = $mailer;
         $this->emailSender = $emailSender;
+        $this->users = $users;
     }
 
     /**
@@ -40,7 +43,6 @@ class ListAdminUsersCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('app:list-admin-users')
             ->setDescription('Lists all the existing admin users')
             ->setHelp(<<<'HELP'
 The <info>%command.name%</info> command lists all the admin users registered in the application:
@@ -70,7 +72,7 @@ HELP
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $maxResults = $input->getOption('max-results');
-        $users = $this->entityManager->getRepository(AdminUser::class)->findBy([], ['id' => 'DESC'], $maxResults);
+        $allUsers = $this->users->findBy([], ['id' => 'DESC'], $maxResults);
 
         $usersAsPlainArrays = array_map(function (AdminUser $user) {
             return [
@@ -79,7 +81,7 @@ HELP
                 $user->getEmail(),
                 implode(', ', $user->getRoles()),
             ];
-        }, $users);
+        }, $allUsers);
 
         $bufferedOutput = new BufferedOutput();
         $io = new SymfonyStyle($input, $bufferedOutput);

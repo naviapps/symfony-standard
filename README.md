@@ -1,4 +1,4 @@
-symfony-standard
-================
+Symfony Standard Application
+============================
 
-A Symfony project created on October 30, 2017, 2:23 am.
+The "Symfony Standard Application" is a reference application created to show how to develop Symfony applications following the recommended best practices.

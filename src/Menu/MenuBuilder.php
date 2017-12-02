@@ -22,7 +22,7 @@ class MenuBuilder
      * @param array $options
      * @return ItemInterface
      */
-    public function createSideMenu(array $options)
+    public function createAdminSideMenu(array $options)
     {
         $menu = $this->factory->createItem('root');
 

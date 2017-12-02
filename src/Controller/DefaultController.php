@@ -10,7 +10,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction()
+    public function index()
     {
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [

@@ -8,16 +8,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/checkout/cart")
+ * @Route("/checkout/cart", name="checkout_cart_")
  */
 class CheckoutCartController extends Controller
 {
     /**
      * @return Response
      *
-     * @Route("/", name="checkout_cart_index")
+     * @Route("/", name="index")
      */
-    public function indexAction(): Response
+    public function index(): Response
     {
         return $this->render('checkout_cart/index.html.twig');
     }
@@ -25,10 +25,10 @@ class CheckoutCartController extends Controller
     /**
      * @return Response
      *
-     * @Route("/{id}/delete", name="checkout_cart_delete")
+     * @Route("/{id}/delete", name="delete")
      * @Method("POST")
      */
-    public function deleteAction(): Response
+    public function delete(): Response
     {
         return $this->redirectToRoute('checkout_cart_index');
     }
