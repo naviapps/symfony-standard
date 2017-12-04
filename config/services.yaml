@@ -16,7 +16,6 @@ services:
         public: false
         # defines the scalar arguments once and apply them to any service defined/created in this file
         bind:
-            $defaultLocale: '%locale%'
             $emailSender: '%app.notifications.email_sender%'
 
     # makes classes in src/ available to be used as services

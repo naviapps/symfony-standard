@@ -28,6 +28,11 @@ class MenuBuilder
 
         $menu->addChild('title.dashboard', ['route' => 'admin_index'])->setExtra('icon', 'fa fa-fw fa-th-large');
         $menu->addChild('title.orders', ['route' => 'admin_sales_order_index'])->setExtra('icon', 'fa fa-fw fa-usd');
+
+        $catalog = $menu->addChild('title.catalog')->setExtra('icon', 'fa fa-fw fa-cube');
+        $catalog->addChild('title.products', ['route' => 'admin_catalog_product_index']);
+        $catalog->addChild('title.categories', ['route' => 'admin_catalog_category_index']);
+
         $menu->addChild('title.customers', ['route' => 'admin_customer_index'])->setExtra('icon', 'fa fa-fw fa-user');
 
         $content = $menu->addChild('title.content')->setExtra('icon', 'fa fa-fw fa-columns');

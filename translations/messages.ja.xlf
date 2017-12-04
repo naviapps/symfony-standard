@@ -52,6 +52,10 @@
                 <source>block.no_blocks_found</source>
                 <target>ブロックが見つかりません</target>
             </trans-unit>
+            <trans-unit id="catalog_product.no_products_found">
+                <source>catalog_product.no_products_found</source>
+                <target>商品が見つかりません</target>
+            </trans-unit>
 
 
 
@@ -115,6 +119,22 @@
             <trans-unit id="title.new_block">
                 <source>title.new_block</source>
                 <target>新規ブロック</target>
+            </trans-unit>
+            <trans-unit id="title.products">
+                <source>title.products</source>
+                <target>商品</target>
+            </trans-unit>
+            <trans-unit id="title.new_product">
+                <source>title.new_product</source>
+                <target>新規商品</target>
+            </trans-unit>
+            <trans-unit id="title.catalog">
+                <source>title.catalog</source>
+                <target>カタログ</target>
+            </trans-unit>
+            <trans-unit id="title.categories">
+                <source>title.categories</source>
+                <target>カテゴリ</target>
             </trans-unit>
 
             <trans-unit id="action.back">
@@ -193,6 +213,14 @@
                 <source>action.save_block</source>
                 <target>ブロックを保存</target>
             </trans-unit>
+            <trans-unit id="action.add_product">
+                <source>action.add_product</source>
+                <target>商品を追加</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>保存</target>
+            </trans-unit>
 
             <trans-unit id="label.id">
                 <source>label.id</source>
@@ -245,6 +273,10 @@
             <trans-unit id="label.meta_description">
                 <source>label.meta_description</source>
                 <target>Meta 説明</target>
+            </trans-unit>
+            <trans-unit id="label.product_name">
+                <source>label.product_name</source>
+                <target>商品名</target>
             </trans-unit>
         </body>
     </file>
