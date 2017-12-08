@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\CatalogProduct;
 use App\Form\Admin\CatalogProductType;
+use App\Repository\CatalogProductRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -18,17 +20,17 @@ class CatalogProductController extends Controller
 {
     /**
      * @param Request $request
+     * @param CatalogProductRepository $productRepository
+     * @param PaginatorInterface $paginator
      * @return Response
      *
      * @Route("/", name="index")
      * @Method("GET")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, CatalogProductRepository $productRepository, PaginatorInterface $paginator): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT p FROM App:CatalogProduct p');
+        $query = $productRepository->createQueryBuilder('p')->getQuery();
 
-        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),

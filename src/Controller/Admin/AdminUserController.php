@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\AdminUser;
 use App\Form\Admin\AdminUserType;
+use App\Repository\AdminUserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -19,17 +21,17 @@ class AdminUserController extends Controller
 {
     /**
      * @param Request $request
+     * @param AdminUserRepository $userRepository
+     * @param PaginatorInterface $paginator
      * @return Response
      *
      * @Route("/", name="index")
      * @Method("GET")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, AdminUserRepository $userRepository, PaginatorInterface $paginator): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT u FROM App:AdminUser u');
+        $query = $userRepository->createQueryBuilder('u')->getQuery();
 
-        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
@@ -62,7 +64,7 @@ class AdminUserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('success', 'user.created_successfully');
+            $this->addFlash('success', 'admin_user.created_successfully');
 
             return $this->redirectToRoute('admin_admin_user_index');
         }
@@ -95,7 +97,7 @@ class AdminUserController extends Controller
             }
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'user.updated_successfully');
+            $this->addFlash('success', 'admin_user.updated_successfully');
 
             return $this->redirectToRoute('admin_admin_user_index');
         }
@@ -125,7 +127,7 @@ class AdminUserController extends Controller
         $em->remove($user);
         $em->flush();
 
-        $this->addFlash('success', 'user.deleted_successfully');
+        $this->addFlash('success', 'admin_user.deleted_successfully');
 
         return $this->redirectToRoute('admin_admin_user_index');
     }

@@ -3,7 +3,7 @@
 {% form_theme form 'admin/form/layout.html.twig' %}
 
 {% block title %}{{ 'title.new_customer'|trans }} / {{ 'title.customers'|trans }} / {{ parent() }}{% endblock %}
-{% block body_id 'admin_customer_new' %}
+{% block body_id 'admin_user_new' %}
 
 {% block body %}
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -11,7 +11,7 @@
             <h2>{{ 'title.new_customer'|trans }}</h2>
             <ol class="breadcrumb">
                 <li><a href="{{ path('admin_index') }}">{{ 'title.home'|trans }}</a></li>
-                <li><a href="{{ path('admin_customer_index') }}">{{ 'title.customers'|trans }}</a></li>
+                <li><a href="{{ path('admin_user_index') }}">{{ 'title.customers'|trans }}</a></li>
                 <li class="active"><strong>{{ 'title.new_customer'|trans }}</strong></li>
             </ol>
         </div>
@@ -22,8 +22,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div>
-                    <a href="{{ path('admin_customer_index') }}" class="btn btn-link"><i class="fa fa-arrow-left"></i> {{ 'action.back'|trans }}</a>
-                    <a href="{{ path('admin_customer_new') }}" class="btn btn-link">{{ 'action.reset'|trans }}</a>
+                    <a href="{{ path('admin_user_index') }}" class="btn btn-link"><i class="fa fa-arrow-left"></i> {{ 'action.back'|trans }}</a>
+                    <a href="{{ path('admin_user_new') }}" class="btn btn-link">{{ 'action.reset'|trans }}</a>
                     {{ form_widget(form.saveAndContinueEdit, { label: 'action.save_and_continue_edit', attr: { form: form.vars.id, class: 'btn btn-primary' } }) }}
                     <button type="submit" form="{{ form.vars.id }}" class="btn btn-primary">{{ 'action.save_customer'|trans }}</button>
                 </div>

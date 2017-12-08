@@ -24,12 +24,12 @@ class SalesOrder
     private $id;
 
     /**
-     * @var Customer
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Customer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $customer;
+    private $user;
 
     /**
      * Get id
@@ -42,26 +42,26 @@ class SalesOrder
     }
 
     /**
-     * Set customer
+     * Set user
      *
-     * @param Customer $customer
+     * @param User $user
      *
      * @return SalesOrder
      */
-    public function setCustomer(Customer $customer)
+    public function setUser(User $user)
     {
-        $this->customer = $customer;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get customer
+     * Get user
      *
-     * @return Customer
+     * @return User
      */
-    public function getCustomer()
+    public function getUser()
     {
-        return $this->customer;
+        return $this->user;
     }
 }

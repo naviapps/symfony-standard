@@ -2,11 +2,11 @@
 
 namespace App\Security;
 
-use App\Entity\Customer;
+use App\Entity\CatalogCategory;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-class CustomerVoter extends Voter
+class CatalogCategoryVoter extends Voter
 {
     const EDIT = 'edit';
     const DELETE = 'delete';
@@ -16,7 +16,7 @@ class CustomerVoter extends Voter
      */
     protected function supports($attribute, $subject): bool
     {
-        return $subject instanceof Customer && in_array($attribute, [self::EDIT, self::DELETE], true);
+        return $subject instanceof CatalogCategory && in_array($attribute, [self::EDIT, self::DELETE], true);
     }
 
     /**

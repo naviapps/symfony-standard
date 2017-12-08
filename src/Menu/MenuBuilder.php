@@ -33,7 +33,7 @@ class MenuBuilder
         $catalog->addChild('title.products', ['route' => 'admin_catalog_product_index']);
         $catalog->addChild('title.categories', ['route' => 'admin_catalog_category_index']);
 
-        $menu->addChild('title.customers', ['route' => 'admin_customer_index'])->setExtra('icon', 'fa fa-fw fa-user');
+        $menu->addChild('title.customers', ['route' => 'admin_user_index'])->setExtra('icon', 'fa fa-fw fa-user');
 
         $content = $menu->addChild('title.content')->setExtra('icon', 'fa fa-fw fa-columns');
         $content->addChild('title.pages', ['route' => 'admin_cms_page_index']);

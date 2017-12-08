@@ -2,37 +2,37 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="customer.created_successfully">
-                <source>customer.created_successfully</source>
-                <target>会員の作成が完了しました</target>
-            </trans-unit>
-            <trans-unit id="customer.updated_successfully">
-                <source>customer.updated_successfully</source>
-                <target>会員の編集が完了しました</target>
-            </trans-unit>
-            <trans-unit id="customer.deleted_successfully">
-                <source>customer.deleted_successfully</source>
-                <target>会員の削除が完了しました</target>
-            </trans-unit>
-            <trans-unit id="customer.no_customers_found">
-                <source>customer.no_customers_found</source>
-                <target>会員が見つかりません</target>
-            </trans-unit>
-
             <trans-unit id="user.created_successfully">
                 <source>user.created_successfully</source>
-                <target>ユーザーの作成が完了しました</target>
+                <target>会員の作成が完了しました</target>
             </trans-unit>
             <trans-unit id="user.updated_successfully">
                 <source>user.updated_successfully</source>
-                <target>ユーザーの編集が完了しました</target>
+                <target>会員の編集が完了しました</target>
             </trans-unit>
             <trans-unit id="user.deleted_successfully">
                 <source>user.deleted_successfully</source>
-                <target>ユーザーの削除が完了しました</target>
+                <target>会員の削除が完了しました</target>
             </trans-unit>
             <trans-unit id="user.no_users_found">
                 <source>user.no_users_found</source>
+                <target>会員が見つかりません</target>
+            </trans-unit>
+
+            <trans-unit id="admin_user.created_successfully">
+                <source>admin_user.created_successfully</source>
+                <target>ユーザーの作成が完了しました</target>
+            </trans-unit>
+            <trans-unit id="admin_user.updated_successfully">
+                <source>admin_user.updated_successfully</source>
+                <target>ユーザーの編集が完了しました</target>
+            </trans-unit>
+            <trans-unit id="admin_user.deleted_successfully">
+                <source>admin_user.deleted_successfully</source>
+                <target>ユーザーの削除が完了しました</target>
+            </trans-unit>
+            <trans-unit id="admin_user.no_users_found">
+                <source>admin_user.no_users_found</source>
                 <target>ユーザーが見つかりません</target>
             </trans-unit>
 

@@ -2,9 +2,11 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Customer;
-use App\Form\Admin\CustomerType;
+use App\Entity\User;
+use App\Form\Admin\UserType;
+use App\Repository\UserRepository;
 use FOS\UserBundle\Model\UserManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -14,30 +16,30 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/admin/customer", name="admin_customer_")
+ * @Route("/admin/user", name="admin_user_")
  */
-class CustomerController extends Controller
+class UserController extends Controller
 {
     /**
      * @param Request $request
+     * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
      * @return Response
      *
      * @Route("/", name="index")
      * @Method("GET")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, UserRepository $userRepository, PaginatorInterface $paginator): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT c FROM App:Customer c');
+        $query = $userRepository->createQueryBuilder('c')->getQuery();
 
-        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            Customer::NUM_ITEMS
+            User::NUM_ITEMS
         );
 
-        return $this->render('admin/customer/index.html.twig', ['pagination' => $pagination]);
+        return $this->render('admin/user/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -52,83 +54,83 @@ class CustomerController extends Controller
         /** @var $userManager UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
 
-        $customer = $userManager->createUser();
-        $customer->setEnabled(true);
+        $user = $userManager->createUser();
+        $user->setEnabled(true);
 
-        $form = $this->createForm(CustomerType::class, $customer)
+        $form = $this->createForm(UserType::class, $user)
             ->add('saveAndContinueEdit', SubmitType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $userManager->updateUser($customer);
+            $userManager->updateUser($user);
 
-            $this->addFlash('success', 'customer.created_successfully');
+            $this->addFlash('success', 'user.created_successfully');
 
             if ($form->get('saveAndContinueEdit')->isClicked()) {
-                return $this->redirectToRoute('admin_customer_edit', ['id' => $customer->getId()]);
+                return $this->redirectToRoute('admin_user_edit', ['id' => $user->getId()]);
             }
 
-            return $this->redirectToRoute('admin_customer_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
-        return $this->render('admin/customer/new.html.twig', [
-            'customer' => $customer,
-            'form'     => $form->createView(),
+        return $this->render('admin/user/new.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @param Request $request
-     * @param Customer $customer
+     * @param User $user
      * @return Response
      *
      * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
      * @Method({"GET", "POST"})
-     * @Security("is_granted('edit', customer)")
+     * @Security("is_granted('edit', user)")
      */
-    public function edit(Request $request, Customer $customer): Response
+    public function edit(Request $request, User $user): Response
     {
-        $form = $this->createForm(CustomerType::class, $customer);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var $userManager UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
-            $userManager->updateUser($customer);
+            $userManager->updateUser($user);
 
-            $this->addFlash('success', 'customer.updated_successfully');
+            $this->addFlash('success', 'user.updated_successfully');
 
-            return $this->redirectToRoute('admin_customer_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
-        return $this->render('admin/customer/edit.html.twig', [
-            'customer' => $customer,
-            'form'     => $form->createView(),
+        return $this->render('admin/user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @param Request $request
-     * @param Customer $customer
+     * @param User $user
      * @return Response
      *
      * @Route("/{id}/delete", name="delete")
      * @Method("POST")
-     * @Security("is_granted('delete', customer)")
+     * @Security("is_granted('delete', user)")
      */
-    public function delete(Request $request, Customer $customer): Response
+    public function delete(Request $request, User $user): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('admin_customer_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
         /** @var $userManager UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
-        $userManager->deleteUser($customer);
+        $userManager->deleteUser($user);
 
-        $this->addFlash('success', 'customer.deleted_successfully');
+        $this->addFlash('success', 'user.deleted_successfully');
 
-        return $this->redirectToRoute('admin_customer_index');
+        return $this->redirectToRoute('admin_user_index');
     }
 }

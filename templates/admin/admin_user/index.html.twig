@@ -42,11 +42,11 @@
                                 </tr>
                             {% else %}
                                 <tr>
-                                    <td colspan="4">{{ 'user.no_users_found'|trans }}</td>
+                                    <td colspan="4">{{ 'admin_user.no_users_found'|trans }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
-                            <tfoot>{{ knp_pagination_render(pagination) }}</tfoot>
+                            <tfoot>{{ knp_pagination_render(pagination, '@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig') }}</tfoot>
                         </table>
                     </div>
                 </div>

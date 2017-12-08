@@ -2,17 +2,17 @@
 
 {% form_theme form 'admin/form/layout.html.twig' %}
 
-{% block title %}#{{ customer.id }} / {{ 'title.customers'|trans }} / {{ parent() }}{% endblock %}
-{% block body_id 'admin_customer_edit' %}
+{% block title %}#{{ user.id }} / {{ 'title.customers'|trans }} / {{ parent() }}{% endblock %}
+{% block body_id 'admin_user_edit' %}
 
 {% block body %}
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
-            <h2>#{{ customer.id }}</h2>
+            <h2>#{{ user.id }}</h2>
             <ol class="breadcrumb">
                 <li><a href="{{ path('admin_index') }}">{{ 'title.home'|trans }}</a></li>
-                <li><a href="{{ path('admin_customer_index') }}">{{ 'title.customers'|trans }}</a></li>
-                <li class="active"><strong>#{{ customer.id }}</strong></li>
+                <li><a href="{{ path('admin_user_index') }}">{{ 'title.customers'|trans }}</a></li>
+                <li class="active"><strong>#{{ user.id }}</strong></li>
             </ol>
         </div>
         <div class="col-lg-2"></div>
@@ -22,9 +22,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div>
-                    <a href="{{ path('admin_customer_index') }}" class="btn btn-link"><i class="fa fa-arrow-left"></i> {{ 'action.back'|trans }}</a>
-                    {{ include('admin/customer/_delete_form.html.twig', { customer: customer }, with_context = false) }}
-                    <a href="{{ path('admin_customer_edit', { id: customer.id }) }}" class="btn btn-link">{{ 'action.reset'|trans }}</a>
+                    <a href="{{ path('admin_user_index') }}" class="btn btn-link"><i class="fa fa-arrow-left"></i> {{ 'action.back'|trans }}</a>
+                    {{ include('admin/user/_delete_form.html.twig', { user: user }, with_context = false) }}
+                    <a href="{{ path('admin_user_edit', { id: user.id }) }}" class="btn btn-link">{{ 'action.reset'|trans }}</a>
                     <button type="submit" form="{{ form.vars.id }}" class="btn btn-primary">{{ 'action.save_customer'|trans }}</button>
                 </div>
 

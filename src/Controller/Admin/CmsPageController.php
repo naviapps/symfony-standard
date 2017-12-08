@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\CmsPage;
 use App\Form\Admin\CmsPageType;
+use App\Repository\CmsPageRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -19,17 +21,17 @@ class CmsPageController extends Controller
 {
     /**
      * @param Request $request
+     * @param CmsPageRepository $pageRepository
+     * @param PaginatorInterface $paginator
      * @return Response
      *
      * @Route("/", name="index")
      * @Method("GET")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, CmsPageRepository $pageRepository, PaginatorInterface $paginator): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT p FROM App:CmsPage p');
+        $query = $pageRepository->createQueryBuilder('p')->getQuery();
 
-        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),

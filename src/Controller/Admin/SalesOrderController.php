@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\SalesOrder;
 use App\Form\Admin\SalesOrderType;
+use App\Repository\SalesOrderRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -18,17 +20,17 @@ class SalesOrderController extends Controller
 {
     /**
      * @param Request $request
+     * @param SalesOrderRepository $orderRepository
+     * @param PaginatorInterface $paginator
      * @return Response
      *
      * @Route("/", name="index")
      * @Method("GET")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, SalesOrderRepository $orderRepository, PaginatorInterface $paginator): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT o FROM App:SalesOrder o');
+        $query = $orderRepository->createQueryBuilder('o')->getQuery();
 
-        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),

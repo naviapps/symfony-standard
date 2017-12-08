@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class Customer extends BaseUser
+class User extends BaseUser
 {
     use TimestampableEntity;
 
