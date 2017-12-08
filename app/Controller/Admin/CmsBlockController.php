@@ -62,7 +62,7 @@ class CmsBlockController extends Controller
             $em->persist($block);
             $em->flush();
 
-            $this->addFlash('success', 'block.created_successfully');
+            $this->addFlash('success', 'cms_block.created_successfully');
 
             if ($form->get('saveAndContinueEdit')->isClicked()) {
                 return $this->redirectToRoute('admin_cms_block_edit', ['id' => $block->getId()]);
@@ -96,7 +96,7 @@ class CmsBlockController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'block.updated_successfully');
+            $this->addFlash('success', 'cms_block.updated_successfully');
 
             if ($form->get('saveAndContinueEdit')->isClicked()) {
                 return $this->redirectToRoute('admin_cms_block_edit', ['id' => $block->getId()]);
@@ -130,7 +130,7 @@ class CmsBlockController extends Controller
         $em->remove($block);
         $em->flush();
 
-        $this->addFlash('success', 'block.deleted_successfully');
+        $this->addFlash('success', 'cms_block.deleted_successfully');
 
         return $this->redirectToRoute('admin_cms_block_index');
     }

@@ -22,4 +22,6 @@ return [
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
     Craue\FormFlowBundle\CraueFormFlowBundle::class => ['all' => true],
     DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class => ['dev' => true, 'test' => true],
+    Naviapps\AdminBundle\NaviappsAdminBundle::class => ['all' => true],
+    Naviapps\CmsBundle\NaviappsCmsBundle::class => ['all' => true],
 ];

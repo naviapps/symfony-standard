@@ -59,7 +59,7 @@ class SalesOrderController extends Controller
             $em->persist($order);
             $em->flush();
 
-            $this->addFlash('success', 'order.created_successfully');
+            $this->addFlash('success', 'sales_order.created_successfully');
 
             return $this->redirectToRoute('admin_sales_order_index');
         }
@@ -87,7 +87,7 @@ class SalesOrderController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'order.updated_successfully');
+            $this->addFlash('success', 'sales_order.updated_successfully');
 
             return $this->redirectToRoute('admin_sales_order_index');
         }
@@ -117,7 +117,7 @@ class SalesOrderController extends Controller
         $em->remove($order);
         $em->flush();
 
-        $this->addFlash('success', 'order.deleted_successfully');
+        $this->addFlash('success', 'sales_order.deleted_successfully');
 
         return $this->redirectToRoute('admin_sales_order_index');
     }

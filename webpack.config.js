@@ -8,7 +8,8 @@ Encore
     .cleanupOutputBeforeBuild()
     .autoProvidejQuery()
     .autoProvideVariables({
-        'window.jQuery': 'jquery',
+        Popper: 'popper.js',
+        'window.Popper': 'popper.js',
     })
     .enableSassLoader()
     .enableVersioning(false)

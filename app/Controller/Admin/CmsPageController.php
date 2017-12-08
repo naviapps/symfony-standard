@@ -62,7 +62,7 @@ class CmsPageController extends Controller
             $em->persist($page);
             $em->flush();
 
-            $this->addFlash('success', 'page.created_successfully');
+            $this->addFlash('success', 'cms_page.created_successfully');
 
             if ($form->get('saveAndContinueEdit')->isClicked()) {
                 return $this->redirectToRoute('admin_cms_page_edit', ['id' => $page->getId()]);
@@ -96,7 +96,7 @@ class CmsPageController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'page.updated_successfully');
+            $this->addFlash('success', 'cms_page.updated_successfully');
 
             if ($form->get('saveAndContinueEdit')->isClicked()) {
                 return $this->redirectToRoute('admin_cms_page_edit', ['id' => $page->getId()]);
@@ -130,7 +130,7 @@ class CmsPageController extends Controller
         $em->remove($page);
         $em->flush();
 
-        $this->addFlash('success', 'page.deleted_successfully');
+        $this->addFlash('success', 'cms_page.deleted_successfully');
 
         return $this->redirectToRoute('admin_cms_page_index');
     }
