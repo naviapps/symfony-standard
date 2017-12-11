@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>管理画面</title>
-    <link href="{{ asset('bundles/naviappsadmin/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('bundles/naviappsadmin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('bundles/naviappsadmin/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('bundles/naviappsadmin/css/animate.css') }}" rel="stylesheet" />
-    <link href="{{ asset('bundles/naviappsadmin/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/admin/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/admin/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/admin/css/animate.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/admin/css/style.css') }}" rel="stylesheet" />
 </head>
 <body id="admin_security_login" class="gray-bg">
 <div class="middle-box text-center loginscreen animated fadeInDown">
@@ -29,10 +29,10 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{ asset('bundles/naviappsadmin/js/jquery-3.1.1.min.js') }}"><\/script>')</script>
-<script src="{{ asset('bundles/naviappsadmin/js/bootstrap.min.js') }}"></script>
+<script>window.jQuery || document.write('<script src="{{ asset('bundles/admin/js/jquery-3.1.1.min.js') }}"><\/script>')</script>
+<script src="{{ asset('bundles/admin/js/bootstrap.min.js') }}"></script>
 {% if error %}
-    <script src="{{ asset('bundles/naviappsadmin/js/plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/plugins/toastr/toastr.min.js') }}"></script>
     <script>
         $(function () {
             toastr.options = {

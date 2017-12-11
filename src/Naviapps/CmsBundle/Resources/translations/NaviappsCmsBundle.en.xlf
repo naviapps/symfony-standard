@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="page.no_pages_found">
+                <source>page.no_pages_found</source>
+                <target>No pages found.</target>
+            </trans-unit>
+            <trans-unit id="page.created_successfully">
+                <source>page.created_successfully</source>
+                <target>Page created successfully!</target>
+            </trans-unit>
+            <trans-unit id="page.updated_successfully">
+                <source>page.updated_successfully</source>
+                <target>Page updated successfully!</target>
+            </trans-unit>
+            <trans-unit id="page.deleted_successfully">
+                <source>page.deleted_successfully</source>
+                <target>Page deleted successfully!</target>
+            </trans-unit>
+
+            <trans-unit id="block.no_blocks_found">
+                <source>block.no_blocks_found</source>
+                <target>No blocks found.</target>
+            </trans-unit>
+            <trans-unit id="block.created_successfully">
+                <source>block.created_successfully</source>
+                <target>Block created successfully!</target>
+            </trans-unit>
+            <trans-unit id="block.updated_successfully">
+                <source>block.updated_successfully</source>
+                <target>Block updated successfully!</target>
+            </trans-unit>
+            <trans-unit id="block.deleted_successfully">
+                <source>block.deleted_successfully</source>
+                <target>Block deleted successfully!</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -17,6 +17,9 @@ fos_user_change_password:
     resource: '@NaviappsFOSUserBundle/Resources/config/routing/change_password.yml'
     prefix: /settings
 
+naviapps_cms:
+    resource: '@NaviappsCmsBundle/Controller/'
+
 homepage:
     path: /
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction

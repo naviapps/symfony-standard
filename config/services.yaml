@@ -26,9 +26,9 @@ services:
         # but if a service is unused, it's removed anyway
         exclude: '../app/{Entity,Migrations,Tests}'
 
-    App\EventListener\ExceptionListener:
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception }
+    #App\EventListener\ExceptionListener:
+        #tags:
+            #- { name: kernel.event_listener, event: kernel.exception }
 
     App\Menu\MenuBuilder:
         arguments: ['@knp_menu.factory']

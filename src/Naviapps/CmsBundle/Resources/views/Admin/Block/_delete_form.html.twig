@@ -1,0 +1,4 @@
+<form action="{{ url('naviapps_cms_admin_block_delete', { id: block.id }) }}" method="post" data-confirmation="true" id="delete-form" style="display: inline-block;">
+    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+    <button type="submit" class="btn btn-link">{{ 'action.delete_block'|trans }}</button>
+</form>
