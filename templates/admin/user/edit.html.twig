@@ -1,6 +1,6 @@
-{% extends '@Admin/layout.html.twig' %}
+{% extends '@NaviappsAdmin/Admin/layout.html.twig' %}
 
-{% form_theme form 'admin/form/layout.html.twig' %}
+{% form_theme form '@NaviappsAdmin/Admin/Form/layout.html.twig' %}
 
 {% block title %}#{{ user.id }} / {{ 'title.customers'|trans }} / {{ parent() }}{% endblock %}
 {% block body_id 'admin_user_edit' %}

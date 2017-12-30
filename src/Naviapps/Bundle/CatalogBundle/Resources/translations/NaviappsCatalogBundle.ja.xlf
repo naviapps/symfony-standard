@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="category.no_categories_found">
+                <source>category.no_categories_found</source>
+                <target>カテゴリが見つかりませんでした。</target>
+            </trans-unit>
+            <trans-unit id="category.created_successfully">
+                <source>category.created_successfully</source>
+                <target>カテゴリを作成しました。</target>
+            </trans-unit>
+            <trans-unit id="category.updated_successfully">
+                <source>category.updated_successfully</source>
+                <target>カテゴリを更新しました。</target>
+            </trans-unit>
+            <trans-unit id="category.deleted_successfully">
+                <source>category.deleted_successfully</source>
+                <target>カテゴリを削除しました。</target>
+            </trans-unit>
+
+            <trans-unit id="product.no_products_found">
+                <source>product.no_products_found</source>
+                <target>商品が見つかりませんでした。</target>
+            </trans-unit>
+            <trans-unit id="product.created_successfully">
+                <source>product.created_successfully</source>
+                <target>商品を作成しました。</target>
+            </trans-unit>
+            <trans-unit id="product.updated_successfully">
+                <source>product.updated_successfully</source>
+                <target>商品を更新しました。</target>
+            </trans-unit>
+            <trans-unit id="product.deleted_successfully">
+                <source>product.deleted_successfully</source>
+                <target>商品を削除しました。</target>
+            </trans-unit>
+
+            <trans-unit id="label.category_name">
+                <source>label.category_name</source>
+                <target>カテゴリ名</target>
+            </trans-unit>
+            <trans-unit id="label.product_name">
+                <source>label.product_name</source>
+                <target>商品名</target>
+            </trans-unit>
+            <trans-unit id="label.categories">
+                <source>label.categories</source>
+                <target>カテゴリ</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

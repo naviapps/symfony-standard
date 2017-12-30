@@ -14,21 +14,14 @@ services:
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
         public: false
-        # defines the scalar arguments once and apply them to any service defined/created in this file
-        bind:
-            $emailSender: '%app.notifications.email_sender%'
 
-    # makes classes in app/ available to be used as services
+    # makes classes in src/App/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
-        resource: '../app/*'
+        resource: '../src/App/*'
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
-        exclude: '../app/{Entity,Migrations,Tests}'
-
-    #App\EventListener\ExceptionListener:
-        #tags:
-            #- { name: kernel.event_listener, event: kernel.exception }
+        exclude: '../src/App/{Entity,Migrations,Tests}'
 
     App\Menu\MenuBuilder:
         arguments: ['@knp_menu.factory']

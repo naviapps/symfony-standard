@@ -17,6 +17,15 @@ fos_user_change_password:
     resource: '@NaviappsFOSUserBundle/Resources/config/routing/change_password.yml'
     prefix: /settings
 
+_liip_imagine:
+    resource: '@LiipImagineBundle/Resources/config/routing.yaml'
+
+naviapps_admin:
+    resource: '@NaviappsAdminBundle/Controller/'
+
+naviapps_catalog:
+    resource: '@NaviappsCatalogBundle/Controller/'
+
 naviapps_cms:
     resource: '@NaviappsCmsBundle/Controller/'
 

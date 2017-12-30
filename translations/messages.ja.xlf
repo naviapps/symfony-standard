@@ -19,23 +19,6 @@
                 <target>受注を削除しました。</target>
             </trans-unit>
 
-            <trans-unit id="catalog_product.no_products_found">
-                <source>catalog_product.no_products_found</source>
-                <target>商品が見つかりませんでした。</target>
-            </trans-unit>
-            <trans-unit id="catalog_product.created_successfully">
-                <source>catalog_product.created_successfully</source>
-                <target>商品を作成しました。</target>
-            </trans-unit>
-            <trans-unit id="catalog_product.updated_successfully">
-                <source>catalog_product.updated_successfully</source>
-                <target>商品を更新しました。</target>
-            </trans-unit>
-            <trans-unit id="catalog_product.deleted_successfully">
-                <source>catalog_product.deleted_successfully</source>
-                <target>商品を削除しました。</target>
-            </trans-unit>
-
             <trans-unit id="user.no_users_found">
                 <source>user.no_users_found</source>
                 <target>ユーザーが見つかりませんでした。</target>
@@ -50,57 +33,6 @@
             </trans-unit>
             <trans-unit id="user.deleted_successfully">
                 <source>user.deleted_successfully</source>
-                <target>ユーザーを削除しました。</target>
-            </trans-unit>
-
-            <trans-unit id="cms_page.no_pages_found">
-                <source>cms_page.no_pages_found</source>
-                <target>ページが見つかりませんでした。</target>
-            </trans-unit>
-            <trans-unit id="cms_page.created_successfully">
-                <source>cms_page.created_successfully</source>
-                <target>ページを作成しました。</target>
-            </trans-unit>
-            <trans-unit id="cms_page.updated_successfully">
-                <source>cms_page.updated_successfully</source>
-                <target>ページを更新しました。</target>
-            </trans-unit>
-            <trans-unit id="cms_page.deleted_successfully">
-                <source>cms_page.deleted_successfully</source>
-                <target>ページを削除しました。</target>
-            </trans-unit>
-
-            <trans-unit id="cms_block.no_blocks_found">
-                <source>cms_block.no_blocks_found</source>
-                <target>ブロックが見つかりませんでした。</target>
-            </trans-unit>
-            <trans-unit id="cms_block.created_successfully">
-                <source>cms_block.created_successfully</source>
-                <target>ブロックを作成しました。</target>
-            </trans-unit>
-            <trans-unit id="cms_block.updated_successfully">
-                <source>cms_block.updated_successfully</source>
-                <target>ブロックを更新しました。</target>
-            </trans-unit>
-            <trans-unit id="cms_block.deleted_successfully">
-                <source>cms_block.deleted_successfully</source>
-                <target>ブロックを削除しました。</target>
-            </trans-unit>
-
-            <trans-unit id="admin_user.no_users_found">
-                <source>admin_user.no_users_found</source>
-                <target>ユーザーが見つかりませんでした。</target>
-            </trans-unit>
-            <trans-unit id="admin_user.created_successfully">
-                <source>admin_user.created_successfully</source>
-                <target>ユーザーを作成しました。</target>
-            </trans-unit>
-            <trans-unit id="admin_user.updated_successfully">
-                <source>admin_user.updated_successfully</source>
-                <target>ユーザーを更新しました。</target>
-            </trans-unit>
-            <trans-unit id="admin_user.deleted_successfully">
-                <source>admin_user.deleted_successfully</source>
                 <target>ユーザーを削除しました。</target>
             </trans-unit>
 
@@ -328,10 +260,6 @@
             <trans-unit id="label.meta_description">
                 <source>label.meta_description</source>
                 <target>Meta 説明</target>
-            </trans-unit>
-            <trans-unit id="label.product_name">
-                <source>label.product_name</source>
-                <target>商品名</target>
             </trans-unit>
         </body>
     </file>

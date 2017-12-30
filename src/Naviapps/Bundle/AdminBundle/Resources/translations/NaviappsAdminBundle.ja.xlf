@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="user.no_users_found">
+                <source>user.no_users_found</source>
+                <target>ユーザーが見つかりませんでした。</target>
+            </trans-unit>
+            <trans-unit id="user.created_successfully">
+                <source>user.created_successfully</source>
+                <target>ユーザーを作成しました。</target>
+            </trans-unit>
+            <trans-unit id="user.updated_successfully">
+                <source>user.updated_successfully</source>
+                <target>ユーザーを更新しました。</target>
+            </trans-unit>
+            <trans-unit id="user.deleted_successfully">
+                <source>user.deleted_successfully</source>
+                <target>ユーザーを削除しました。</target>
+            </trans-unit>
+
+            <trans-unit id="action.show">
+                <source>action.show</source>
+                <target>確認</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>編集</target>
+            </trans-unit>
+
+            <trans-unit id="menu.logout">
+                <source>menu.logout</source>
+                <target>ログアウト</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

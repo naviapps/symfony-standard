@@ -1,6 +1,6 @@
-{% extends '@Admin/layout.html.twig' %}
+{% extends '@NaviappsAdmin/Admin/layout.html.twig' %}
 
-{% form_theme form 'admin/form/layout.html.twig' %}
+{% form_theme form '@NaviappsAdmin/Admin/Form/layout.html.twig' %}
 
 {% block title %}{{ 'title.new_order'|trans }} / {{ 'title.orders'|trans }} / {{ parent() }}{% endblock %}
 {% block body_id 'admin_sales_order_new' %}

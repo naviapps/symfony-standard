@@ -22,6 +22,9 @@ return [
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
     Craue\FormFlowBundle\CraueFormFlowBundle::class => ['all' => true],
     DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class => ['dev' => true, 'test' => true],
-    Naviapps\AdminBundle\NaviappsAdminBundle::class => ['all' => true],
-    Naviapps\CmsBundle\NaviappsCmsBundle::class => ['all' => true],
+    Naviapps\Bundle\AdminBundle\NaviappsAdminBundle::class => ['all' => true],
+    Naviapps\Bundle\CatalogBundle\NaviappsCatalogBundle::class => ['all' => true],
+    Naviapps\Bundle\CmsBundle\NaviappsCmsBundle::class => ['all' => true],
+    Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
+    Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
 ];

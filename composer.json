@@ -11,6 +11,7 @@
         "friendsofsymfony/user-bundle": "^2.0",
         "knplabs/knp-menu-bundle": "^2.2",
         "knplabs/knp-paginator-bundle": "^2.6",
+        "liip/imagine-bundle": "^1.9",
         "naviapps/fos-user-bundle": "@dev",
         "sensio/framework-extra-bundle": "^5.1",
         "sensiolabs/security-checker": "^4.1",
@@ -30,7 +31,8 @@
         "symfony/validator": "^3.4",
         "symfony/yaml": "^3.4",
         "twig/extensions": "^1.5",
-        "twig/twig": "^2.4"
+        "twig/twig": "^2.4",
+        "vich/uploader-bundle": "^1.7"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^4.0",
@@ -55,7 +57,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
+            "App\\": "src/App/",
             "Naviapps\\": "src/Naviapps/"
         }
     },
