@@ -54,6 +54,7 @@ class UserController extends Controller
         $user = new User();
 
         $form = $this->createForm(UserType::class, $user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -77,17 +78,18 @@ class UserController extends Controller
 
     /**
      * @param Request $request
-     * @param User $user
      * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param User $user
      * @return Response
      *
      * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
      * @Method({"GET", "POST"})
      * @Security("is_granted('edit', user)")
      */
-    public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, User $user): Response
     {
         $form = $this->createForm(UserType::class, $user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

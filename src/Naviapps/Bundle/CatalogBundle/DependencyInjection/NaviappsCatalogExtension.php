@@ -28,6 +28,8 @@ class NaviappsCatalogExtension extends Extension
         $this->remapParametersNamespaces($config, $container, [
             '' => [
                 'table_prefix' => 'naviapps_catalog.table_prefix',
+                'category_class' => 'naviapps_catalog.category_class',
+                'product_class' => 'naviapps_catalog.product_class',
             ],
         ]);
     }

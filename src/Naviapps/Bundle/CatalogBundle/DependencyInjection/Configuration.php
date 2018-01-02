@@ -23,6 +23,8 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('table_prefix')->defaultValue('naviapps_catalog_')->end()
+                ->scalarNode('category_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('product_class')->isRequired()->cannotBeEmpty()->end()
             ->end();
 
         return $treeBuilder;

@@ -2,6 +2,7 @@
 
 namespace Naviapps\Bundle\AdminBundle\DependencyInjection;
 
+use Naviapps\Bundle\AdminBundle\Entity\User;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 

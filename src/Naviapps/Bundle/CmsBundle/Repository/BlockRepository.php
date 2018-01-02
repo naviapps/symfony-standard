@@ -2,9 +2,9 @@
 
 namespace Naviapps\Bundle\CmsBundle\Repository;
 
-use Naviapps\Bundle\CmsBundle\Entity\Block;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Naviapps\Component\Repository\ServiceEntityRepository;
+use Naviapps\Bundle\CmsBundle\Entity\Block;
 
 class BlockRepository extends ServiceEntityRepository
 {

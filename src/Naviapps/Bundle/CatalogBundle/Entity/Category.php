@@ -5,12 +5,15 @@ namespace Naviapps\Bundle\CatalogBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
- * @ORM\Entity(repositoryClass="Naviapps\Bundle\CatalogBundle\Repository\CategoryRepository")
+ * @ORM\MappedSuperclass(repositoryClass="Naviapps\Bundle\CatalogBundle\Repository\CategoryRepository")
  */
-class Category
+abstract class Category
 {
+    use TimestampableEntity;
+
     /**
      * @var integer
      *
@@ -18,21 +21,21 @@ class Category
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string")
      */
-    private $name;
+    protected $name;
 
     /**
      * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Entity\Product", inversedBy="categories")
      */
-    private $products;
+    protected $products;
 
     /**
      * Constructor

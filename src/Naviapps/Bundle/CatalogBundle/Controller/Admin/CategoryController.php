@@ -3,6 +3,7 @@
 namespace Naviapps\Bundle\CatalogBundle\Controller\Admin;
 
 use Naviapps\Bundle\CatalogBundle\Entity\Category;
+use Naviapps\Bundle\CatalogBundle\Form\Admin\CategoryType;
 use Naviapps\Bundle\CatalogBundle\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -32,21 +33,44 @@ class CategoryController extends Controller
 
     /**
      * @param Request $request
-     * @param CategoryRepository $categoryRepository
-     * @param int $id
+     * @param Category $category
+     * @return Response
+     *
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
+     * @Method({"GET", "POST"})
+     * @Security("is_granted('edit', category)")
+     */
+    public function edit(Request $request, Category $category): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'category.updated_successfully');
+
+            return $this->redirectToRoute('naviapps_catalog_admin_category_index');
+        }
+
+        return $this->render('@NaviappsCatalog/Admin/Category/edit.html.twig', [
+            'category' => $category,
+            'form'     => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param Category $category
      * @return Response
      *
      * @Route("/{id}/delete", name="delete")
      * @Method("POST")
+     * @Security("is_granted('delete', category)")
      */
-    public function delete(Request $request, CategoryRepository $categoryRepository, int $id): Response
+    public function delete(Request $request, Category $category): Response
     {
-        $category = $categoryRepository->find($id);
-        if (!$category) {
-            throw $this->createNotFoundException(sprintf('%s object not found.', $categoryRepository->getClassName()));
-        }
-        $this->denyAccessUnlessGranted('delete', $category);
-
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('naviapps_catalog_admin_category_index');
         }

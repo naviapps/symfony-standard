@@ -2,6 +2,8 @@
 
 namespace Naviapps\Bundle\CmsBundle\DependencyInjection;
 
+use Naviapps\Bundle\CmsBundle\Entity\Block;
+use Naviapps\Bundle\CmsBundle\Entity\Page;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 

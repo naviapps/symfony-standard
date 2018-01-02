@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
- * @ORM\Entity(repositoryClass="Naviapps\Bundle\CatalogBundle\Repository\ProductRepository")
+ * @ORM\MappedSuperclass(repositoryClass="Naviapps\Bundle\CatalogBundle\Repository\ProductRepository")
  */
 class Product
 {
@@ -23,21 +23,21 @@ class Product
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string")
      */
-    private $name;
+    protected $name;
 
     /**
      * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Entity\Category", mappedBy="products")
      */
-    private $categories;
+    protected $categories;
 
     /**
      * Constructor
