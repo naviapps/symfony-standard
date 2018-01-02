@@ -1,6 +1,6 @@
 <?php
 
-namespace Naviapps\Bundle\CatalogBundle\DependencyInjection;
+namespace Naviapps\Bundle\SalesBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -19,15 +19,14 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('naviapps_catalog');
+        $rootNode = $treeBuilder->root('naviapps_sales');
 
         $rootNode
             ->children()
-                ->scalarNode('table_prefix')->defaultValue('naviapps_catalog_')->end()
+                ->scalarNode('table_prefix')->defaultValue('naviapps_sales_')->end()
             ->end();
 
-        $this->addCategorySection($rootNode);
-        $this->addProductSection($rootNode);
+        $this->addOrderSection($rootNode);
 
         return $treeBuilder;
     }
@@ -35,28 +34,11 @@ class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addCategorySection(ArrayNodeDefinition $node)
+    private function addOrderSection(ArrayNodeDefinition $node)
     {
         $node
             ->children()
-                ->arrayNode('category')
-                    ->addDefaultsIfNotSet()
-                    ->canBeUnset()
-                    ->children()
-                        ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
-                    ->end()
-                ->end()
-            ->end();
-    }
-
-    /**
-     * @param ArrayNodeDefinition $node
-     */
-    private function addProductSection(ArrayNodeDefinition $node)
-    {
-        $node
-            ->children()
-                ->arrayNode('product')
+                ->arrayNode('order')
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()

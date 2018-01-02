@@ -2,13 +2,23 @@
 
 namespace Naviapps\Bundle\CatalogBundle\Form\Admin;
 
-use Naviapps\Bundle\CatalogBundle\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductType extends AbstractType
 {
+    /** @var string */
+    private $productClass;
+
+    /**
+     * @param string $productClass
+     */
+    public function __construct(string $productClass)
+    {
+        $this->productClass = $productClass;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -30,7 +40,7 @@ class ProductType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class'         => Product::class,
+            'data_class'         => $this->productClass,
             'translation_domain' => 'NaviappsCatalogBundle',
         ]);
     }

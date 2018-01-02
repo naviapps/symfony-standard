@@ -1,6 +1,6 @@
 <?php
 
-namespace Naviapps\Bundle\AdminBundle\DependencyInjection;
+namespace Naviapps\Bundle\UserBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,12 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('naviapps_admin');
-
-        $rootNode
-            ->children()
-                ->scalarNode('table_prefix')->defaultValue('naviapps_admin_')->end()
-            ->end();
+        $rootNode = $treeBuilder->root('naviapps_user');
 
         return $treeBuilder;
     }

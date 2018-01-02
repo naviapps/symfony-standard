@@ -10,19 +10,12 @@ services:
         public: false
         # defines the scalar arguments once and apply them to any service defined/created in this file
         bind:
-            $categoryClass: '%naviapps_catalog.category.class%'
-            $productClass: '%naviapps_catalog.product.class%'
+            $userClass: '%fos_user.model.user.class%'
 
-    # makes classes in Naviapps/Bundle/CatalogBundle/ available to be used as services
+    # makes classes in Naviapps/Bundle/UserBundle/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    Naviapps\Bundle\CatalogBundle\:
+    Naviapps\Bundle\UserBundle\:
         resource: '../../*'
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
         exclude: '../../{Entity,Migrations,Tests}'
-
-    naviapps_catalog.table_prefix_listener:
-        class: Naviapps\Component\EventListener\TablePrefixListener
-        tags:
-            - { name: doctrine.event_listener, event: loadClassMetadata }
-        arguments: ['%naviapps_catalog.table_prefix%', 'Naviapps\Bundle\CatalogBundle\Entity']

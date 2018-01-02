@@ -1,0 +1,4 @@
+naviapps_sales:
+    table_prefix: sales_
+    order:
+        class: App\Entity\SalesOrder

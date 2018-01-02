@@ -32,3 +32,4 @@ doctrine:
         resolve_target_entities:
             Naviapps\Bundle\CatalogBundle\Entity\Category: App\Entity\CatalogCategory
             Naviapps\Bundle\CatalogBundle\Entity\Product: App\Entity\CatalogProduct
+            Naviapps\Bundle\SalesBundle\Entity\Order: App\Entity\SalesOrder

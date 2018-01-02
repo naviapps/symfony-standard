@@ -1,6 +1,6 @@
 <?php
 
-namespace Naviapps\Bundle\CatalogBundle\DependencyInjection;
+namespace Naviapps\Bundle\SalesBundle\DependencyInjection;
 
 use Naviapps\Component\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class NaviappsCatalogExtension extends Extension
+class NaviappsSalesExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -27,16 +27,12 @@ class NaviappsCatalogExtension extends Extension
 
         $this->remapParametersNamespaces($config, $container, [
             '' => [
-                'table_prefix' => 'naviapps_catalog.table_prefix',
+                'table_prefix' => 'naviapps_sales.table_prefix',
             ],
         ]);
 
-        if (!empty($config['category'])) {
-            $this->loadCategory($config['category'], $container);
-        }
-
-        if (!empty($config['product'])) {
-            $this->loadProduct($config['product'], $container);
+        if (!empty($config['order'])) {
+            $this->loadOrder($config['order'], $container);
         }
     }
 
@@ -44,24 +40,11 @@ class NaviappsCatalogExtension extends Extension
      * @param array $config
      * @param ContainerBuilder $container
      */
-    private function loadCategory(array $config, ContainerBuilder $container)
+    private function loadOrder(array $config, ContainerBuilder $container)
     {
         $this->remapParametersNamespaces($config, $container, [
             '' => [
-                'class' => 'naviapps_catalog.category.class',
-            ],
-        ]);
-    }
-
-    /**
-     * @param array $config
-     * @param ContainerBuilder $container
-     */
-    private function loadProduct(array $config, ContainerBuilder $container)
-    {
-        $this->remapParametersNamespaces($config, $container, [
-            '' => [
-                'class' => 'naviapps_catalog.product.class',
+                'class' => 'naviapps_sales.order.class',
             ],
         ]);
     }

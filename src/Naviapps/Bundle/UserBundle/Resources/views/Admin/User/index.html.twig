@@ -1,0 +1,53 @@
+{% extends '@NaviappsAdmin/Admin/layout.html.twig' %}
+
+{% block title %}{{ 'title.customers'|trans }} / {{ parent() }}{% endblock %}
+{% block body_id 'admin_user_index' %}
+
+{% block body %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>{{ 'title.customers'|trans }}</h2>
+            <ol class="breadcrumb">
+                <li><a href="{{ path('naviapps_admin_admin_index') }}">{{ 'title.home'|trans }}</a></li>
+                <li class="active"><strong>{{ 'title.customers'|trans }}</strong></li>
+            </ol>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="{{ path('naviapps_user_admin_user_new') }}" class="btn btn-success">{{ 'action.add_new_customer'|trans }}</a>
+
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>{{ 'label.id'|trans }}</th>
+                                <th>{{ 'label.email'|trans }}</th>
+                                <th class="text-right">{{ 'label.action'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in pagination %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td class="text-right"><a href="{{ path('naviapps_user_admin_user_edit', { id: user.id }) }}" class="btn-white btn btn-xs">{{ 'action.edit'|trans({}, 'NaviappsAdminBundle') }}</a></td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">{{ 'user.no_users_found'|trans }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>{{ knp_pagination_render(pagination, '@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig') }}</tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

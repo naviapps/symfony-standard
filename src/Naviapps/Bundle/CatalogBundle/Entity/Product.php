@@ -10,7 +10,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 /**
  * @ORM\MappedSuperclass(repositoryClass="Naviapps\Bundle\CatalogBundle\Repository\ProductRepository")
  */
-class Product
+abstract class Product
 {
     use TimestampableEntity;
 
