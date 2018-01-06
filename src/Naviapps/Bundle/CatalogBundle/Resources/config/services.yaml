@@ -10,8 +10,8 @@ services:
         public: false
         # defines the scalar arguments once and apply them to any service defined/created in this file
         bind:
-            $categoryClass: '%naviapps_catalog.category.class%'
-            $productClass: '%naviapps_catalog.product.class%'
+            $categoryClass: '%naviapps_catalog.model.category.class%'
+            $productClass: '%naviapps_catalog.model.product.class%'
 
     # makes classes in Naviapps/Bundle/CatalogBundle/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

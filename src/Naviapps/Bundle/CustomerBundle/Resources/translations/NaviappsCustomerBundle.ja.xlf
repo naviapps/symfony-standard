@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="customer.no_customers_found">
+                <source>customer.no_customers_found</source>
+                <target>会員が見つかりませんでした。</target>
+            </trans-unit>
+            <trans-unit id="customer.created_successfully">
+                <source>customer.created_successfully</source>
+                <target>会員を作成しました。</target>
+            </trans-unit>
+            <trans-unit id="customer.updated_successfully">
+                <source>customer.updated_successfully</source>
+                <target>会員を更新しました。</target>
+            </trans-unit>
+            <trans-unit id="customer.deleted_successfully">
+                <source>customer.deleted_successfully</source>
+                <target>会員を削除しました。</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

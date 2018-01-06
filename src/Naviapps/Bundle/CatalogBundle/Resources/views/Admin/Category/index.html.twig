@@ -1,7 +1,73 @@
 {% extends '@NaviappsAdmin/Admin/layout.html.twig' %}
 
-{% block title %}{{ category.name }} / {{ parent() }}{% endblock %}
+{% block title %}{{ 'title.categories'|trans }} / {{ parent() }}{% endblock %}
 {% block body_id 'naviapps_catalog_admin_category_index' %}
 
+{% block category_item %}
+    <tr>
+        <td>{{ category.id }}</td>
+        <td>{% for i in 1..category.level if 0 < category.level %}　{% endfor %}{{ category.name }}</td>
+        <td class="text-right">
+            <div class="btn-group">
+                {% if not loop.first %}
+                    <a href="{{ path('naviapps_catalog_admin_category_up', { id: category.id }) }}" class="btn-white btn btn-xs"><span class="fa fa-arrow-up"></span></a>
+                {% else %}
+                    <a href="#" class="btn-white btn btn-xs disabled"><span class="fa fa-arrow-up"></span></a>
+                {% endif %}
+                {% if not loop.last %}
+                    <a href="{{ path('naviapps_catalog_admin_category_down', { id: category.id }) }}" class="btn-white btn btn-xs"><span class="fa fa-arrow-down"></span></a>
+                {% else %}
+                    <a href="#" class="btn-white btn btn-xs disabled"><span class="fa fa-arrow-up"></span></a>
+                {% endif %}
+                <a href="{{ path('naviapps_catalog_admin_category_edit', { id: category.id }) }}" class="btn-white btn btn-xs">{{ 'action.edit'|trans({}, 'NaviappsAdminBundle') }}</a>
+            </div>
+        </td>
+    </tr>
+    {% for category in category.children %}
+        {{ block('category_item') }}
+    {% endfor %}
+{% endblock %}
+
 {% block body %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>{{ 'title.categories'|trans }}</h2>
+            <ol class="breadcrumb">
+                <li><a href="{{ path('naviapps_admin_admin_index') }}">{{ 'title.home'|trans }}</a></li>
+                <li class="active"><strong>{{ 'title.categories'|trans }}</strong></li>
+            </ol>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="{{ path('naviapps_catalog_admin_category_new') }}" class="btn btn-success">{{ 'action.add_category'|trans }}</a>
+
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>{{ 'label.id'|trans }}</th>
+                                <th>{{ 'label.name'|trans }}</th>
+                                <th class="text-right">{{ 'label.action'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for category in categories %}
+                                {{ block('category_item') }}
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">{{ 'category.no_categories_found'|trans }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

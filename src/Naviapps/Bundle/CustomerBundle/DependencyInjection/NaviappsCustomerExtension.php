@@ -1,6 +1,6 @@
 <?php
 
-namespace Naviapps\Bundle\SalesBundle\DependencyInjection;
+namespace Naviapps\Bundle\CustomerBundle\DependencyInjection;
 
 use Naviapps\Component\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class NaviappsSalesExtension extends Extension
+class NaviappsCustomerExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -24,24 +24,5 @@ class NaviappsSalesExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
-
-        $this->remapParametersNamespaces($config, $container, [
-            '' => [
-                'table_prefix' => 'naviapps_sales.table_prefix',
-                'order_class' => 'naviapps_sales.model.order.class',
-            ],
-        ]);
-
-        if (!empty($config['admin_order'])) {
-            $this->loadAdminOrder($config['admin_order'], $container);
-        }
-    }
-
-    /**
-     * @param array $config
-     * @param ContainerBuilder $container
-     */
-    private function loadAdminOrder(array $config, ContainerBuilder $container)
-    {
     }
 }

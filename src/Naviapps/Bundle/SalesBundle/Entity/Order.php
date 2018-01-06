@@ -4,10 +4,10 @@ namespace Naviapps\Bundle\SalesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Naviapps\Bundle\UserBundle\Entity\User;
+use Naviapps\Bundle\CustomerBundle\Model\CustomerInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Naviapps\Bundle\SalesBundle\Repository\OrderRepository")
+ * @ORM\MappedSuperclass(repositoryClass="Naviapps\Bundle\SalesBundle\Repository\OrderRepository")
  */
 abstract class Order
 {
@@ -25,12 +25,12 @@ abstract class Order
     private $id;
 
     /**
-     * @var User
+     * @var CustomerInterface
      *
-     * @ORM\ManyToOne(targetEntity="Naviapps\Bundle\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Naviapps\Bundle\CustomerBundle\Model\CustomerInterface")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private $customer;
 
     /**
      * Get id
@@ -43,26 +43,26 @@ abstract class Order
     }
 
     /**
-     * Set user
+     * Set customer
      *
-     * @param User $user
+     * @param CustomerInterface $customer
      *
      * @return Order
      */
-    public function setUser(User $user)
+    public function setCustomer(CustomerInterface $customer)
     {
-        $this->user = $user;
+        $this->customer = $customer;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get customer
      *
-     * @return User
+     * @return CustomerInterface
      */
-    public function getUser()
+    public function getCustomer()
     {
-        return $this->user;
+        return $this->customer;
     }
 }

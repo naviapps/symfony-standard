@@ -28,6 +28,9 @@ class CategoryType extends AbstractType
             ->add('name', null, [
                 'label' => 'label.category_name',
             ])
+            ->add('parent', null, [
+                'choice_label' => 'name',
+            ])
         ;
     }
 

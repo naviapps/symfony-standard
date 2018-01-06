@@ -1,4 +1,3 @@
 naviapps_sales:
     table_prefix: sales_
-    order:
-        class: App\Entity\SalesOrder
+    order_class: App\Entity\SalesOrder

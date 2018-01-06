@@ -2,52 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="sales_order.no_orders_found">
-                <source>sales_order.no_orders_found</source>
-                <target>受注が見つかりませんでした。</target>
-            </trans-unit>
-            <trans-unit id="sales_order.created_successfully">
-                <source>sales_order.created_successfully</source>
-                <target>受注を作成しました。</target>
-            </trans-unit>
-            <trans-unit id="sales_order.updated_successfully">
-                <source>sales_order.updated_successfully</source>
-                <target>受注を更新しました。</target>
-            </trans-unit>
-            <trans-unit id="sales_order.deleted_successfully">
-                <source>sales_order.deleted_successfully</source>
-                <target>受注を削除しました。</target>
-            </trans-unit>
-
-            <trans-unit id="user.no_users_found">
-                <source>user.no_users_found</source>
-                <target>ユーザーが見つかりませんでした。</target>
-            </trans-unit>
-            <trans-unit id="user.created_successfully">
-                <source>user.created_successfully</source>
-                <target>ユーザーを作成しました。</target>
-            </trans-unit>
-            <trans-unit id="user.updated_successfully">
-                <source>user.updated_successfully</source>
-                <target>ユーザーを更新しました。</target>
-            </trans-unit>
-            <trans-unit id="user.deleted_successfully">
-                <source>user.deleted_successfully</source>
-                <target>ユーザーを削除しました。</target>
-            </trans-unit>
-
-
-
-
             <trans-unit id="label.password_confirmation">
                 <source>label.password_confirmation</source>
                 <target>パスワードを再入力</target>
             </trans-unit>
-            <trans-unit id="order.no_orders_found">
-                <source>order.no_orders_found</source>
-                <target>注文が見つかりません</target>
-            </trans-unit>
-
 
 
 
@@ -115,6 +73,14 @@
                 <source>title.products</source>
                 <target>商品</target>
             </trans-unit>
+            <trans-unit id="title.new_category">
+                <source>title.new_category</source>
+                <target>新規カテゴリ</target>
+            </trans-unit>
+            <trans-unit id="title.categories">
+                <source>title.categories</source>
+                <target>カテゴリ</target>
+            </trans-unit>
             <trans-unit id="title.new_product">
                 <source>title.new_product</source>
                 <target>新規商品</target>
@@ -122,10 +88,6 @@
             <trans-unit id="title.catalog">
                 <source>title.catalog</source>
                 <target>カタログ</target>
-            </trans-unit>
-            <trans-unit id="title.categories">
-                <source>title.categories</source>
-                <target>カテゴリ</target>
             </trans-unit>
 
             <trans-unit id="action.back">
@@ -204,6 +166,10 @@
                 <source>action.add_product</source>
                 <target>商品を追加</target>
             </trans-unit>
+            <trans-unit id="action.add_category">
+                <source>action.add_category</source>
+                <target>カテゴリを追加</target>
+            </trans-unit>
             <trans-unit id="action.save">
                 <source>action.save</source>
                 <target>保存</target>
@@ -240,6 +206,10 @@
             <trans-unit id="label.title">
                 <source>label.title</source>
                 <target>タイトル</target>
+            </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>名前</target>
             </trans-unit>
             <trans-unit id="label.page_title">
                 <source>label.page_title</source>

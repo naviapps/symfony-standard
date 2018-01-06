@@ -28,15 +28,17 @@ class NaviappsCatalogExtension extends Extension
         $this->remapParametersNamespaces($config, $container, [
             '' => [
                 'table_prefix' => 'naviapps_catalog.table_prefix',
+                'category_class' => 'naviapps_catalog.model.category.class',
+                'product_class' => 'naviapps_catalog.model.product.class',
             ],
         ]);
 
-        if (!empty($config['category'])) {
-            $this->loadCategory($config['category'], $container);
+        if (!empty($config['admin_category'])) {
+            $this->loadAdminCategory($config['admin_category'], $container);
         }
 
-        if (!empty($config['product'])) {
-            $this->loadProduct($config['product'], $container);
+        if (!empty($config['admin_product'])) {
+            $this->loadAdminProduct($config['admin_product'], $container);
         }
     }
 
@@ -44,25 +46,15 @@ class NaviappsCatalogExtension extends Extension
      * @param array $config
      * @param ContainerBuilder $container
      */
-    private function loadCategory(array $config, ContainerBuilder $container)
+    private function loadAdminCategory(array $config, ContainerBuilder $container)
     {
-        $this->remapParametersNamespaces($config, $container, [
-            '' => [
-                'class' => 'naviapps_catalog.category.class',
-            ],
-        ]);
     }
 
     /**
      * @param array $config
      * @param ContainerBuilder $container
      */
-    private function loadProduct(array $config, ContainerBuilder $container)
+    private function loadAdminProduct(array $config, ContainerBuilder $container)
     {
-        $this->remapParametersNamespaces($config, $container, [
-            '' => [
-                'class' => 'naviapps_catalog.product.class',
-            ],
-        ]);
     }
 }

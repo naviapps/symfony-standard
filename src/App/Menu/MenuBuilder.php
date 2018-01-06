@@ -33,7 +33,7 @@ class MenuBuilder
         $catalog->addChild('title.products', ['route' => 'naviapps_catalog_admin_product_index']);
         $catalog->addChild('title.categories', ['route' => 'naviapps_catalog_admin_category_index']);
 
-        $menu->addChild('title.customers', ['route' => 'naviapps_user_admin_user_index'])->setExtra('icon', 'fa fa-fw fa-user');
+        $menu->addChild('title.customers', ['route' => 'naviapps_customer_admin_customer_index'])->setExtra('icon', 'fa fa-fw fa-user');
 
         $content = $menu->addChild('title.content')->setExtra('icon', 'fa fa-fw fa-columns');
         $content->addChild('title.pages', ['route' => 'naviapps_cms_admin_page_index']);

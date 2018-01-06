@@ -1,6 +1,4 @@
 naviapps_catalog:
     table_prefix: catalog_
-    product:
-        class: App\Entity\CatalogProduct
-    category:
-        class: App\Entity\CatalogCategory
+    category_class: App\Entity\CatalogCategory
+    product_class: App\Entity\CatalogProduct

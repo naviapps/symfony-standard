@@ -24,9 +24,10 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('table_prefix')->defaultValue('naviapps_sales_')->end()
+                ->scalarNode('order_class')->isRequired()->cannotBeEmpty()->end()
             ->end();
 
-        $this->addOrderSection($rootNode);
+        $this->addAdminOrderSection($rootNode);
 
         return $treeBuilder;
     }
@@ -34,16 +35,13 @@ class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addOrderSection(ArrayNodeDefinition $node)
+    private function addAdminOrderSection(ArrayNodeDefinition $node)
     {
         $node
             ->children()
-                ->arrayNode('order')
+                ->arrayNode('admin_order')
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
-                    ->children()
-                        ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
-                    ->end()
                 ->end()
             ->end();
     }

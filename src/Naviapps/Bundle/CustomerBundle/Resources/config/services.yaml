@@ -10,18 +10,12 @@ services:
         public: false
         # defines the scalar arguments once and apply them to any service defined/created in this file
         bind:
-            $orderClass: '%naviapps_sales.model.order.class%'
+            $customerClass: '%fos_user.model.user.class%'
 
-    # makes classes in Naviapps/Bundle/SalesBundle/ available to be used as services
+    # makes classes in Naviapps/Bundle/CustomerBundle/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    Naviapps\Bundle\SalesBundle\:
+    Naviapps\Bundle\CustomerBundle\:
         resource: '../../*'
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
         exclude: '../../{Entity,Migrations,Tests}'
-
-    naviapps_sales.table_prefix_listener:
-        class: Naviapps\Component\EventListener\TablePrefixListener
-        tags:
-            - { name: doctrine.event_listener, event: loadClassMetadata }
-        arguments: ['%naviapps_sales.table_prefix%', 'Naviapps\Bundle\SalesBundle\Entity']

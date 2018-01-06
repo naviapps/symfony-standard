@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="order.no_orders_found">
+                <source>order.no_orders_found</source>
+                <target>受注が見つかりませんでした。</target>
+            </trans-unit>
+            <trans-unit id="order.created_successfully">
+                <source>order.created_successfully</source>
+                <target>受注を作成しました。</target>
+            </trans-unit>
+            <trans-unit id="order.updated_successfully">
+                <source>order.updated_successfully</source>
+                <target>受注を更新しました。</target>
+            </trans-unit>
+            <trans-unit id="order.deleted_successfully">
+                <source>order.deleted_successfully</source>
+                <target>受注を削除しました。</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

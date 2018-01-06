@@ -24,10 +24,12 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('table_prefix')->defaultValue('naviapps_catalog_')->end()
+                ->scalarNode('category_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('product_class')->isRequired()->cannotBeEmpty()->end()
             ->end();
 
-        $this->addCategorySection($rootNode);
-        $this->addProductSection($rootNode);
+        $this->addAdminCategorySection($rootNode);
+        $this->addAdminProductSection($rootNode);
 
         return $treeBuilder;
     }
@@ -35,16 +37,13 @@ class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addCategorySection(ArrayNodeDefinition $node)
+    private function addAdminCategorySection(ArrayNodeDefinition $node)
     {
         $node
             ->children()
-                ->arrayNode('category')
+                ->arrayNode('admin_category')
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
-                    ->children()
-                        ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
-                    ->end()
                 ->end()
             ->end();
     }
@@ -52,16 +51,13 @@ class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addProductSection(ArrayNodeDefinition $node)
+    private function addAdminProductSection(ArrayNodeDefinition $node)
     {
         $node
             ->children()
-                ->arrayNode('product')
+                ->arrayNode('admin_product')
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
-                    ->children()
-                        ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
-                    ->end()
                 ->end()
             ->end();
     }

@@ -29,11 +29,11 @@ naviapps_catalog:
 naviapps_cms:
     resource: '@NaviappsCmsBundle/Controller/'
 
+naviapps_customer:
+    resource: '@NaviappsCustomerBundle/Controller/'
+
 naviapps_sales:
     resource: '@NaviappsSalesBundle/Controller/'
-
-naviapps_user:
-    resource: '@NaviappsUserBundle/Controller/'
 
 homepage:
     path: /
