@@ -1,6 +1,6 @@
 <?php
 
-namespace Naviapps\Bundle\AdminBundle\Controller\Admin;
+namespace Naviapps\Bundle\AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
- * @Route("/admin", name="naviapps_admin_admin_security_")
+ * @Route("/admin", name="naviapps_admin_security_")
  */
 class SecurityController extends Controller
 {
@@ -20,7 +20,7 @@ class SecurityController extends Controller
      */
     public function login(AuthenticationUtils $helper): Response
     {
-        return $this->render('@NaviappsAdmin/Admin/Security/login.html.twig', [
+        return $this->render('@NaviappsAdmin/Security/login.html.twig', [
             'last_username' => $helper->getLastUsername(),
             'error'         => $helper->getLastAuthenticationError(),
         ]);

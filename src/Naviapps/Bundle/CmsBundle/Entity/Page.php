@@ -3,22 +3,20 @@
 namespace Naviapps\Bundle\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Naviapps\Bundle\CmsBundle\Model\PageInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Naviapps\Bundle\CmsBundle\Repository\PageRepository")
  */
-class Page
+class Page implements PageInterface
 {
-    use TimestampableEntity;
-
     const NUM_ITEMS = 10;
 
     /**
-     * @var integer
+     * @var int|null
      *
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
     private $id;
@@ -59,23 +57,33 @@ class Page
     private $content;
 
     /**
-     * Get id
+     * @var \DateTime
      *
-     * @return integer
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
-    public function getId()
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updatedAt;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Page
+     * {@inheritdoc}
      */
-    public function setTitle($title)
+    public function setTitle(?string $title): PageInterface
     {
         $this->title = $title;
 
@@ -83,11 +91,9 @@ class Page
     }
 
     /**
-     * Get title
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -185,5 +191,41 @@ class Page
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt(\DateTime $createdAt): PageInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): PageInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
     }
 }

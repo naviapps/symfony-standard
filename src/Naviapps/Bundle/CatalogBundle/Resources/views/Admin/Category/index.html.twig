@@ -1,4 +1,4 @@
-{% extends '@NaviappsAdmin/Admin/layout.html.twig' %}
+{% extends '@NaviappsAdmin/layout.html.twig' %}
 
 {% block title %}{{ 'title.categories'|trans }} / {{ parent() }}{% endblock %}
 {% block body_id 'naviapps_catalog_admin_category_index' %}
@@ -17,7 +17,7 @@
                 {% if not loop.last %}
                     <a href="{{ path('naviapps_catalog_admin_category_down', { id: category.id }) }}" class="btn-white btn btn-xs"><span class="fa fa-arrow-down"></span></a>
                 {% else %}
-                    <a href="#" class="btn-white btn btn-xs disabled"><span class="fa fa-arrow-up"></span></a>
+                    <a href="#" class="btn-white btn btn-xs disabled"><span class="fa fa-arrow-down"></span></a>
                 {% endif %}
                 <a href="{{ path('naviapps_catalog_admin_category_edit', { id: category.id }) }}" class="btn-white btn btn-xs">{{ 'action.edit'|trans({}, 'NaviappsAdminBundle') }}</a>
             </div>
@@ -33,7 +33,7 @@
         <div class="col-lg-10">
             <h2>{{ 'title.categories'|trans }}</h2>
             <ol class="breadcrumb">
-                <li><a href="{{ path('naviapps_admin_admin_index') }}">{{ 'title.home'|trans }}</a></li>
+                <li><a href="{{ path('naviapps_admin_index') }}">{{ 'title.home'|trans }}</a></li>
                 <li class="active"><strong>{{ 'title.categories'|trans }}</strong></li>
             </ol>
         </div>

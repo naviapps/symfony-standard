@@ -2,7 +2,7 @@
 
 namespace Naviapps\Bundle\CatalogBundle\Security;
 
-use Naviapps\Bundle\CatalogBundle\Entity\Product;
+use Naviapps\Bundle\CatalogBundle\Model\ProductInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
@@ -16,7 +16,7 @@ class ProductVoter extends Voter
      */
     protected function supports($attribute, $subject): bool
     {
-        return $subject instanceof Product && in_array($attribute, [self::EDIT, self::DELETE], true);
+        return $subject instanceof ProductInterface && in_array($attribute, [self::EDIT, self::DELETE], true);
     }
 
     /**

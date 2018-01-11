@@ -30,7 +30,7 @@ doctrine:
                 prefix: 'App\Entity'
                 alias: App
         resolve_target_entities:
-            Naviapps\Bundle\CatalogBundle\Entity\Category: App\Entity\CatalogCategory
-            Naviapps\Bundle\CatalogBundle\Entity\Product: App\Entity\CatalogProduct
+            Naviapps\Bundle\CatalogBundle\Model\CategoryInterface: App\Entity\CatalogCategory
+            Naviapps\Bundle\CatalogBundle\Model\ProductInterface: App\Entity\CatalogProduct
             Naviapps\Bundle\CustomerBundle\Model\CustomerInterface: App\Entity\Customer
-            Naviapps\Bundle\SalesBundle\Entity\Order: App\Entity\SalesOrder
+            Naviapps\Bundle\SalesBundle\Model\OrderInterface: App\Entity\SalesOrder

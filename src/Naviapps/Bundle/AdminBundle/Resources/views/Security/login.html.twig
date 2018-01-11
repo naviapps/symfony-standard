@@ -11,10 +11,10 @@
     <link href="{{ asset('bundles/naviappsadmin/css/animate.css') }}" rel="stylesheet" />
     <link href="{{ asset('bundles/naviappsadmin/css/style.css') }}" rel="stylesheet" />
 </head>
-<body id="naviapps_admin_admin_security_login" class="gray-bg">
+<body id="naviapps_admin_security_login" class="gray-bg">
 <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
-        <form action="{{ path('naviapps_admin_admin_security_login') }}" method="post" class="m-t" role="form">
+        <form action="{{ path('naviapps_admin_security_login') }}" method="post" class="m-t" role="form">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
 
             <div class="form-group">

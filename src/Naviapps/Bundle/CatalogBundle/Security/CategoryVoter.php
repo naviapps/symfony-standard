@@ -2,7 +2,7 @@
 
 namespace Naviapps\Bundle\CatalogBundle\Security;
 
-use Naviapps\Bundle\CatalogBundle\Entity\Category;
+use Naviapps\Bundle\CatalogBundle\Model\CategoryInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
@@ -16,7 +16,7 @@ class CategoryVoter extends Voter
      */
     protected function supports($attribute, $subject): bool
     {
-        return $subject instanceof Category && in_array($attribute, [self::EDIT, self::DELETE], true);
+        return $subject instanceof CategoryInterface && in_array($attribute, [self::EDIT, self::DELETE], true);
     }
 
     /**

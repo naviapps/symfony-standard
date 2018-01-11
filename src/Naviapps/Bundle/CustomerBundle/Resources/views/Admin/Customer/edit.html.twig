@@ -1,6 +1,6 @@
-{% extends '@NaviappsAdmin/Admin/layout.html.twig' %}
+{% extends '@NaviappsAdmin/layout.html.twig' %}
 
-{% form_theme form '@NaviappsAdmin/Admin/Form/layout.html.twig' %}
+{% form_theme form '@NaviappsAdmin/Form/layout.html.twig' %}
 
 {% block title %}#{{ customer.id }} / {{ 'title.customers'|trans }} / {{ parent() }}{% endblock %}
 {% block body_id 'naviapps_customer_admin_customer_edit' %}
@@ -10,7 +10,7 @@
         <div class="col-lg-10">
             <h2>#{{ customer.id }}</h2>
             <ol class="breadcrumb">
-                <li><a href="{{ path('naviapps_admin_admin_index') }}">{{ 'title.home'|trans }}</a></li>
+                <li><a href="{{ path('naviapps_admin_index') }}">{{ 'title.home'|trans }}</a></li>
                 <li><a href="{{ path('naviapps_customer_admin_customer_index') }}">{{ 'title.customers'|trans }}</a></li>
                 <li class="active"><strong>#{{ customer.id }}</strong></li>
             </ol>

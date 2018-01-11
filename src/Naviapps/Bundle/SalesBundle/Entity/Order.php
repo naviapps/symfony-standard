@@ -3,53 +3,61 @@
 namespace Naviapps\Bundle\SalesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Naviapps\Bundle\CustomerBundle\Model\CustomerInterface;
+use Naviapps\Bundle\SalesBundle\Model\OrderInterface;
 
 /**
  * @ORM\MappedSuperclass(repositoryClass="Naviapps\Bundle\SalesBundle\Repository\OrderRepository")
  */
-abstract class Order
+abstract class Order implements OrderInterface
 {
-    use TimestampableEntity;
-
     const NUM_ITEMS = 10;
 
     /**
-     * @var integer
+     * @var int|null
      *
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var CustomerInterface
      *
      * @ORM\ManyToOne(targetEntity="Naviapps\Bundle\CustomerBundle\Model\CustomerInterface")
-     * @ORM\JoinColumn(nullable=false)
      */
-    private $customer;
+    protected $customer;
 
     /**
-     * Get id
+     * @var \DateTime
      *
-     * @return integer
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
-    public function getId()
+    protected $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * Set customer
-     *
-     * @param CustomerInterface $customer
-     *
-     * @return Order
+     * {@inheritdoc}
      */
-    public function setCustomer(CustomerInterface $customer)
+    public function setCustomer(?CustomerInterface $customer): OrderInterface
     {
         $this->customer = $customer;
 
@@ -57,12 +65,46 @@ abstract class Order
     }
 
     /**
-     * Get customer
-     *
-     * @return CustomerInterface
+     * {@inheritdoc}
      */
-    public function getCustomer()
+    public function getCustomer(): ?CustomerInterface
     {
         return $this->customer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt(\DateTime $createdAt): OrderInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): OrderInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
     }
 }

@@ -26,7 +26,7 @@ class MenuBuilder
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('title.dashboard', ['route' => 'naviapps_admin_admin_index'])->setExtra('icon', 'fa fa-fw fa-th-large');
+        $menu->addChild('title.dashboard', ['route' => 'naviapps_admin_index'])->setExtra('icon', 'fa fa-fw fa-th-large');
         $menu->addChild('title.orders', ['route' => 'naviapps_sales_admin_order_index'])->setExtra('icon', 'fa fa-fw fa-usd');
 
         $catalog = $menu->addChild('title.catalog')->setExtra('icon', 'fa fa-fw fa-cube');

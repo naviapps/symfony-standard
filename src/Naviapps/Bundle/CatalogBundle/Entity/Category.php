@@ -6,35 +6,45 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Naviapps\Bundle\CatalogBundle\Model\CategoryInterface;
+use Naviapps\Bundle\CatalogBundle\Model\ProductInterface;
 
 /**
  * @Gedmo\Tree(type="materializedPath")
  * @ORM\MappedSuperclass(repositoryClass="Naviapps\Bundle\CatalogBundle\Repository\CategoryRepository")
  */
-abstract class Category
+abstract class Category implements CategoryInterface
 {
-    use TimestampableEntity;
-
     /**
-     * @var integer
+     * @var int|null
      *
      * @Gedmo\TreePathSource
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
     protected $id;
 
     /**
-     * @var string
+     * @var CategoryInterface|null
      *
-     * @ORM\Column(type="string")
+     * @Gedmo\TreeParent
+     * @Gedmo\SortableGroup
+     * @ORM\ManyToOne(targetEntity="Naviapps\Bundle\CatalogBundle\Model\CategoryInterface", inversedBy="children")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
-    protected $name;
+    protected $parent;
 
     /**
-     * @var integer
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Model\CategoryInterface", mappedBy="parent")
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $children;
+
+    /**
+     * @var string|null
      *
      * @Gedmo\TreePath(separator="/", endsWithSeparator=false)
      * @ORM\Column(type="string", nullable=true)
@@ -42,25 +52,7 @@ abstract class Category
     protected $path;
 
     /**
-     * @var Category
-     *
-     * @Gedmo\TreeParent
-     * @Gedmo\SortableGroup
-     * @ORM\ManyToOne(targetEntity="Naviapps\Bundle\CatalogBundle\Entity\Category", inversedBy="children")
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
-    protected $parent;
-
-    /**
-     * @var integer
-     *
-     * @Gedmo\TreeLevel
-     * @ORM\Column(type="integer", nullable=true, options={"unsigned": true})
-     */
-    protected $level;
-
-    /**
-     * @var integer
+     * @var int|null
      *
      * @Gedmo\SortablePosition
      * @ORM\Column(type="integer")
@@ -68,19 +60,35 @@ abstract class Category
     protected $position;
 
     /**
-     * @var Collection
+     * @var int|null
      *
-     * @ORM\OneToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Entity\Category", mappedBy="parent")
-     * @ORM\OrderBy({"position" = "ASC"})
+     * @Gedmo\TreeLevel
+     * @ORM\Column(type="integer", nullable=true, options={"unsigned": true})
      */
-    protected $children;
+    protected $level;
 
     /**
      * @var Collection
      *
-     * @ORM\ManyToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Entity\Product", inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Model\ProductInterface", inversedBy="categories")
      */
     protected $products;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     */
+    protected $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
 
     /**
      * Constructor
@@ -92,71 +100,17 @@ abstract class Category
     }
 
     /**
-     * Get id
-     *
-     * @return integer
+     * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Category
+     * {@inheritdoc}
      */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set path
-     *
-     * @param string $path
-     *
-     * @return Category
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * Set parent
-     *
-     * @param Category|null $parent
-     *
-     * @return Category
-     */
-    public function setParent(?Category $parent)
+    public function setParent(?CategoryInterface $parent): CategoryInterface
     {
         $this->parent = $parent;
 
@@ -164,47 +118,65 @@ abstract class Category
     }
 
     /**
-     * Get parent
-     *
-     * @return Category
+     * {@inheritdoc}
      */
-    public function getParent()
+    public function getParent(): ?CategoryInterface
     {
         return $this->parent;
     }
 
     /**
-     * Set level
-     *
-     * @param integer $level
-     *
-     * @return Category
+     * {@inheritdoc}
      */
-    public function setLevel($level)
+    public function addChild(CategoryInterface $child): CategoryInterface
     {
-        $this->level = $level;
+        $child->setParent($this);
+        if (!$this->children->contains($child)) {
+            $this->children->add($child);
+        }
 
         return $this;
     }
 
     /**
-     * Get level
-     *
-     * @return integer
+     * {@inheritdoc}
      */
-    public function getLevel()
+    public function removeChild(CategoryInterface $child): void
     {
-        return $this->level;
+        $child->setParent(null);
+        $this->children->removeElement($child);
     }
 
     /**
-     * Set position
-     *
-     * @param integer $position
-     *
-     * @return Category
+     * {@inheritdoc}
      */
-    public function setPosition($position)
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPath(?string $path): CategoryInterface
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPosition(?int $position): CategoryInterface
     {
         $this->position = $position;
 
@@ -212,80 +184,92 @@ abstract class Category
     }
 
     /**
-     * Get position
-     *
-     * @return integer
+     * {@inheritdoc}
      */
-    public function getPosition()
+    public function getPosition(): ?int
     {
         return $this->position;
     }
 
     /**
-     * Add child
-     *
-     * @param Category $child
-     *
-     * @return Category
+     * {@inheritdoc}
      */
-    public function addChild(Category $child)
+    public function setLevel(?int $level): CategoryInterface
     {
-        $this->children[] = $child;
+        $this->level = $level;
 
         return $this;
     }
 
     /**
-     * Remove child
-     *
-     * @param Category $child
+     * {@inheritdoc}
      */
-    public function removeChild(Category $child)
+    public function getLevel(): ?int
     {
-        $this->children->removeElement($child);
+        return $this->level;
     }
 
     /**
-     * Get children
-     *
-     * @return Collection
+     * {@inheritdoc}
      */
-    public function getChildren()
+    public function addProduct(ProductInterface $product): CategoryInterface
     {
-        return $this->children;
-    }
-
-    /**
-     * Add product
-     *
-     * @param Product $product
-     *
-     * @return Category
-     */
-    public function addProduct(Product $product)
-    {
-        $this->products[] = $product;
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+        }
 
         return $this;
     }
 
     /**
-     * Remove product
-     *
-     * @param Product $product
+     * {@inheritdoc}
      */
-    public function removeProduct(Product $product)
+    public function removeProduct(ProductInterface $product): void
     {
         $this->products->removeElement($product);
     }
 
     /**
-     * Get products
-     *
-     * @return Collection
+     * {@inheritdoc}
      */
-    public function getProducts()
+    public function getProducts(): Collection
     {
         return $this->products;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt(\DateTime $createdAt): CategoryInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): CategoryInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
     }
 }

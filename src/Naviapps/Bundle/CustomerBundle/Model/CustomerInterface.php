@@ -18,14 +18,14 @@ interface CustomerInterface extends UserInterface
     /**
      * Get emailRequestAt
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getEmailRequestedAt(): \DateTime;
+    public function getEmailRequestedAt(): ?\DateTime;
 
     /**
      * Set confirmationEmail
      *
-     * @param null|string $confirmationEmail
+     * @param string|null $confirmationEmail
      *
      * @return CustomerInterface
      */
@@ -34,7 +34,39 @@ interface CustomerInterface extends UserInterface
     /**
      * Get confirmationEmail
      *
-     * @return string
+     * @return string|null
      */
-    public function getConfirmationEmail(): string;
+    public function getConfirmationEmail(): ?string;
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return CustomerInterface
+     */
+    public function setCreatedAt(\DateTime $createdAt): CustomerInterface;
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime;
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return CustomerInterface
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): CustomerInterface;
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime;
 }

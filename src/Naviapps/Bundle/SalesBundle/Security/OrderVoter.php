@@ -2,7 +2,7 @@
 
 namespace Naviapps\Bundle\SalesBundle\Security;
 
-use Naviapps\Bundle\SalesBundle\Entity\Order;
+use Naviapps\Bundle\SalesBundle\Model\OrderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
@@ -16,7 +16,7 @@ class OrderVoter extends Voter
      */
     protected function supports($attribute, $subject): bool
     {
-        return $subject instanceof Order && in_array($attribute, [self::EDIT, self::DELETE], true);
+        return $subject instanceof OrderInterface && in_array($attribute, [self::EDIT, self::DELETE], true);
     }
 
     /**

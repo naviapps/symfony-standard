@@ -1,4 +1,4 @@
-{% extends '@NaviappsAdmin/Admin/layout.html.twig' %}
+{% extends '@NaviappsAdmin/layout.html.twig' %}
 
 {% block title %}{{ 'title.products'|trans }} / {{ parent() }}{% endblock %}
 {% block body_id 'naviapps_catalog_admin_product_index' %}
@@ -8,7 +8,7 @@
         <div class="col-lg-10">
             <h2>{{ 'title.products'|trans }}</h2>
             <ol class="breadcrumb">
-                <li><a href="{{ path('naviapps_admin_admin_index') }}">{{ 'title.home'|trans }}</a></li>
+                <li><a href="{{ path('naviapps_admin_index') }}">{{ 'title.home'|trans }}</a></li>
                 <li class="active"><strong>{{ 'title.products'|trans }}</strong></li>
             </ol>
         </div>

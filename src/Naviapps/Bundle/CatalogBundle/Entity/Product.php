@@ -5,39 +5,48 @@ namespace Naviapps\Bundle\CatalogBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Naviapps\Bundle\CatalogBundle\Model\CategoryInterface;
+use Naviapps\Bundle\CatalogBundle\Model\ProductInterface;
 
 /**
  * @ORM\MappedSuperclass(repositoryClass="Naviapps\Bundle\CatalogBundle\Repository\ProductRepository")
  */
-abstract class Product
+abstract class Product implements ProductInterface
 {
-    use TimestampableEntity;
-
     const NUM_ITEMS = 10;
 
     /**
-     * @var integer
+     * @var int|null
      *
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
     protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $name;
-
-    /**
      * @var Collection
      *
-     * @ORM\ManyToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Entity\Category", mappedBy="products")
+     * @ORM\ManyToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Model\CategoryInterface", mappedBy="products")
      */
     protected $categories;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     */
+    protected $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
 
     /**
      * Constructor
@@ -48,70 +57,74 @@ abstract class Product
     }
 
     /**
-     * Get id
-     *
-     * @return integer
+     * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Product
+     * {@inheritdoc}
      */
-    public function setName($name)
+    public function addCategory(CategoryInterface $category): ProductInterface
     {
-        $this->name = $name;
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
 
         return $this;
     }
 
     /**
-     * Get name
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Add category
-     *
-     * @param Category $category
-     *
-     * @return Product
-     */
-    public function addCategory(Category $category)
-    {
-        $this->categories[] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Remove category
-     *
-     * @param Category $category
-     */
-    public function removeCategory(Category $category)
+    public function removeCategory(CategoryInterface $category): void
     {
         $this->categories->removeElement($category);
     }
 
     /**
-     * Get categories
-     *
-     * @return Collection
+     * {@inheritdoc}
      */
-    public function getCategories()
+    public function getCategories(): Collection
     {
         return $this->categories;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt(\DateTime $createdAt): ProductInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): ProductInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
     }
 }

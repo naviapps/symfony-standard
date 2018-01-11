@@ -1,6 +1,6 @@
-{% extends '@NaviappsAdmin/Admin/layout.html.twig' %}
+{% extends '@NaviappsAdmin/layout.html.twig' %}
 
-{% form_theme form '@NaviappsAdmin/Admin/Form/layout.html.twig' %}
+{% form_theme form '@NaviappsAdmin/Form/layout.html.twig' %}
 
 {% block title %}{{ 'title.new_user'|trans }} / {{ 'title.users'|trans }} / {{ parent() }}{% endblock %}
 {% block body_id 'naviapps_admin_admin_user_new' %}
@@ -10,7 +10,7 @@
         <div class="col-lg-10">
             <h2>{{ 'title.new_user'|trans }}</h2>
             <ol class="breadcrumb">
-                <li><a href="{{ path('naviapps_admin_admin_index') }}">{{ 'title.home'|trans }}</a></li>
+                <li><a href="{{ path('naviapps_admin_index') }}">{{ 'title.home'|trans }}</a></li>
                 <li><a>{{ 'title.system'|trans }}</a></li>
                 <li><a href="{{ path('naviapps_admin_admin_user_index') }}">{{ 'title.users'|trans }}</a></li>
                 <li class="active"><strong>{{ 'title.new_user'|trans }}</strong></li>

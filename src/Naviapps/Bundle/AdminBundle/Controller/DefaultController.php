@@ -1,12 +1,12 @@
 <?php
 
-namespace Naviapps\Bundle\AdminBundle\Controller\Admin;
+namespace Naviapps\Bundle\AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * @Route("/admin", name="naviapps_admin_admin_")
+ * @Route("/admin", name="naviapps_admin_")
  */
 class DefaultController extends Controller
 {
@@ -15,6 +15,6 @@ class DefaultController extends Controller
      */
     public function index()
     {
-        return $this->render('@NaviappsAdmin/Admin/Default/index.html.twig');
+        return $this->render('@NaviappsAdmin/Default/index.html.twig');
     }
 }

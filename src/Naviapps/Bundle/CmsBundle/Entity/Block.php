@@ -3,22 +3,20 @@
 namespace Naviapps\Bundle\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Naviapps\Bundle\CmsBundle\Model\BlockInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Naviapps\Bundle\CmsBundle\Repository\BlockRepository")
  */
-class Block
+class Block implements BlockInterface
 {
-    use TimestampableEntity;
-
     const NUM_ITEMS = 10;
 
     /**
-     * @var integer
+     * @var int|null
      *
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
     private $id;
@@ -38,23 +36,33 @@ class Block
     private $content;
 
     /**
-     * Get id
+     * @var \DateTime
      *
-     * @return integer
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
-    public function getId()
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updatedAt;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Block
+     * {@inheritdoc}
      */
-    public function setTitle($title)
+    public function setTitle(?string $title): BlockInterface
     {
         $this->title = $title;
 
@@ -62,11 +70,9 @@ class Block
     }
 
     /**
-     * Get title
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -93,5 +99,41 @@ class Block
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt(\DateTime $createdAt): BlockInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): BlockInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
     }
 }

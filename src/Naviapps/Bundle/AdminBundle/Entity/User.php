@@ -16,10 +16,10 @@ class User implements UserInterface, \Serializable
     const NUM_ITEMS = 10;
 
     /**
-     * @var integer
+     * @var int|null
      *
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
     private $id;
@@ -74,9 +74,9 @@ class User implements UserInterface, \Serializable
     /**
      * Get id
      *
-     * @return integer
+     * @return int|null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

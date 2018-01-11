@@ -4,7 +4,7 @@ namespace Naviapps\Bundle\CustomerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Naviapps\Bundle\CustomerBundle\Model\CustomerInterface;
 
 /**
@@ -12,40 +12,46 @@ use Naviapps\Bundle\CustomerBundle\Model\CustomerInterface;
  */
 abstract class Customer extends User implements CustomerInterface
 {
-    use TimestampableEntity;
-
     const NUM_ITEMS = 10;
 
     /**
-     * @var integer
+     * @var int|null
      *
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", options={"unsigned": true})
      */
     protected $id;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
      */
     protected $confirmationEmail;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $emailRequestedAt;
 
     /**
-     * Constructor
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
 
     /**
      * {@inheritdoc}
@@ -71,7 +77,7 @@ abstract class Customer extends User implements CustomerInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfirmationEmail(): string
+    public function getConfirmationEmail(): ?string
     {
         return $this->confirmationEmail;
     }
@@ -89,8 +95,44 @@ abstract class Customer extends User implements CustomerInterface
     /**
      * {@inheritdoc}
      */
-    public function getEmailRequestedAt(): \DateTime
+    public function getEmailRequestedAt(): ?\DateTime
     {
         return $this->emailRequestedAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt(\DateTime $createdAt): CustomerInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): CustomerInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
     }
 }
