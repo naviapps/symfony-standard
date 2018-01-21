@@ -14,6 +14,22 @@ interface ProductInterface
     public function getId(): ?int;
 
     /**
+     * Set name
+     *
+     * @param string|null $name
+     *
+     * @return ProductInterface
+     */
+    public function setName(?string $name): ProductInterface;
+
+    /**
+     * Get name
+     *
+     * @return string|null
+     */
+    public function getName(): ?string;
+
+    /**
      * Add category
      *
      * @param CategoryInterface $category

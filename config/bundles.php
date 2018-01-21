@@ -26,6 +26,7 @@ return [
     Naviapps\Bundle\CatalogBundle\NaviappsCatalogBundle::class => ['all' => true],
     Naviapps\Bundle\CmsBundle\NaviappsCmsBundle::class => ['all' => true],
     Naviapps\Bundle\CustomerBundle\NaviappsCustomerBundle::class => ['all' => true],
+    Naviapps\Bundle\DirectoryBundle\NaviappsDirectoryBundle::class => ['all' => true],
     Naviapps\Bundle\SalesBundle\NaviappsSalesBundle::class => ['all' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],

@@ -3,6 +3,7 @@
 namespace Naviapps\Bundle\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Naviapps\Bundle\CmsBundle\Model\BlockInterface;
 
 /**

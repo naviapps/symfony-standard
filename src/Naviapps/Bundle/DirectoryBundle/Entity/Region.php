@@ -31,6 +31,13 @@ class Region implements RegionInterface
     /**
      * @var string|null
      *
+     * @ORM\Column(type="string", length=32, nullable=true)
+     */
+    private $code;
+
+    /**
+     * @var string|null
+     *
      * @ORM\Column(type="string", nullable=true)
      */
     private $name;
@@ -59,6 +66,24 @@ class Region implements RegionInterface
     public function getCountry(): ?CountryInterface
     {
         return $this->country;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCode(?string $code): RegionInterface
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
     }
 
     /**

@@ -130,10 +130,7 @@ abstract class Category implements CategoryInterface
      */
     public function addChild(CategoryInterface $child): CategoryInterface
     {
-        $child->setParent($this);
-        if (!$this->children->contains($child)) {
-            $this->children->add($child);
-        }
+        $this->children[] = $child;
 
         return $this;
     }
@@ -143,7 +140,6 @@ abstract class Category implements CategoryInterface
      */
     public function removeChild(CategoryInterface $child): void
     {
-        $child->setParent(null);
         $this->children->removeElement($child);
     }
 
@@ -214,9 +210,7 @@ abstract class Category implements CategoryInterface
      */
     public function addProduct(ProductInterface $product): CategoryInterface
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-        }
+        $this->products[] = $product;
 
         return $this;
     }

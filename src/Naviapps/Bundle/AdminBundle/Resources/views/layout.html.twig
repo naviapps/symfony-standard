@@ -23,7 +23,7 @@
                     <div class="dropdown profile-element">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="clear"><span class="block m-t-xs"><strong class="font-bold">{{ app.user.username }}</strong></span><span class="text-muted text-xs block">{{ app.user.username }} <b class="caret"></b></span></span></a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="{{ path('naviapps_admin_admin_security_logout') }}">{{ 'menu.logout'|trans({}, 'NaviappsAdminBundle') }}</a></li>
+                            <li><a href="{{ path('naviapps_admin_security_logout') }}">{{ 'menu.logout'|trans({}, 'NaviappsAdminBundle') }}</a></li>
                         </ul>
                     </div>
                 </li>
@@ -44,7 +44,7 @@
                     </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
-                    <li><a href="{{ path('naviapps_admin_admin_security_logout') }}"><i class="fa fa-sign-out"></i> {{ 'menu.logout'|trans({}, 'NaviappsAdminBundle') }}</a></li>
+                    <li><a href="{{ path('naviapps_admin_security_logout') }}"><i class="fa fa-sign-out"></i> {{ 'menu.logout'|trans({}, 'NaviappsAdminBundle') }}</a></li>
                 </ul>
             </nav>
         </div>

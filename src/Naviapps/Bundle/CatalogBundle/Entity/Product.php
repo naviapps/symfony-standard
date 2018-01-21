@@ -26,6 +26,13 @@ abstract class Product implements ProductInterface
     protected $id;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $name;
+
+    /**
      * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="Naviapps\Bundle\CatalogBundle\Model\CategoryInterface", mappedBy="products")
@@ -67,11 +74,27 @@ abstract class Product implements ProductInterface
     /**
      * {@inheritdoc}
      */
+    public function setName(?string $name): ProductInterface
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function addCategory(CategoryInterface $category): ProductInterface
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-        }
+        $this->categories[] = $category;
 
         return $this;
     }

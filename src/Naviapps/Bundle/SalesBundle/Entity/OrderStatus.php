@@ -1,15 +1,15 @@
 <?php
 
-namespace Naviapps\Bundle\DirectoryBundle\Entity;
+namespace Naviapps\Bundle\SalesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Naviapps\Bundle\DirectoryBundle\Model\CountryInterface;
+use Naviapps\Bundle\SalesBundle\Model\OrderStatusInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Naviapps\Bundle\DirectoryBundle\Repository\CountryRepository")
+ * @ORM\Entity(repositoryClass="Naviapps\Bundle\SalesBundle\Repository\OrderStatusRepository")
  */
-class Country implements CountryInterface
+class OrderStatus implements OrderStatusInterface
 {
     /**
      * @var int|null
@@ -23,16 +23,16 @@ class Country implements CountryInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(type="string", length=2, unique=true)
+     * @ORM\Column(type="string", length=32, unique=true)
      */
-    private $iso2Code;
+    private $code;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(type="string", length=3, unique=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $iso3Code;
+    private $name;
 
     /**
      * @var int|null
@@ -53,9 +53,9 @@ class Country implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function setIso2Code(?string $iso2Code): CountryInterface
+    public function setCode(?string $code): OrderStatusInterface
     {
-        $this->iso2Code = $iso2Code;
+        $this->code = $code;
 
         return $this;
     }
@@ -63,17 +63,17 @@ class Country implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function getIso2Code(): ?string
+    public function getCode(): ?string
     {
-        return $this->iso2Code;
+        return $this->code;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setIso3Code(?string $iso3Code): CountryInterface
+    public function setName(?string $name): OrderStatusInterface
     {
-        $this->iso3Code = $iso3Code;
+        $this->name = $name;
 
         return $this;
     }
@@ -81,15 +81,15 @@ class Country implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function getIso3Code(): ?string
+    public function getName(): ?string
     {
-        return $this->iso3Code;
+        return $this->name;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setPosition(?int $position): CountryInterface
+    public function setPosition(?int $position): OrderStatusInterface
     {
         $this->position = $position;
 

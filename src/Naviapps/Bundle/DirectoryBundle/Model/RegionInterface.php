@@ -28,6 +28,22 @@ interface RegionInterface
     public function getCountry(): ?CountryInterface;
 
     /**
+     * Set code
+     *
+     * @param string|null $code
+     *
+     * @return RegionInterface
+     */
+    public function setCode(?string $code): RegionInterface;
+
+    /**
+     * Get code
+     *
+     * @return string|null
+     */
+    public function getCode(): ?string;
+
+    /**
      * Set name
      *
      * @param string|null $name
