@@ -28,6 +28,9 @@ return [
     Naviapps\Bundle\CustomerBundle\NaviappsCustomerBundle::class => ['all' => true],
     Naviapps\Bundle\DirectoryBundle\NaviappsDirectoryBundle::class => ['all' => true],
     Naviapps\Bundle\SalesBundle\NaviappsSalesBundle::class => ['all' => true],
+    Naviapps\Bundle\UserBundle\NaviappsUserBundle::class => ['all' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
+    HWI\Bundle\OAuthBundle\HWIOAuthBundle::class => ['all' => true],
+    Http\HttplugBundle\HttplugBundle::class => ['all' => true],
 ];

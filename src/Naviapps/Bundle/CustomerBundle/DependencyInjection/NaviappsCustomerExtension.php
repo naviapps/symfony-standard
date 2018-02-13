@@ -24,5 +24,20 @@ class NaviappsCustomerExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+
+        if (!empty($config['admin_customer'])) {
+            $this->loadAdminCustomer($config['admin_customer'], $container);
+        }
+    }
+
+    /**
+     * @param array $config
+     * @param ContainerBuilder $container
+     */
+    private function loadAdminCustomer(array $config, ContainerBuilder $container)
+    {
+        $this->remapParametersNamespaces($config, $container, array(
+            'form' => 'naviapps_customer.admin_customer.form.%s',
+        ));
     }
 }

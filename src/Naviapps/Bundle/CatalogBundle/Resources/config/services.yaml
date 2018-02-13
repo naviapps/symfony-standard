@@ -12,6 +12,8 @@ services:
         bind:
             $categoryClass: '%naviapps_catalog.model.category.class%'
             $productClass: '%naviapps_catalog.model.product.class%'
+            $adminCategoryFormType: '%naviapps_catalog.admin_category.form.type%'
+            $adminProductFormType: '%naviapps_catalog.admin_product.form.type%'
 
     # makes classes in Naviapps/Bundle/CatalogBundle/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -26,3 +28,19 @@ services:
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }
         arguments: ['%naviapps_catalog.table_prefix%', 'Naviapps\Bundle\CatalogBundle\Entity']
+
+    naviapps_catalog.resolve_target_entity_listener:
+        class: Doctrine\ORM\Tools\ResolveTargetEntityListener
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
+        calls:
+            - method: addResolveTargetEntity
+              arguments:
+                  - Naviapps\Bundle\CatalogBundle\Model\CategoryInterface
+                  - '%naviapps_catalog.model.category.class%'
+                  - []
+            - method: addResolveTargetEntity
+              arguments:
+                  - Naviapps\Bundle\CatalogBundle\Model\ProductInterface
+                  - '%naviapps_catalog.model.product.class%'
+                  - []

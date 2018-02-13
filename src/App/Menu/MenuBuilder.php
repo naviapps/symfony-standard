@@ -40,7 +40,7 @@ class MenuBuilder
         $content->addChild('title.blocks', ['route' => 'naviapps_cms_admin_block_index']);
 
         $system = $menu->addChild('title.system')->setExtra('icon', 'fa fa-fw fa-cog');
-        $system->addChild('title.users', ['route' => 'naviapps_admin_admin_user_index']);
+        $system->addChild('title.users', ['route' => 'naviapps_user_admin_user_index']);
 
         return $menu;
     }

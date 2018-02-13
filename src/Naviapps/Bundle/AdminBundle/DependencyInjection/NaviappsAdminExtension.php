@@ -24,11 +24,5 @@ class NaviappsAdminExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
-
-        $this->remapParametersNamespaces($config, $container, [
-            '' => [
-                'table_prefix' => 'naviapps_admin.table_prefix',
-            ],
-        ]);
     }
 }

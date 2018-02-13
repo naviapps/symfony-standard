@@ -5,7 +5,6 @@ namespace Naviapps\Bundle\CustomerBundle\Controller\Admin;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Naviapps\Bundle\CustomerBundle\Entity\Customer;
-use Naviapps\Bundle\CustomerBundle\Form\Admin\CustomerType;
 use Naviapps\Bundle\CustomerBundle\Repository\CustomerRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,6 +19,17 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CustomerController extends Controller
 {
+    /** @var string */
+    private $adminCustomerFormType;
+
+    /**
+     * @param string $adminCustomerFormType
+     */
+    public function __construct(string $adminCustomerFormType)
+    {
+        $this->adminCustomerFormType = $adminCustomerFormType;
+    }
+
     /**
      * @param Request $request
      * @param CustomerRepository $customerRepository
@@ -57,7 +67,7 @@ class CustomerController extends Controller
         $customer = $userManager->createUser();
         $customer->setEnabled(true);
 
-        $form = $this->createForm(CustomerType::class, $customer)
+        $form = $this->createForm($this->adminCustomerFormType, $customer)
             ->add('saveAndContinueEdit', SubmitType::class);
 
         $form->handleRequest($request);
@@ -91,7 +101,7 @@ class CustomerController extends Controller
      */
     public function edit(Request $request, Customer $customer): Response
     {
-        $form = $this->createForm(CustomerType::class, $customer);
+        $form = $this->createForm($this->adminCustomerFormType, $customer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

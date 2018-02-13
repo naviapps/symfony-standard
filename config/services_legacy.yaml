@@ -4,3 +4,9 @@ services:
 
     App\Form\ContactFlow:
         parent: craue.form.flow
+
+    app.user_provider.fosub:
+        class: App\Security\User\FOSUBUserProvider
+        arguments:
+            - '@fos_user.user_manager'
+            - { google: google_id }

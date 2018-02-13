@@ -20,10 +20,9 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('naviapps_admin');
 
-        $rootNode
-            ->children()
-                ->scalarNode('table_prefix')->defaultValue('naviapps_admin_')->end()
-            ->end();
+        // Here you should define the parameters that are allowed to
+        // configure your bundle. See the documentation linked above for
+        // more information on that topic.
 
         return $treeBuilder;
     }

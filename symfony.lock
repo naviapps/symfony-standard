@@ -2,6 +2,9 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
+    "clue/stream-filter": {
+        "version": "v1.4.0"
+    },
     "composer/ca-bundle": {
         "version": "1.1.0"
     },
@@ -116,6 +119,18 @@
     "gedmo/doctrine-extensions": {
         "version": "v2.4.31"
     },
+    "guzzlehttp/guzzle": {
+        "version": "6.3.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "v1.3.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.4.2"
+    },
+    "hwi/oauth-bundle": {
+        "version": "0.6.1"
+    },
     "imagine/imagine": {
         "version": "v0.7.1"
     },
@@ -164,11 +179,53 @@
     "php-cs-fixer/diff": {
         "version": "v1.2.0"
     },
+    "php-http/cache-plugin": {
+        "version": "v1.5.0"
+    },
+    "php-http/client-common": {
+        "version": "1.7.0"
+    },
+    "php-http/discovery": {
+        "version": "1.4.0"
+    },
+    "php-http/guzzle6-adapter": {
+        "version": "v1.1.1"
+    },
+    "php-http/httplug": {
+        "version": "v1.1.0"
+    },
+    "php-http/httplug-bundle": {
+        "version": "1.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.6",
+            "ref": "4655962c64e2de96c418caf576c57215711c7877"
+        }
+    },
+    "php-http/logger-plugin": {
+        "version": "v1.0.0"
+    },
+    "php-http/message": {
+        "version": "1.6.0"
+    },
+    "php-http/message-factory": {
+        "version": "v1.0.2"
+    },
+    "php-http/promise": {
+        "version": "v1.0.0"
+    },
+    "php-http/stopwatch-plugin": {
+        "version": "1.1.0"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
     "psr/container": {
         "version": "1.0.0"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
     },
     "psr/log": {
         "version": "1.0.2"
@@ -339,7 +396,7 @@
         "version": "v1.6.0"
     },
     "symfony/polyfill-php56": {
-        "version": "v1.6.0"
+        "version": "v1.7.0"
     },
     "symfony/polyfill-php70": {
         "version": "v1.6.0"
@@ -348,7 +405,7 @@
         "version": "v1.6.0"
     },
     "symfony/polyfill-util": {
-        "version": "v1.6.0"
+        "version": "v1.7.0"
     },
     "symfony/process": {
         "version": "v3.4.0"

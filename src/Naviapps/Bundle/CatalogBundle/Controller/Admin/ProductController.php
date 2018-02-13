@@ -4,7 +4,6 @@ namespace Naviapps\Bundle\CatalogBundle\Controller\Admin;
 
 use Knp\Component\Pager\PaginatorInterface;
 use Naviapps\Bundle\CatalogBundle\Entity\Product;
-use Naviapps\Bundle\CatalogBundle\Form\Admin\ProductType;
 use Naviapps\Bundle\CatalogBundle\Repository\ProductRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,6 +17,21 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProductController extends Controller
 {
+    /** @var string */
+    private $productClass;
+    /** @var string */
+    private $adminProductFormType;
+
+    /**
+     * @param string $productClass
+     * @param string $adminProductFormType
+     */
+    public function __construct(string $productClass, string $adminProductFormType)
+    {
+        $this->productClass = $productClass;
+        $this->adminProductFormType = $adminProductFormType;
+    }
+
     /**
      * @param Request $request
      * @param ProductRepository $productRepository
@@ -42,17 +56,16 @@ class ProductController extends Controller
 
     /**
      * @param Request $request
-     * @param ProductRepository $productRepository
      * @return Response
      *
      * @Route("/new", name="new")
      * @Method({"GET", "POST"})
      */
-    public function new(Request $request, ProductRepository $productRepository): Response
+    public function new(Request $request): Response
     {
-        $product = $productRepository->build();
+        $product = new $this->productClass();
 
-        $form = $this->createForm(ProductType::class, $product);
+        $form = $this->createForm($this->adminProductFormType, $product);
 
         $form->handleRequest($request);
 
@@ -83,7 +96,7 @@ class ProductController extends Controller
      */
     public function edit(Request $request, Product $product): Response
     {
-        $form = $this->createForm(ProductType::class, $product);
+        $form = $this->createForm($this->adminProductFormType, $product);
 
         $form->handleRequest($request);
 

@@ -3,7 +3,6 @@
 namespace Naviapps\Bundle\CatalogBundle\Controller\Admin;
 
 use Naviapps\Bundle\CatalogBundle\Entity\Category;
-use Naviapps\Bundle\CatalogBundle\Form\Admin\CategoryType;
 use Naviapps\Bundle\CatalogBundle\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -17,6 +16,21 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CategoryController extends Controller
 {
+    /** @var string */
+    private $categoryClass;
+    /** @var string */
+    private $adminCategoryFormType;
+
+    /**
+     * @param string $categoryClass
+     * @param string $adminCategoryFormType
+     */
+    public function __construct(string $categoryClass, string $adminCategoryFormType)
+    {
+        $this->categoryClass = $categoryClass;
+        $this->adminCategoryFormType = $adminCategoryFormType;
+    }
+
     /**
      * @param CategoryRepository $categoryRepository
      * @return Response
@@ -33,17 +47,16 @@ class CategoryController extends Controller
 
     /**
      * @param Request $request
-     * @param CategoryRepository $categoryRepository
      * @return Response
      *
      * @Route("/new", name="new")
      * @Method({"GET", "POST"})
      */
-    public function new(Request $request, CategoryRepository $categoryRepository): Response
+    public function new(Request $request): Response
     {
-        $category = $categoryRepository->build();
+        $category = new $this->categoryClass();
 
-        $form = $this->createForm(CategoryType::class, $category);
+        $form = $this->createForm($this->adminCategoryFormType, $category);
 
         $form->handleRequest($request);
 
@@ -74,7 +87,7 @@ class CategoryController extends Controller
      */
     public function edit(Request $request, Category $category): Response
     {
-        $form = $this->createForm(CategoryType::class, $category);
+        $form = $this->createForm($this->adminCategoryFormType, $category);
 
         $form->handleRequest($request);
 

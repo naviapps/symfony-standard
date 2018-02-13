@@ -11,6 +11,7 @@ services:
         # defines the scalar arguments once and apply them to any service defined/created in this file
         bind:
             $customerClass: '%fos_user.model.user.class%'
+            $adminCustomerFormType: '%naviapps_customer.admin_customer.form.type%'
 
     # makes classes in Naviapps/Bundle/CustomerBundle/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -19,3 +20,14 @@ services:
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
         exclude: '../../{Entity,Migrations,Tests}'
+
+    naviapps_customer.resolve_target_entity_listener:
+        class: Doctrine\ORM\Tools\ResolveTargetEntityListener
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
+        calls:
+            - method: addResolveTargetEntity
+              arguments:
+                  - Naviapps\Bundle\CustomerBundle\Model\CustomerInterface
+                  - '%fos_user.model.user.class%'
+                  - []

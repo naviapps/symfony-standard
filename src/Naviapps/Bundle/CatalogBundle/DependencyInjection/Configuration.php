@@ -2,6 +2,8 @@
 
 namespace Naviapps\Bundle\CatalogBundle\DependencyInjection;
 
+use Naviapps\Bundle\CatalogBundle\Form\Admin\CategoryType;
+use Naviapps\Bundle\CatalogBundle\Form\Admin\ProductType;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -44,6 +46,14 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('admin_category')
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
+                    ->children()
+                        ->arrayNode('form')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('type')->defaultValue(CategoryType::class)->end()
+                            ->end()
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
     }
@@ -58,6 +68,14 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('admin_product')
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
+                    ->children()
+                        ->arrayNode('form')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('type')->defaultValue(ProductType::class)->end()
+                            ->end()
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
     }

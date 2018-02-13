@@ -29,8 +29,3 @@ doctrine:
                 dir: '%kernel.project_dir%/src/App/Entity'
                 prefix: 'App\Entity'
                 alias: App
-        resolve_target_entities:
-            Naviapps\Bundle\CatalogBundle\Model\CategoryInterface: App\Entity\CatalogCategory
-            Naviapps\Bundle\CatalogBundle\Model\ProductInterface: App\Entity\CatalogProduct
-            Naviapps\Bundle\CustomerBundle\Model\CustomerInterface: App\Entity\Customer
-            Naviapps\Bundle\SalesBundle\Model\OrderInterface: App\Entity\SalesOrder

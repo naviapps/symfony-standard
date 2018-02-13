@@ -8,9 +8,6 @@ services:
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
         public: false
-        # defines the scalar arguments once and apply them to any service defined/created in this file
-        bind:
-            $emailSender: '%app.notifications.email_sender%'
 
     # makes classes in Naviapps/Bundle/AdminBundle/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -19,9 +16,3 @@ services:
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
         exclude: '../../{Entity,Migrations,Tests}'
-
-    naviapps_admin.table_prefix_listener:
-        class: Naviapps\Component\EventListener\TablePrefixListener
-        tags:
-            - { name: doctrine.event_listener, event: loadClassMetadata }
-        arguments: ['%naviapps_admin.table_prefix%', 'Naviapps\Bundle\AdminBundle\Entity']

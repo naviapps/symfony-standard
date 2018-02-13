@@ -48,6 +48,9 @@ class NaviappsCatalogExtension extends Extension
      */
     private function loadAdminCategory(array $config, ContainerBuilder $container)
     {
+        $this->remapParametersNamespaces($config, $container, array(
+            'form' => 'naviapps_catalog.admin_category.form.%s',
+        ));
     }
 
     /**
@@ -56,5 +59,8 @@ class NaviappsCatalogExtension extends Extension
      */
     private function loadAdminProduct(array $config, ContainerBuilder $container)
     {
+        $this->remapParametersNamespaces($config, $container, array(
+            'form' => 'naviapps_catalog.admin_product.form.%s',
+        ));
     }
 }

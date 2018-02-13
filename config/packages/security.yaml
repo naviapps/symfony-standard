@@ -3,7 +3,7 @@ security:
         # Our user class and the algorithm we'll use to encode passwords
         # https://symfony.com/doc/current/security.html#c-encoding-the-user-s-password
         FOS\UserBundle\Model\UserInterface: bcrypt
-        Naviapps\Bundle\AdminBundle\Entity\User: bcrypt
+        Naviapps\Bundle\UserBundle\Entity\User: bcrypt
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
@@ -11,9 +11,9 @@ security:
 
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: app.user_provider.fosub
         database_admin_users:
-            entity: { class: Naviapps\Bundle\AdminBundle\Entity\User, property: username }
+            entity: { class: Naviapps\Bundle\UserBundle\Entity\User, property: username }
 
     # https://symfony.com/doc/current/security.html#initial-security-yml-setup-authentication
     firewalls:
@@ -25,13 +25,13 @@ security:
             pattern: ^/admin/
             provider: database_admin_users
             form_login:
-                check_path: naviapps_admin_admin_security_login
-                login_path: naviapps_admin_admin_security_login
+                check_path: naviapps_admin_security_login
+                login_path: naviapps_admin_security_login
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: admin_index
             logout:
-                path: naviapps_admin_admin_security_logout
-                target: naviapps_admin_admin_security_login
+                path: naviapps_admin_security_logout
+                target: naviapps_admin_security_login
             anonymous: ~
 
         main:
@@ -39,11 +39,19 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+            oauth:
+                resource_owners:
+                    facebook: /login/check-facebook
+                    google:   /login/check-google
+                login_path:   /login
+                failure_path: /login
+                oauth_user_provider:
+                    service: app.security.user.fosub_user_provider
             logout:    ~
             anonymous: ~
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

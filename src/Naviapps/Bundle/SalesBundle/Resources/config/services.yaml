@@ -25,3 +25,14 @@ services:
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }
         arguments: ['%naviapps_sales.table_prefix%', 'Naviapps\Bundle\SalesBundle\Entity']
+
+    naviapps_sales.resolve_target_entity_listener:
+        class: Doctrine\ORM\Tools\ResolveTargetEntityListener
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
+        calls:
+            - method: addResolveTargetEntity
+              arguments:
+                  - Naviapps\Bundle\SalesBundle\Model\OrderInterface
+                  - '%naviapps_sales.model.order.class%'
+                  - []

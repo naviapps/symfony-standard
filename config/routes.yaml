@@ -17,8 +17,20 @@ fos_user_change_password:
     resource: '@NaviappsFOSUserBundle/Resources/config/routing/change_password.yml'
     prefix: /settings
 
-_liip_imagine:
-    resource: '@LiipImagineBundle/Resources/config/routing.yaml'
+hwi_oauth_redirect:
+    resource: '@HWIOAuthBundle/Resources/config/routing/redirect.xml'
+    prefix:   /connect
+
+hwi_oauth_connect:
+    resource: '@HWIOAuthBundle/Resources/config/routing/connect.xml'
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: '@HWIOAuthBundle/Resources/config/routing/login.xml'
+    prefix:   /login
+
+google_login:
+    path: /login/check-google
 
 naviapps_admin:
     resource: '@NaviappsAdminBundle/Controller/'
@@ -34,6 +46,9 @@ naviapps_customer:
 
 naviapps_sales:
     resource: '@NaviappsSalesBundle/Controller/'
+
+naviapps_user:
+    resource: '@NaviappsUserBundle/Controller/'
 
 homepage:
     path: /
