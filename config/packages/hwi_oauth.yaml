@@ -5,7 +5,7 @@ hwi_oauth:
     fosub:
         username_iterations: 30
         properties:
-            google: google_id
+            google: googleId
     resource_owners:
         google:
             type:          google

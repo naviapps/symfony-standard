@@ -5,7 +5,6 @@ namespace Naviapps\Bundle\CatalogBundle\Controller\Admin;
 use Knp\Component\Pager\PaginatorInterface;
 use Naviapps\Bundle\CatalogBundle\Entity\Product;
 use Naviapps\Bundle\CatalogBundle\Repository\ProductRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -38,8 +37,7 @@ class ProductController extends Controller
      * @param PaginatorInterface $paginator
      * @return Response
      *
-     * @Route("/", name="index")
-     * @Method("GET")
+     * @Route("/", methods={"GET"}, name="index")
      */
     public function index(Request $request, ProductRepository $productRepository, PaginatorInterface $paginator): Response
     {
@@ -58,8 +56,7 @@ class ProductController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/new", name="new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", methods={"GET", "POST"}, name="new")
      */
     public function new(Request $request): Response
     {
@@ -90,8 +87,7 @@ class ProductController extends Controller
      * @param Product $product
      * @return Response
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, methods={"GET", "POST"}, name="edit")
      * @Security("is_granted('edit', product)")
      */
     public function edit(Request $request, Product $product): Response
@@ -119,8 +115,7 @@ class ProductController extends Controller
      * @param Product $product
      * @return Response
      *
-     * @Route("/{id}/delete", name="delete")
-     * @Method("POST")
+     * @Route("/{id}/delete", methods={"POST"}, name="delete")
      * @Security("is_granted('delete', product)")
      */
     public function delete(Request $request, Product $product): Response

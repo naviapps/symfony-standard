@@ -6,7 +6,6 @@ use FOS\UserBundle\Model\UserManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Naviapps\Bundle\CustomerBundle\Entity\Customer;
 use Naviapps\Bundle\CustomerBundle\Repository\CustomerRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,8 +35,7 @@ class CustomerController extends Controller
      * @param PaginatorInterface $paginator
      * @return Response
      *
-     * @Route("/", name="index")
-     * @Method("GET")
+     * @Route("/", methods={"GET"}, name="index")
      */
     public function index(Request $request, CustomerRepository $customerRepository, PaginatorInterface $paginator): Response
     {
@@ -56,8 +54,7 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/new", name="new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", methods={"GET", "POST"}, name="new")
      */
     public function new(Request $request): Response
     {
@@ -95,8 +92,7 @@ class CustomerController extends Controller
      * @param Customer $customer
      * @return Response
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, methods={"GET", "POST"}, name="edit")
      * @Security("is_granted('edit', customer)")
      */
     public function edit(Request $request, Customer $customer): Response
@@ -125,8 +121,7 @@ class CustomerController extends Controller
      * @param Customer $customer
      * @return Response
      *
-     * @Route("/{id}/delete", name="delete")
-     * @Method("POST")
+     * @Route("/{id}/delete", methods={"POST"}, name="delete")
      * @Security("is_granted('delete', customer)")
      */
     public function delete(Request $request, Customer $customer): Response

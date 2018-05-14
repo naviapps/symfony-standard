@@ -17,11 +17,11 @@
         <!-- define your env variables for the test env here -->
 
         <!-- ###+ doctrine/doctrine-bundle ### -->
-        <env name="DATABASE_URL" value="sqlite:///var/data/blog_test.sqlite"/>
+        <env name="DATABASE_URL" value="sqlite:///var/data/blog_test.sqlite" />
         <!-- ###- doctrine/doctrine-bundle ### -->
 
         <!-- ###+ symfony/swiftmailer-bundle ### -->
-        <env name="MAILER_URL" value="null://localhost"/>
+        <env name="MAILER_URL" value="null://localhost" />
         <!-- ###- symfony/swiftmailer-bundle ### -->
     </php>
 
@@ -32,6 +32,7 @@
     </testsuites>
 
     <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
         <!-- it begins a database transaction before every testcase and rolls it back after
              the test finished, so tests can manipulate the database without affecting other tests -->
         <listener class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitListener" />

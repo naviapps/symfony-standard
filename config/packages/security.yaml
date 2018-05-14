@@ -11,7 +11,7 @@ security:
 
     providers:
         fos_userbundle:
-            id: app.user_provider.fosub
+            id: fos_user.user_provider.username
         database_admin_users:
             entity: { class: Naviapps\Bundle\UserBundle\Entity\User, property: username }
 
@@ -39,6 +39,7 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+            provider: fos_userbundle
             oauth:
                 resource_owners:
                     facebook: /login/check-facebook
@@ -46,12 +47,12 @@ security:
                 login_path:   /login
                 failure_path: /login
                 oauth_user_provider:
-                    service: app.security.user.fosub_user_provider
+                    service: app.user_provider.fosub
             logout:    ~
             anonymous: ~
 
     access_control:
-        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

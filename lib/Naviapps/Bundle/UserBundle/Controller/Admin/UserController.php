@@ -6,7 +6,6 @@ use Knp\Component\Pager\PaginatorInterface;
 use Naviapps\Bundle\UserBundle\Entity\User;
 use Naviapps\Bundle\UserBundle\Form\Admin\UserType;
 use Naviapps\Bundle\UserBundle\Repository\UserRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,8 +24,7 @@ class UserController extends Controller
      * @param PaginatorInterface $paginator
      * @return Response
      *
-     * @Route("/", name="index")
-     * @Method("GET")
+     * @Route("/", methods={"GET"}, name="index")
      */
     public function index(Request $request, UserRepository $userRepository, PaginatorInterface $paginator): Response
     {
@@ -46,8 +44,7 @@ class UserController extends Controller
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      *
-     * @Route("/new", name="new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", methods={"GET", "POST"}, name="new")
      */
     public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -82,8 +79,7 @@ class UserController extends Controller
      * @param User $user
      * @return Response
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, methods={"GET", "POST"}, name="edit")
      * @Security("is_granted('edit', user)")
      */
     public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, User $user): Response
@@ -115,8 +111,7 @@ class UserController extends Controller
      * @param User $user
      * @return Response
      *
-     * @Route("/{id}/delete", name="delete")
-     * @Method("POST")
+     * @Route("/{id}/delete", methods={"POST"}, name="delete")
      * @Security("is_granted('delete', user)")
      */
     public function delete(Request $request, User $user): Response

@@ -6,7 +6,6 @@ use Knp\Component\Pager\PaginatorInterface;
 use Naviapps\Bundle\CmsBundle\Entity\Page;
 use Naviapps\Bundle\CmsBundle\Form\Admin\PageType;
 use Naviapps\Bundle\CmsBundle\Repository\PageRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,8 +24,7 @@ class PageController extends Controller
      * @param PaginatorInterface $paginator
      * @return Response
      *
-     * @Route("/", name="index")
-     * @Method("GET")
+     * @Route("/", methods={"GET"}, name="index")
      */
     public function index(Request $request, PageRepository $pageRepository, PaginatorInterface $paginator): Response
     {
@@ -45,8 +43,7 @@ class PageController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/new", name="new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", methods={"GET", "POST"}, name="new")
      */
     public function new(Request $request): Response
     {
@@ -82,8 +79,7 @@ class PageController extends Controller
      * @param Page $page
      * @return Response
      *
-     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, methods={"GET", "POST"}, name="edit")
      * @Security("is_granted('edit', page)")
      */
     public function edit(Request $request, Page $page): Response
@@ -116,8 +112,7 @@ class PageController extends Controller
      * @param Page $page
      * @return Response
      *
-     * @Route("/{id}/delete", name="delete")
-     * @Method("POST")
+     * @Route("/{id}/delete", methods={"POST"}, name="delete")
      * @Security("is_granted('delete', page)")
      */
     public function delete(Request $request, Page $page): Response
