@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e09c543f6a7294d8191f4d0ce24fd602",
+    "content-hash": "e95f26b20e4c229735a766c29ea91c74",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2549,6 +2549,116 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
+            "name": "naviapps/admin-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "lib/naviapps/admin-bundle",
+                "reference": "ede7eea5c54d54509ad34af30c58c87d0fe03c1c",
+                "shasum": null
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Naviapps\\Bundle\\AdminBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "naviapps/catalog-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "lib/naviapps/catalog-bundle",
+                "reference": "10eb163fc477ec88491f1b5f7d0df0ec91b2f6ea",
+                "shasum": null
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Naviapps\\Bundle\\CatalogBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "naviapps/cms-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "lib/naviapps/cms-bundle",
+                "reference": "529faa080e65b3edc252a3aa2c56cda81ab0615c",
+                "shasum": null
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Naviapps\\Bundle\\CmsBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "naviapps/customer-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "lib/naviapps/customer-bundle",
+                "reference": "ad20eba17278f5c28153da9b54c1f11062a752b0",
+                "shasum": null
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Naviapps\\Bundle\\CustomerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "naviapps/directory-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "lib/naviapps/directory-bundle",
+                "reference": "764ef6a0721ebca6a1aa42f75623ec522c52fcaa",
+                "shasum": null
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Naviapps\\Bundle\\DirectoryBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "naviapps/fos-user-bundle",
             "version": "dev-master",
             "source": {
@@ -2597,6 +2707,50 @@
                 "user"
             ],
             "time": "2017-11-24T22:29:18+00:00"
+        },
+        {
+            "name": "naviapps/sales-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "lib/naviapps/sales-bundle",
+                "reference": "cfcad6a5a7d9b16c71ae5dcd20e22d6b4d747df0",
+                "shasum": null
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Naviapps\\Bundle\\SalesBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "naviapps/user-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "lib/naviapps/user-bundle",
+                "reference": "2c8facf99f1f97cf37001e39e1cf249ca468796e",
+                "shasum": null
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Naviapps\\Bundle\\UserBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "ocramius/package-versions",
@@ -8360,7 +8514,14 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "naviapps/admin-bundle": 20,
+        "naviapps/catalog-bundle": 20,
+        "naviapps/cms-bundle": 20,
+        "naviapps/customer-bundle": 20,
+        "naviapps/directory-bundle": 20,
         "naviapps/fos-user-bundle": 20,
+        "naviapps/sales-bundle": 20,
+        "naviapps/user-bundle": 20,
         "symfony/lts": 20
     },
     "prefer-stable": false,

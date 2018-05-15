@@ -28,7 +28,7 @@ security:
                 check_path: naviapps_admin_security_login
                 login_path: naviapps_admin_security_login
                 csrf_token_generator: security.csrf.token_manager
-                default_target_path: admin_index
+                default_target_path: naviapps_admin_index
             logout:
                 path: naviapps_admin_security_logout
                 target: naviapps_admin_security_login

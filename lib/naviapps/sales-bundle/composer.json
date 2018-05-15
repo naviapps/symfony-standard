@@ -1,0 +1,11 @@
+{
+    "name": "naviapps/sales-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "Naviapps\\Bundle\\SalesBundle\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}

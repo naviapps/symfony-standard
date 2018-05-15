@@ -1,0 +1,11 @@
+{
+    "name": "naviapps/user-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "Naviapps\\Bundle\\UserBundle\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}

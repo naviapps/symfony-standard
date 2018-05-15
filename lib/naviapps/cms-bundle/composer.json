@@ -1,0 +1,11 @@
+{
+    "name": "naviapps/cms-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "Naviapps\\Bundle\\CmsBundle\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}

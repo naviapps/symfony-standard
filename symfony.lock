@@ -161,8 +161,29 @@
     "monolog/monolog": {
         "version": "1.23.0"
     },
+    "naviapps/admin-bundle": {
+        "version": "dev-master"
+    },
+    "naviapps/catalog-bundle": {
+        "version": "dev-master"
+    },
+    "naviapps/cms-bundle": {
+        "version": "dev-master"
+    },
+    "naviapps/customer-bundle": {
+        "version": "dev-master"
+    },
+    "naviapps/directory-bundle": {
+        "version": "dev-master"
+    },
     "naviapps/fos-user-bundle": {
         "version": "1.0-dev"
+    },
+    "naviapps/sales-bundle": {
+        "version": "dev-master"
+    },
+    "naviapps/user-bundle": {
+        "version": "dev-master"
     },
     "nikic/php-parser": {
         "version": "v4.0.1"
