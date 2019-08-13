@@ -2,7 +2,7 @@
 
 namespace Naviapps\Bundle\AdminBundle\DependencyInjection;
 
-use Naviapps\Component\DependencyInjection\Extension;
+use Naviapps\Bundle\FrameworkBundle\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;

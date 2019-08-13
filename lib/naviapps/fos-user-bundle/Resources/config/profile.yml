@@ -1,0 +1,5 @@
+services:
+    naviapps_fos_user.profile.form.flow:
+        class: '%naviapps_fos_user.profile.form.flow%'
+        parent: craue.form.flow
+        arguments: ['%fos_user.profile.form.type%']

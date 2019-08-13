@@ -1,0 +1,24 @@
+{
+    "name": "naviapps/fos-user-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony NaviappsFOSUserBundle",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Haruki Fukui",
+            "email": "haruki.fukui@naviapps.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "craue/formflow-bundle": "^3.0",
+        "friendsofsymfony/user-bundle": "^2.1"
+    },
+    "autoload": {
+        "psr-4": { "Naviapps\\Bundle\\FOSUserBundle\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}

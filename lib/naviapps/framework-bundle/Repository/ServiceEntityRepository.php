@@ -1,6 +1,6 @@
 <?php
 
-namespace Naviapps\Component\Repository;
+namespace Naviapps\Bundle\FrameworkBundle\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 use Doctrine\Common\Persistence\ManagerRegistry;

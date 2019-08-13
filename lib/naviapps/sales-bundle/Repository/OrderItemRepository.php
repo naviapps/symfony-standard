@@ -3,8 +3,8 @@
 namespace Naviapps\Bundle\SalesBundle\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Naviapps\Bundle\FrameworkBundle\Repository\ServiceEntityRepository;
 use Naviapps\Bundle\SalesBundle\Entity\OrderItem;
-use Naviapps\Component\Repository\ServiceEntityRepository;
 
 class OrderItemRepository extends ServiceEntityRepository
 {

@@ -4,13 +4,13 @@ namespace App\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/checkout/cart", name="checkout_cart_")
  */
-class CheckoutCartController extends Controller
+class CheckoutCartController extends AbstractController
 {
     /**
      * @return Response

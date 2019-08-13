@@ -4,14 +4,14 @@ namespace App\Controller;
 
 use App\Form\ContactFlow;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/contact", name="contact_")
  */
-class ContactController extends Controller
+class ContactController extends AbstractController
 {
     /**
      * @param ContactFlow $flow

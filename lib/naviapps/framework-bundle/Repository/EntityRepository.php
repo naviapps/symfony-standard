@@ -1,6 +1,6 @@
 <?php
 
-namespace Naviapps\Component\Repository;
+namespace Naviapps\Bundle\FrameworkBundle\Repository;
 
 use Doctrine\ORM\EntityRepository as BaseEntityRepository;
 

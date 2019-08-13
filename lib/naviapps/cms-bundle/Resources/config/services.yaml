@@ -22,7 +22,7 @@ services:
             - { name: kernel.event_listener, event: kernel.exception }
 
     naviapps_cms.table_prefix_listener:
-        class: Naviapps\Component\EventListener\TablePrefixListener
+        class: Naviapps\Bundle\FrameworkBundle\EventListener\TablePrefixListener
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }
         arguments: ['%naviapps_cms.table_prefix%', 'Naviapps\Bundle\CmsBundle\Entity']

@@ -3,7 +3,7 @@
 namespace Naviapps\Bundle\CatalogBundle\Repository;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Naviapps\Component\Repository\ServiceEntityRepository;
+use Naviapps\Bundle\FrameworkBundle\Repository\ServiceEntityRepository;
 
 class ProductRepository extends ServiceEntityRepository
 {

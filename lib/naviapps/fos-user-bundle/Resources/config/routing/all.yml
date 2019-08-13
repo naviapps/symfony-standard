@@ -1,0 +1,18 @@
+fos_user_security:
+    resource: '@FOSUserBundle/Resources/config/routing/security.xml'
+
+fos_user_profile:
+    resource: '@NaviappsFOSUserBundle/Resources/config/routing/profile.yml'
+    prefix: /profile
+
+fos_user_register:
+    resource: '@NaviappsFOSUserBundle/Resources/config/routing/registration.yml'
+    prefix: /register
+
+fos_user_resetting:
+    resource: '@NaviappsFOSUserBundle/Resources/config/routing/resetting.yml'
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: '@NaviappsFOSUserBundle/Resources/config/routing/change_password.yml'
+    prefix: /profile

@@ -1,6 +1,6 @@
 <?php
 
-namespace Naviapps\Component\EventListener;
+namespace Naviapps\Bundle\FrameworkBundle\EventListener;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;

@@ -21,7 +21,7 @@ services:
         exclude: '../../{Entity,Migrations,Tests}'
 
     naviapps_sales.table_prefix_listener:
-        class: Naviapps\Component\EventListener\TablePrefixListener
+        class: Naviapps\Bundle\FrameworkBundle\EventListener\TablePrefixListener
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }
         arguments: ['%naviapps_sales.table_prefix%', 'Naviapps\Bundle\SalesBundle\Entity']
