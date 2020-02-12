@@ -1069,12 +1069,12 @@
             "version": "v2.6.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "87ee409783a4a322b5597ebaae558661404055a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/87ee409783a4a322b5597ebaae558661404055a7",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/87ee409783a4a322b5597ebaae558661404055a7",
                 "reference": "87ee409783a4a322b5597ebaae558661404055a7",
                 "shasum": ""
             },
@@ -2434,8 +2434,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/admin-bundle",
-                "reference": "a577727a553634da9501bdb20334481caaf75c9a",
-                "shasum": null
+                "reference": "a577727a553634da9501bdb20334481caaf75c9a"
             },
             "require": {
                 "php": "^7.1.3"
@@ -2466,8 +2465,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/catalog-bundle",
-                "reference": "d01e9cd3001d0699cfc57ff2c0272de30e796f32",
-                "shasum": null
+                "reference": "d01e9cd3001d0699cfc57ff2c0272de30e796f32"
             },
             "require": {
                 "php": "^7.1.3"
@@ -2498,8 +2496,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/cms-bundle",
-                "reference": "badd473f6e611dfbd7137d0c4d5c39eac5b324b6",
-                "shasum": null
+                "reference": "badd473f6e611dfbd7137d0c4d5c39eac5b324b6"
             },
             "require": {
                 "php": "^7.1.3"
@@ -2530,8 +2527,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/customer-bundle",
-                "reference": "f47ef7c37bf02654332ce70861d702a8973a3923",
-                "shasum": null
+                "reference": "f47ef7c37bf02654332ce70861d702a8973a3923"
             },
             "require": {
                 "php": "^7.1.3"
@@ -2562,8 +2558,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/directory-bundle",
-                "reference": "39c6272e2a1576614c679d52719a569c716683d9",
-                "shasum": null
+                "reference": "39c6272e2a1576614c679d52719a569c716683d9"
             },
             "require": {
                 "php": "^7.1.3"
@@ -2594,8 +2589,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/fos-user-bundle",
-                "reference": "aa19eea062528603c076eddb5b178330e4820958",
-                "shasum": null
+                "reference": "aa19eea062528603c076eddb5b178330e4820958"
             },
             "require": {
                 "craue/formflow-bundle": "^3.0",
@@ -2628,8 +2622,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/framework-bundle",
-                "reference": "bb9b8bd321c56d9cd0c1a35002b597ada61bd5ba",
-                "shasum": null
+                "reference": "bb9b8bd321c56d9cd0c1a35002b597ada61bd5ba"
             },
             "require": {
                 "php": "^7.1.3"
@@ -2660,8 +2653,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/sales-bundle",
-                "reference": "57e89e5c377f357102d16a6b44cda5baef2c3fef",
-                "shasum": null
+                "reference": "57e89e5c377f357102d16a6b44cda5baef2c3fef"
             },
             "require": {
                 "php": "^7.1.3"
@@ -2692,8 +2684,7 @@
             "dist": {
                 "type": "path",
                 "url": "lib/naviapps/user-bundle",
-                "reference": "5057250bf50435bc6b66345f36409e6ad3da181c",
-                "shasum": null
+                "reference": "5057250bf50435bc6b66345f36409e6ad3da181c"
             },
             "require": {
                 "php": "^7.1.3"
@@ -5432,12 +5423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/lts.git",
-                "reference": "6de50b244bad631a71544b3cc3c8e206c0e5f991"
+                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/lts/zipball/6de50b244bad631a71544b3cc3c8e206c0e5f991",
-                "reference": "6de50b244bad631a71544b3cc3c8e206c0e5f991",
+                "url": "https://api.github.com/repos/symfony/lts/zipball/c1affae45b78aee036effa1759237e7fa96d4af2",
+                "reference": "c1affae45b78aee036effa1759237e7fa96d4af2",
                 "shasum": ""
             },
             "conflict": {
@@ -5517,7 +5508,8 @@
             ],
             "description": "Enforces Long Term Supported versions of Symfony components",
             "homepage": "https://symfony.com",
-            "time": "2018-04-03T05:04:16+00:00"
+            "abandoned": "symfony/flex",
+            "time": "2018-10-03T12:03:19+00:00"
         },
         {
             "name": "symfony/monolog-bridge",
@@ -7024,6 +7016,7 @@
                 "MIT"
             ],
             "description": "A pack for Symfony Encore",
+            "abandoned": "symfony/webpack-encore-bundle",
             "time": "2017-12-21T02:20:09+00:00"
         },
         {
@@ -7401,6 +7394,7 @@
                 "code",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-code",
             "time": "2017-10-20T15:21:32+00:00"
         },
         {
@@ -7455,6 +7449,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2018-04-25T15:33:34+00:00"
         }
     ],
@@ -8372,16 +8367,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v4.1.0",
+            "version": "v4.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "b3451fc442baaf9169e50491a059ef17582c4424"
+                "reference": "cc546f59d55f63010ff4d4f40a2af39526842524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/b3451fc442baaf9169e50491a059ef17582c4424",
-                "reference": "b3451fc442baaf9169e50491a059ef17582c4424",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/cc546f59d55f63010ff4d4f40a2af39526842524",
+                "reference": "cc546f59d55f63010ff4d4f40a2af39526842524",
                 "shasum": ""
             },
             "require": {
@@ -8434,7 +8429,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2018-05-25T14:55:38+00:00"
+            "time": "2019-04-16T09:37:00+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
